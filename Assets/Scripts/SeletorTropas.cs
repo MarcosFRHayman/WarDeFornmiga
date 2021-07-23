@@ -58,7 +58,7 @@ public class SeletorTropas : MonoBehaviour
     
     }
 
-    public int openDialog() 
+    public int abrirSeletor() 
     {
         //abre dialogo
         return number;
