@@ -7,8 +7,16 @@ public class SeletorTropas : MonoBehaviour
 {
 
     public Text tnum;
+
+    public GameObject panel;
+            
+    // botoes de incremento e decremento
     public Button btnmais;
     public Button btnmenos;
+
+    // botoes de confirmacao e cancelamento
+    public Button btnconfirma;
+    public Button btncancela;
 
     private int number = 0;
 
@@ -18,6 +26,8 @@ public class SeletorTropas : MonoBehaviour
         tnum.text = number.ToString();
         btnmais.onClick.AddListener(BtnMaisOnClick);
         btnmenos.onClick.AddListener(BtnMenosOnClick);
+        btnconfirma.onClick.AddListener(BtnConfirmaOnClick);
+        btncancela.onClick.AddListener(BtnCancelaOnClick);
     }
 
     // Update is called once per frame
@@ -34,8 +44,23 @@ public class SeletorTropas : MonoBehaviour
 
     void BtnMaisOnClick() 
     {
-
         number++;
         tnum.text = (number).ToString();
+    }
+
+    void BtnConfirmaOnClick()
+    { 
+    
+    }
+
+    void BtnCancelaOnClick()
+    { 
+    
+    }
+
+    public int openDialog() 
+    {
+        //abre dialogo
+        return number;
     }
 }
