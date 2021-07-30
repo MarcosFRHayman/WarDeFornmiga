@@ -47,5 +47,10 @@ namespace FormigaWar.Territorios
         {
             numtropas_txt.text = numtropas.ToString();
         }
+
+        void OnMouseDown() // quando o territorio for clicado...
+        {
+            //Debug.Log("Territorio" + this.nome + "foi clicado");
+        }
     }
 }
