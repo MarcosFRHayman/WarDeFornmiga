@@ -2,7 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Curinga : Carta
+namespace FormigaWar.Territorios
 {
+    public class Curinga : Carta
+    {
 
+    }
 }

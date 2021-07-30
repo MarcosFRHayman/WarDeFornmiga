@@ -2,15 +2,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Continente
+namespace FormigaWar.Territorios
 {
-    private string nome;
-    private List<Territorio> territorios;
-
-    public Continente(string nome, List<Territorio> territorios)
+    public class Continente
     {
-        this.nome = nome;
-        this.territorios = territorios;
-        //talvez um for que coloque o territorio.continente para esse
+        private string nome;
+        private List<Territorio> territorios;
+
+        public Continente(string nome, List<Territorio> territorios)
+        {
+            this.nome = nome;
+            this.territorios = territorios;
+            //talvez um for que coloque o territorio.continente para esse
+        }
     }
 }

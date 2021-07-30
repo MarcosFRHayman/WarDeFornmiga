@@ -2,6 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Simbolo
+namespace FormigaWar.Territorios
 {
+    public class Simbolo
+    {
+    }
 }

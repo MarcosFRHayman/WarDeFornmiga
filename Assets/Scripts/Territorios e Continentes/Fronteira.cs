@@ -2,23 +2,26 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Fronteira
+namespace FormigaWar.Territorios
 {
-    private Territorio territorioA;
-    private Territorio territorioB;
-    private string tipo;
-
-
-    public Fronteira(Territorio territorioA, Territorio territorioB, string tipo)
+    public class Fronteira
     {
-        this.territorioA = territorioA;
-        this.territorioB = territorioB;
-        this.tipo = tipo;
-    }
+        private Territorio territorioA;
+        private Territorio territorioB;
+        private string tipo;
 
-    Territorio OtherTerritorio(Territorio territorio)
-    {
-        if (territorio == territorioA) return territorioA;
-        else return territorioB;
+
+        public Fronteira(Territorio territorioA, Territorio territorioB, string tipo)
+        {
+            this.territorioA = territorioA;
+            this.territorioB = territorioB;
+            this.tipo = tipo;
+        }
+
+        Territorio OtherTerritorio(Territorio territorio)
+        {
+            if (territorio == territorioA) return territorioA;
+            else return territorioB;
+        }
     }
 }
