@@ -6,8 +6,12 @@ namespace FormigaWar.Territorios
 {
     public class Territorio : MonoBehaviour
     {
+        // atributos que apontam para outras classes
         [SerializeField] private TextMesh numtropas_txt;
+        [SerializeField] private SeletorTropas seletortropas;
+        [SerializeField] private SpriteRenderer spriteRenderer;
 
+        //atributos de classe
         [SerializeField]private string nome;
         [SerializeField]private List<Fronteira> fronteiras;
         [SerializeField]private Carta cartaterritorio;
@@ -41,6 +45,8 @@ namespace FormigaWar.Territorios
         void Start() 
         {
             numtropas_txt.text = numtropas.ToString();
+            spriteRenderer = GetComponent<SpriteRenderer>();
+            seletortropas = GameObject.Find("Canvas").GetComponent<SeletorTropas>();
         }
 
         private void AtualizarNumTropas()
@@ -48,9 +54,31 @@ namespace FormigaWar.Territorios
             numtropas_txt.text = numtropas.ToString();
         }
 
+        public void AtualizaEstado(string estado)
+        {
+            if (estado == "selecionado") // talvez tenha um jeito melhor de fazer isso
+            {
+                spriteRenderer.color = Color.yellow;
+            }
+            else if (estado == "normal")
+            {
+                spriteRenderer.color = Color.white;
+            }
+            else if (estado == "indisponivel")
+            {
+                spriteRenderer.color = Color.gray;
+            }
+            else
+            {
+                Debug.Log("AtualizaEstado foi chamado mas com um estado não identificado");
+            }
+        }
+
         void OnMouseDown() // quando o territorio for clicado...
         {
-            //Debug.Log("Territorio" + this.nome + "foi clicado");
+
+            AtualizaEstado("selecionado"); //colocar territorio como selecionado
+            seletortropas.AbrirSeletor(this);
         }
     }
 }

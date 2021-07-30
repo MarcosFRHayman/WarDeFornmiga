@@ -2,23 +2,24 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using FormigaWar.Territorios;
 
 namespace FormigaWar
 {
     public class SeletorTropas : MonoBehaviour
     {
 
-        public Text tnum;
-
-        public GameObject panel;
+        [SerializeField] private Text tnum;
+        [SerializeField] private Territorio t_invoker = null;
+        [SerializeField] private GameObject panel;
 
         // botoes de incremento e decremento
-        public Button btnmais;
-        public Button btnmenos;
+        [SerializeField] private Button btnmais;
+        [SerializeField] private Button btnmenos;
 
         // botoes de confirmacao e cancelamento
-        public Button btnconfirma;
-        public Button btncancela;
+        [SerializeField] private Button btnconfirma;
+        [SerializeField] private Button btncancela;
 
         private int number = 0;
 
@@ -52,18 +53,26 @@ namespace FormigaWar
 
         void BtnConfirmaOnClick()
         {
+            if (t_invoker == null) return; // cheque de sanidade, ele foi chamado mas não foi dada tropas
 
+            t_invoker.SetNumTropas(number);
+            t_invoker.AtualizaEstado("normal");
+            // talvez seja mudado depois, mas para testes isso vai dar
+            t_invoker = null;
+            panel.SetActive(false);
         }
 
         void BtnCancelaOnClick()
         {
-
+            t_invoker.AtualizaEstado("normal");
+            t_invoker = null;
+            panel.SetActive(false);
         }
 
-        public int abrirSeletor()
+        public void AbrirSeletor(Territorio t_invoker)
         {
-            //abre dialogo
-            return number;
+            this.t_invoker = t_invoker;
+            panel.SetActive(true);
         }
     }
 }
