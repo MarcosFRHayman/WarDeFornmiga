@@ -8,8 +8,11 @@ namespace FormigaWar.Territorios
     {
         // atributos que apontam para outras classes
         [SerializeField] private TextMesh numtropas_txt;
-        [SerializeField] private SeletorTropas seletortropas;
         [SerializeField] private SpriteRenderer spriteRenderer;
+        [SerializeField] private Tabuleiro tabuleiro;
+
+        //atributo de estado da classe
+        public string estado = "normal";
 
         //atributos de classe
         [SerializeField]private string nome;
@@ -46,7 +49,7 @@ namespace FormigaWar.Territorios
         {
             numtropas_txt.text = numtropas.ToString();
             spriteRenderer = GetComponent<SpriteRenderer>();
-            seletortropas = GameObject.Find("Canvas").GetComponent<SeletorTropas>();
+            tabuleiro = GameObject.Find("EventSystem").GetComponent<Tabuleiro>();
         }
 
         private void AtualizarNumTropas()
@@ -54,18 +57,26 @@ namespace FormigaWar.Territorios
             numtropas_txt.text = numtropas.ToString();
         }
 
-        public void AtualizaEstado(string estado)
+        public void AtualizaEstado(string novo_estado)
         {
-            if (estado == "selecionado") // talvez tenha um jeito melhor de fazer isso
+            if (novo_estado == "selecionado") // talvez tenha um jeito melhor de fazer isso
             {
+                this.estado = novo_estado;
                 spriteRenderer.color = Color.yellow;
             }
-            else if (estado == "normal")
+            else if (novo_estado == "selecionavel") // selecionavel se de um territorio pode selecionar este outro
             {
+                this.estado = novo_estado;
+                spriteRenderer.color = new Vector4(255f, 0f, 255f, 1f);
+            }
+            else if (novo_estado == "normal") // selecionavel do primeiro clique
+            {
+                this.estado = novo_estado;
                 spriteRenderer.color = Color.white;
             }
-            else if (estado == "indisponivel")
+            else if (novo_estado == "indisponivel")
             {
+                this.estado = novo_estado;
                 spriteRenderer.color = Color.gray;
             }
             else
@@ -76,9 +87,7 @@ namespace FormigaWar.Territorios
 
         void OnMouseDown() // quando o territorio for clicado...
         {
-
-            AtualizaEstado("selecionado"); //colocar territorio como selecionado
-            seletortropas.AbrirSeletor(this);
+            tabuleiro.SelecionarTerritorio(this);
         }
     }
 }

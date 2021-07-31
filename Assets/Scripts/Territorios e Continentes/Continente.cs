@@ -4,10 +4,11 @@ using UnityEngine;
 
 namespace FormigaWar.Territorios
 {
+    [System.Serializable]
     public class Continente
     {
-        private string nome;
-        private List<Territorio> territorios;
+        [SerializeField] private string nome;
+        [SerializeField] private List<Territorio> territorios;
 
         public Continente(string nome, List<Territorio> territorios)
         {

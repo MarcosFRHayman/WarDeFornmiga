@@ -56,7 +56,7 @@ namespace FormigaWar
             if (t_invoker == null) return; // cheque de sanidade, ele foi chamado mas não foi dada tropas
 
             t_invoker.SetNumTropas(number);
-            t_invoker.AtualizaEstado("normal");
+            //t_invoker.AtualizaEstado("normal");
             // talvez seja mudado depois, mas para testes isso vai dar
             t_invoker = null;
             panel.SetActive(false);
@@ -64,7 +64,7 @@ namespace FormigaWar
 
         void BtnCancelaOnClick()
         {
-            t_invoker.AtualizaEstado("normal");
+            //t_invoker.AtualizaEstado("normal");
             t_invoker = null;
             panel.SetActive(false);
         }
