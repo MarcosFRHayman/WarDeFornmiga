@@ -9,8 +9,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8183680617057803074}
+  - component: {fileID: 200436367597862981}
   - component: {fileID: 8183680617057803077}
-  - component: {fileID: 8183680617057803076}
   - component: {fileID: 603805233}
   m_Layer: 0
   m_Name: Territorio Interativo
@@ -34,6 +34,24 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &200436367597862981
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8183680617057803079}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6c0a414b2c138e34a826f049180e746b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  territorio: {fileID: 11400000, guid: ef17d750a4a151840beec071ab7beb74, type: 2}
+  numtropas_txt: {fileID: 8183680617360994275}
+  spriteRenderer: {fileID: 8183680617057803077}
+  tabuleiro: {fileID: 0}
+  numtropas: 0
+  estado: normal
 --- !u!212 &8183680617057803077
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -85,23 +103,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &8183680617057803076
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8183680617057803079}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0d484a6bdcff6a145aaa10596ff8d8db, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  numtropas_txt: {fileID: 8183680617360994275}
-  seletortropas: {fileID: 0}
-  spriteRenderer: {fileID: 0}
-  nome: "Testit\xF3rioA"
-  numtropas: 1
 --- !u!60 &603805233
 PolygonCollider2D:
   m_ObjectHideFlags: 0

@@ -10,7 +10,7 @@ namespace FormigaWar
     {
 
         [SerializeField] private Text tnum;
-        [SerializeField] private Territorio t_invoker = null;
+        [SerializeField] private TerritorioDisplay t_invoker = null;
         [SerializeField] private GameObject panel;
 
         // botoes de incremento e decremento
@@ -53,10 +53,10 @@ namespace FormigaWar
 
         void BtnConfirmaOnClick()
         {
-            if (t_invoker == null) return; // cheque de sanidade, ele foi chamado mas não foi dada tropas
+            if (t_invoker == null) return; // cheque de sanidade, ele foi chamado mas nï¿½o foi dada tropas
 
-            t_invoker.SetNumTropas(number);
-            //t_invoker.AtualizaEstado("normal");
+            t_invoker.NumTropas = number;
+            t_invoker.AtualizaEstado("normal");
             // talvez seja mudado depois, mas para testes isso vai dar
             t_invoker = null;
             panel.SetActive(false);
@@ -69,7 +69,7 @@ namespace FormigaWar
             panel.SetActive(false);
         }
 
-        public void AbrirSeletor(Territorio t_invoker)
+        public void AbrirSeletor(TerritorioDisplay t_invoker)
         {
             this.t_invoker = t_invoker;
             panel.SetActive(true);

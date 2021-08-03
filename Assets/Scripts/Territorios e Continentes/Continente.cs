@@ -16,5 +16,10 @@ namespace FormigaWar.Territorios
             this.territorios = territorios;
             //talvez um for que coloque o territorio.continente para esse
         }
+        public void AddTerritorio(Territorio territorio)
+        {
+            territorios.Add(territorio);
+            territorio.Continente = this;
+        }
     }
 }

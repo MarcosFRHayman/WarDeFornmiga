@@ -8,8 +8,7 @@ public class Tabuleiro : MonoBehaviour
 {
     [SerializeField] private SeletorTropas seletortropas;
     [SerializeField] private List<Continente> continentes; // talvez tabuleiro guarde apenas os continentes?
-    [SerializeField] private List<Territorio> territorios;
-    [SerializeField] private List<Fronteira> fronteiras;
+    [SerializeField] private List<TerritorioDisplay> territorios;
 
     void Start()
     {
@@ -17,39 +16,39 @@ public class Tabuleiro : MonoBehaviour
     }
 
     public void InicializarTabuleiro() // pode ser util caso tenhamos que testar multiplos tabuleiros
-    { 
+    {
 
     }
-    
-    public void SelecionarTerritorio(Territorio territorio)
+
+    public void SelecionarTerritorio(TerritorioDisplay display)
     {
 
         // TODO: Mudar para switch
-        if (territorio.estado == "normal")
+        if (display.estado == "normal")
         {
             for (int i = 0; i < territorios.Count; i++)
             {
                 territorios[i].AtualizaEstado("normal");
             }
 
-            for (int j = 0; j < territorio.GetFronteiras().Count; j++)
+            for (int j = 0; j < display.Territorio.Fronteiras.Count; j++)
             {
-                Fronteira f = territorio.GetFronteiras()[j];
-                f.OtherTerritorio(territorio).AtualizaEstado("selecionavel");
+                Fronteira f = display.Territorio.Fronteiras[j];
+                // f.OtherTerritorio(display.Territorio).Display.AtualizaEstado("selecionavel");
             }
 
-            territorio.AtualizaEstado("selecionado");
+            display.AtualizaEstado("selecionado");
         }
-        else if (territorio.estado == "selecionavel")
+        else if (display.estado == "selecionavel")
         {
-            // abrir o painel seletor e blá
-            seletortropas.AbrirSeletor(territorio);
+            // abrir o painel seletor e blï¿½
+            seletortropas.AbrirSeletor(display);
         }
-        
+
     }
 
     public void DesabilitarContinentesMenosUm() // para fase de fortificacao, quando o jogador tiver conquistado um continente
-    { 
-    
+    {
+
     }
 }
