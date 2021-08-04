@@ -25,7 +25,13 @@ namespace FormigaWar
 
         // Start is called before the first frame update
         void Start()
-        {
+        {          
+            tnum = transform.GetChild(0).GetChild(0).GetChild(0).gameObject.GetComponent<Text>();
+            btnmenos = transform.GetChild(0).GetChild(0).GetChild(1).gameObject.GetComponent<Button>();
+            btnmais = transform.GetChild(0).GetChild(0).GetChild(2).gameObject.GetComponent<Button>();
+            btncancela = transform.GetChild(0).GetChild(0).GetChild(3).gameObject.GetComponent<Button>();
+            btnconfirma = transform.GetChild(0).GetChild(0).GetChild(4).gameObject.GetComponent<Button>();
+
             tnum.text = number.ToString();
             btnmais.onClick.AddListener(BtnMaisOnClick);
             btnmenos.onClick.AddListener(BtnMenosOnClick);
