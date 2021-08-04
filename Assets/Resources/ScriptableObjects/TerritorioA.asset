@@ -17,6 +17,9 @@ MonoBehaviour:
   - territorioA: {fileID: 11400000}
     territorioB: {fileID: 11400000, guid: 2000fd531caa46b489662c002b842158, type: 2}
     tipo: 0
+  - territorioA: {fileID: 11400000}
+    territorioB: {fileID: 11400000, guid: e41e5e688571d6147bf1153e03786db7, type: 2}
+    tipo: 0
   cartaterritorio: {fileID: 0}
   continente:
     nome: 

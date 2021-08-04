@@ -12,8 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d484a6bdcff6a145aaa10596ff8d8db, type: 3}
   m_Name: TerritorioC
   m_EditorClassIdentifier: 
-  nome: 
-  fronteiras: []
+  nome: TerritorioC
+  fronteiras:
+  - territorioA: {fileID: 11400000}
+    territorioB: {fileID: 11400000, guid: ef17d750a4a151840beec071ab7beb74, type: 2}
+    tipo: 0
+  - territorioA: {fileID: 11400000}
+    territorioB: {fileID: 11400000, guid: 2000fd531caa46b489662c002b842158, type: 2}
+    tipo: 0
   cartaterritorio: {fileID: 0}
   continente:
     nome: 
