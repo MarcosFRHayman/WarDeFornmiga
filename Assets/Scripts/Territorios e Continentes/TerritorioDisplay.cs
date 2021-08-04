@@ -11,6 +11,10 @@ namespace FormigaWar.Territorios
         [SerializeField] private SpriteRenderer spriteRenderer;
         [SerializeField] private Tabuleiro tabuleiro;
         [SerializeField] private int numtropas;
+
+        // fronteiras dadas na inicialização do tabuleiro, sim ta publico
+        [SerializeField] public List<TerritorioDisplay> fronteirasDisplay; 
+        
         public Territorio Territorio { get => territorio; private set => territorio = value; }
         public int NumTropas { get => numtropas; internal set => this.numtropas = value; }
         //atributo de estado da classe
@@ -25,6 +29,7 @@ namespace FormigaWar.Territorios
         }
 
         private void AtualizarNumTropas() => numtropas_txt.text = numtropas.ToString();
+        
         public void AtualizaEstado(string novo_estado)
         {
             if (novo_estado == "selecionado") // talvez tenha um jeito melhor de fazer isso
@@ -53,9 +58,20 @@ namespace FormigaWar.Territorios
             }
         }
 
+        public void SetTerritorio(Territorio t)
+        {
+            territorio = t;
+        }
+
         void OnMouseDown() // quando o territorio for clicado...
         {
-            tabuleiro.SelecionarTerritorio(this);
+            tabuleiro.DeselecionarTodosTerritorios();
+            AtualizaEstado("selecionado");
+            
+            for (int i = 0; i < fronteirasDisplay.Count; i++)
+            {
+                fronteirasDisplay[i].AtualizaEstado("selecionavel");
+            }
         }
     }
 }
