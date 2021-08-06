@@ -4,14 +4,13 @@ using UnityEngine;
 using FormigaWar.Territorios;
 using FormigaWar;
 
-public class Tabuleiro : MonoBehaviour
+public class Tabuleiro : MonoBehaviour // TODO : Separar os dados desta classe para uma outra classe tabuleiro
 {
     
     [SerializeField] private GameObject territorioprefab;
-
     [SerializeField] private SeletorTropas seletortropas;
     [SerializeField] private List<Continente> continentes; // talvez tabuleiro guarde apenas os continentes?
-    [SerializeField] private List<TerritorioDisplay> territorios;
+    [SerializeField] private List<TerritorioDisplay> territoriosInstanciados;
 
 
     void Start()
@@ -20,20 +19,17 @@ public class Tabuleiro : MonoBehaviour
         InicializarTabuleiro();
     }
 
-    public void InicializarTabuleiro() // pode ser util caso tenhamos que testar multiplos tabuleiros
+    public void InicializarTabuleiro()
     {
         Continente c = continentes[0];//foreach(Continente c in continentes)
-        //{
-            var obj = Instantiate(territorioprefab, new Vector3(), new Quaternion());
-            TerritorioDisplay td = obj.GetComponent<TerritorioDisplay>();
+ 
+        var obj = Instantiate(territorioprefab, new Vector3(), Quaternion.identity);
+        TerritorioDisplay td = obj.GetComponent<TerritorioDisplay>();
 
-            td.SetTerritorio(c.GetTerritorios()[0]);
-            territorios.Add(td);
+        td.SetTerritorio(c.GetTerritorios()[0]);
+        territoriosInstanciados.Add(td);
 
-
-            InicializarTabuleiroAux(td);
-            
-        //}
+        InicializarTabuleiroAux(td);
 
     }
 
@@ -52,7 +48,7 @@ public class Tabuleiro : MonoBehaviour
             Territorio tadd = f.OtherTerritorio(td.Territorio);
             bool jexiste = false;
 
-            foreach(TerritorioDisplay t in territorios) //se o territorio ja existe, nao instancie
+            foreach(TerritorioDisplay t in territoriosInstanciados) //se o territorio ja existe, nao instancie
             {
                 
                 if(t.Territorio == tadd)
@@ -70,16 +66,16 @@ public class Tabuleiro : MonoBehaviour
             td2.SetTerritorio(tadd);
             td.fronteirasDisplay.Add(td2);
             td2.fronteirasDisplay.Add(td);
-            territorios.Add(td2);
+            territoriosInstanciados.Add(td2);
             InicializarTabuleiroAux(td2);
         }
     }
 
     public void DeselecionarTodosTerritorios() // usado quando um territorio eh clicado
     {
-        for(int i = 0; i < territorios.Count; i++)
+        for(int i = 0; i < territoriosInstanciados.Count; i++)
         {
-            territorios[i].AtualizaEstado("normal");
+            territoriosInstanciados[i].AtualizaEstado(TerritorioDisplay.Estado.Normal);
         }
     }
 

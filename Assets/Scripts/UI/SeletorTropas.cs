@@ -62,7 +62,6 @@ namespace FormigaWar
             if (t_invoker == null) return; // cheque de sanidade, ele foi chamado mas n�o foi dada tropas
 
             t_invoker.NumTropas = number;
-            t_invoker.AtualizaEstado("normal");
             // talvez seja mudado depois, mas para testes isso vai dar
             t_invoker = null;
             panel.SetActive(false);
