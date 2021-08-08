@@ -117,6 +117,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tnum: {fileID: 1570905612133579991}
   t_invoker: {fileID: 0}
+  t_invoker2: {fileID: 0}
   panel: {fileID: 1570905611695090408}
   btnmais: {fileID: 1570905611708472590}
   btnmenos: {fileID: 1570905612673165026}
@@ -347,6 +348,10 @@ PrefabInstance:
     - target: {fileID: 9212417820118019545, guid: b04b5007f9d4d0a4c918577174154312, type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9212417820757834726, guid: b04b5007f9d4d0a4c918577174154312, type: 3}
+      propertyPath: m_FontData.m_FontSize
+      value: 56
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 8247809, guid: b04b5007f9d4d0a4c918577174154312, type: 3}

@@ -21,12 +21,13 @@ public class Tabuleiro : MonoBehaviour // TODO : Separar os dados desta classe p
 
     public void InicializarTabuleiro()
     {
-        Continente c = continentes[0];//foreach(Continente c in continentes)
+        Continente c = continentes[0]; // foreach(Continente c in continentes)
  
         var obj = Instantiate(territorioprefab, new Vector3(), Quaternion.identity);
         TerritorioDisplay td = obj.GetComponent<TerritorioDisplay>();
 
         td.SetTerritorio(c.GetTerritorios()[0]);
+        td.NumTropas = 1;
         territoriosInstanciados.Add(td);
 
         InicializarTabuleiroAux(td);
@@ -35,7 +36,7 @@ public class Tabuleiro : MonoBehaviour // TODO : Separar os dados desta classe p
 
     private void InicializarTabuleiroAux(TerritorioDisplay td)
     {
-        Debug.Log("Vendo os vizinhos de " +td.Territorio.Nome);
+        //Debug.Log("Vendo os vizinhos de " +td.Territorio.Nome);
         Vector3 spawnpos = td.transform.position + new Vector3(1.7f, 1f, 0f);
         Quaternion spawnrot = new Quaternion();
         
@@ -43,7 +44,7 @@ public class Tabuleiro : MonoBehaviour // TODO : Separar os dados desta classe p
 
         foreach (Fronteira f in td.Territorio.Fronteiras)
         {
-            Debug.Log("Dentro da iteração do foreach, analisando fronteira de "+ td.Territorio.Nome +" com " + f.OtherTerritorio(td.Territorio).Nome);
+            //Debug.Log("Dentro da iteração do foreach, analisando fronteira de "+ td.Territorio.Nome +" com " + f.OtherTerritorio(td.Territorio).Nome);
             
             Territorio tadd = f.OtherTerritorio(td.Territorio);
             bool jexiste = false;
@@ -53,7 +54,7 @@ public class Tabuleiro : MonoBehaviour // TODO : Separar os dados desta classe p
                 
                 if(t.Territorio == tadd)
                 {
-                    Debug.Log(tadd.Nome + " já esta instanciado");
+                    //Debug.Log(tadd.Nome + " já esta instanciado");
                     if(!td.fronteirasDisplay.Contains(t))td.fronteirasDisplay.Add(t);
                     jexiste = true;
                 } 
@@ -64,6 +65,7 @@ public class Tabuleiro : MonoBehaviour // TODO : Separar os dados desta classe p
             var obj = Instantiate(territorioprefab, spawnpos, spawnrot);
             TerritorioDisplay td2 = obj.GetComponent<TerritorioDisplay>();
             td2.SetTerritorio(tadd);
+            td2.NumTropas = 1;
             td.fronteirasDisplay.Add(td2);
             td2.fronteirasDisplay.Add(td);
             territoriosInstanciados.Add(td2);

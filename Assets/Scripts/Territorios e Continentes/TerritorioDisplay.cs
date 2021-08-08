@@ -10,13 +10,15 @@ namespace FormigaWar.Territorios
         [SerializeField] private TextMesh numtropas_txt;
         [SerializeField] private SpriteRenderer spriteRenderer;
         [SerializeField] private Tabuleiro tabuleiro;
-        [SerializeField] private int numtropas;
+        [SerializeField] private int numtropas = 1; // numero atual de tropas
+        public int numtropas_to_move = 0; // numero de tropas que vao mover para o territorio (importante para fase de movimento)
 
         // fronteiras dadas na inicialização do tabuleiro, sim ta publico
         [SerializeField] public List<TerritorioDisplay> fronteirasDisplay; 
         
         public Territorio Territorio { get => territorio; private set => territorio = value; }
         public int NumTropas { get => numtropas; internal set => this.numtropas = value; }
+
         //atributo de estado da classe
         public enum Estado 
         {
@@ -32,7 +34,7 @@ namespace FormigaWar.Territorios
             tabuleiro = GameObject.Find("Canvas").GetComponent<Tabuleiro>(); // muito cuidado com esta linha de codigo
         }
 
-        private void AtualizarNumTropas() => numtropas_txt.text = numtropas.ToString();
+        public void AtualizarNumTropas() => numtropas_txt.text = (numtropas + numtropas_to_move).ToString();
         
         public void AtualizaEstado(Estado novo_estado)
         {
@@ -48,7 +50,7 @@ namespace FormigaWar.Territorios
                 break;
                 case Estado.Selecionavel:
                     estado = novo_estado;
-                    spriteRenderer.color = new Vector4(255f, 0f, 255f, 1f);
+                    spriteRenderer.color = Color.magenta;
                 break;
                 case Estado.Indisponivel:
                     estado = novo_estado;
@@ -66,26 +68,34 @@ namespace FormigaWar.Territorios
             territorio = t;
         }
 
-        void OnMouseDown() // quando o territorio for clicado...
+        void OnMouseUp() // quando o territorio for clicado...
         {
+            var seletorTropas = GameObject.Find("Canvas").GetComponent<SeletorTropas>();
             // de inicio esta eh a logica da fase de movimentacao
-            //if(estado == Estado.Normal)
-            //{
+            if(estado == Estado.Normal)
+            {
                 tabuleiro.DeselecionarTodosTerritorios();
+                seletorTropas.t_invoker = this;
                 AtualizaEstado(Estado.Selecionado);
                 
                 for (int i = 0; i < fronteirasDisplay.Count; i++)
                 {
                     fronteirasDisplay[i].AtualizaEstado(Estado.Selecionavel);
                 }
-            //}
+            }
 
-            //if(estado == Estado.Selecionavel)
-            //{
-            //    var seletorTropas = GameObject.Find("Canvas").GetComponent<SeletorTropas>();
-            //    seletorTropas.AbrirSeletor(this);
-            //}
-            
+            if(estado == Estado.Selecionavel)
+            {
+                seletorTropas.AbrirSeletor(this);
+            }
+            /*
+            essa parte do código faz a selecao de territorios parar de funcionar, isso eh um problema
+            if(estado == Estado.Selecionado)
+            {
+                tabuleiro.DeselecionarTodosTerritorios();
+                seletorTropas.t_invoker = null;
+            }
+            */
         }
     }
 }

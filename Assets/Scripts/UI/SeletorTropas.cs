@@ -10,7 +10,8 @@ namespace FormigaWar
     {
 
         [SerializeField] private Text tnum;
-        [SerializeField] private TerritorioDisplay t_invoker = null;
+        public TerritorioDisplay t_invoker = null; // primeiro territorio clicado, para fase de movimentacao eh de onde saem as tropas
+        [SerializeField] private TerritorioDisplay t_invoker2 = null; 
         [SerializeField] private GameObject panel;
 
         // botoes de incremento e decremento
@@ -32,7 +33,7 @@ namespace FormigaWar
             btncancela = transform.GetChild(0).GetChild(0).GetChild(3).gameObject.GetComponent<Button>();
             btnconfirma = transform.GetChild(0).GetChild(0).GetChild(4).gameObject.GetComponent<Button>();
 
-            tnum.text = number.ToString();
+            AtualizaNumTxt();
             btnmais.onClick.AddListener(BtnMaisOnClick);
             btnmenos.onClick.AddListener(BtnMenosOnClick);
             btnconfirma.onClick.AddListener(BtnConfirmaOnClick);
@@ -45,25 +46,34 @@ namespace FormigaWar
 
         }
 
+        void AtualizaNumTxt()
+        {
+            if(t_invoker == null) return;
+            tnum.text = number.ToString() + " / " + (t_invoker.NumTropas -1).ToString();
+        }
+
         void BtnMenosOnClick()
         {
             number--;
-            tnum.text = (number).ToString();
+            AtualizaNumTxt();
         }
 
         void BtnMaisOnClick()
         {
+            if(number >= (t_invoker.NumTropas -1))return;
             number++;
-            tnum.text = (number).ToString();
+            AtualizaNumTxt();
         }
 
         void BtnConfirmaOnClick()
         {
             if (t_invoker == null) return; // cheque de sanidade, ele foi chamado mas n�o foi dada tropas
 
-            t_invoker.NumTropas = number;
-            // talvez seja mudado depois, mas para testes isso vai dar
-            t_invoker = null;
+            t_invoker.NumTropas -= number;
+            t_invoker.AtualizarNumTropas();
+            t_invoker2.numtropas_to_move += number;// talvez seja mudado depois, mas para testes isso vai dar
+            t_invoker2.AtualizarNumTropas();
+            t_invoker2 = null;
             panel.SetActive(false);
         }
 
@@ -76,7 +86,8 @@ namespace FormigaWar
 
         public void AbrirSeletor(TerritorioDisplay t_invoker)
         {
-            this.t_invoker = t_invoker;
+            this.t_invoker2 = t_invoker;
+            AtualizaNumTxt();
             panel.SetActive(true);
         }
     }
