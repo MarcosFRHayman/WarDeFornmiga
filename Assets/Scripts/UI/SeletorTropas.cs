@@ -21,10 +21,7 @@ namespace FormigaWar
         // botoes de confirmacao e cancelamento
         [SerializeField] private Button btnconfirma;
         [SerializeField] private Button btncancela;
-
         private int number = 0;
-
-        // Start is called before the first frame update
         void Start()
         {          
             tnum = transform.GetChild(0).GetChild(0).GetChild(0).gameObject.GetComponent<Text>();
@@ -39,32 +36,23 @@ namespace FormigaWar
             btnconfirma.onClick.AddListener(BtnConfirmaOnClick);
             btncancela.onClick.AddListener(BtnCancelaOnClick);
         }
-
-        // Update is called once per frame
-        void Update()
-        {
-
-        }
-
         void AtualizaNumTxt()
         {
             if(t_invoker == null) return;
             tnum.text = number.ToString() + " / " + (t_invoker.NumTropas -1).ToString();
         }
-
         void BtnMenosOnClick()
         {
+            if(number <= 0) return;
             number--;
             AtualizaNumTxt();
         }
-
         void BtnMaisOnClick()
         {
             if(number >= (t_invoker.NumTropas -1))return;
             number++;
             AtualizaNumTxt();
         }
-
         void BtnConfirmaOnClick()
         {
             if (t_invoker == null) return; // cheque de sanidade, ele foi chamado mas n�o foi dada tropas
@@ -74,21 +62,28 @@ namespace FormigaWar
             t_invoker2.numtropas_to_move += number;// talvez seja mudado depois, mas para testes isso vai dar
             t_invoker2.AtualizarNumTropas();
             t_invoker2 = null;
+            number = 0;
             panel.SetActive(false);
         }
-
         void BtnCancelaOnClick()
         {
             //t_invoker.AtualizaEstado("normal");
-            t_invoker = null;
+            t_invoker2 = null;
+            number = 0;
             panel.SetActive(false);
         }
-
-        public void AbrirSeletor(TerritorioDisplay t_invoker)
+        public void AbrirSeletor(TerritorioDisplay t_invoker) // usado pelo territorio quando ele eh selecionado
         {
             this.t_invoker2 = t_invoker;
             AtualizaNumTxt();
             panel.SetActive(true);
+        } 
+        public void FecharSeletor() // usado pelo territorio quando ele eh deselecionado
+        {
+            t_invoker = null;
+            t_invoker2 = null;
+            number = 0;
+            panel.SetActive(false);
         }
     }
 }

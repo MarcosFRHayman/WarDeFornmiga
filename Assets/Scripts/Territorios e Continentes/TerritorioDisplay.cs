@@ -26,7 +26,6 @@ namespace FormigaWar.Territorios
         }
         public Estado estado = Estado.Normal;
 
-        // Start is called before the first frame update
         void Start()
         {
             numtropas_txt.text = numtropas.ToString();
@@ -68,34 +67,33 @@ namespace FormigaWar.Territorios
             territorio = t;
         }
 
-        void OnMouseUp() // quando o territorio for clicado...
+        void OnMouseDown() // quando o territorio for clicado...
         {
             var seletorTropas = GameObject.Find("Canvas").GetComponent<SeletorTropas>();
             // de inicio esta eh a logica da fase de movimentacao
-            if(estado == Estado.Normal)
+            
+            switch(estado)
             {
-                tabuleiro.DeselecionarTodosTerritorios();
-                seletorTropas.t_invoker = this;
-                AtualizaEstado(Estado.Selecionado);
-                
-                for (int i = 0; i < fronteirasDisplay.Count; i++)
-                {
-                    fronteirasDisplay[i].AtualizaEstado(Estado.Selecionavel);
-                }
-            }
-
-            if(estado == Estado.Selecionavel)
-            {
-                seletorTropas.AbrirSeletor(this);
-            }
-            /*
-            essa parte do código faz a selecao de territorios parar de funcionar, isso eh um problema
-            if(estado == Estado.Selecionado)
-            {
-                tabuleiro.DeselecionarTodosTerritorios();
-                seletorTropas.t_invoker = null;
-            }
-            */
+                case Estado.Normal:
+                    tabuleiro.DeselecionarTodosTerritorios();
+                    seletorTropas.t_invoker = this;
+                    AtualizaEstado(Estado.Selecionado);
+                    
+                    for (int i = 0; i < fronteirasDisplay.Count; i++)
+                    {
+                        fronteirasDisplay[i].AtualizaEstado(Estado.Selecionavel);
+                    }
+                break;
+                case Estado.Selecionavel:
+                    seletorTropas.AbrirSeletor(this);
+                break;
+                case Estado.Selecionado:
+                    tabuleiro.DeselecionarTodosTerritorios();
+                    seletorTropas.FecharSeletor();
+                break;
+                case Estado.Indisponivel:
+                break;
+            }            
         }
     }
 }
