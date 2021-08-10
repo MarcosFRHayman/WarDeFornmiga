@@ -12,7 +12,7 @@ public class Tabuleiro : MonoBehaviour
 
     void Start()
     {
-        seletortropas = GameObject.Find("Canvas").GetComponent<SeletorTropas>();
+        seletortropas = GameObject.Find("Canvas")?.GetComponent<SeletorTropas>();
     }
 
     public void InicializarTabuleiro() // pode ser util caso tenhamos que testar multiplos tabuleiros

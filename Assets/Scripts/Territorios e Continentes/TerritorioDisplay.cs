@@ -4,6 +4,7 @@ using UnityEngine;
 
 namespace FormigaWar.Territorios
 {
+    [RequireComponent(typeof(SpriteRenderer))]
     public class TerritorioDisplay : MonoBehaviour
     {
         [SerializeField] private Territorio territorio;
@@ -21,7 +22,7 @@ namespace FormigaWar.Territorios
         {
             numtropas_txt.text = numtropas.ToString();
             spriteRenderer = GetComponent<SpriteRenderer>();
-            tabuleiro = GameObject.Find("EventSystem").GetComponent<Tabuleiro>();
+            tabuleiro = GameObject.Find("EventSystem")?.GetComponent<Tabuleiro>();
         }
 
         private void AtualizarNumTropas() => numtropas_txt.text = numtropas.ToString();
@@ -35,7 +36,7 @@ namespace FormigaWar.Territorios
             else if (novo_estado == "selecionavel") // selecionavel se de um territorio pode selecionar este outro
             {
                 estado = novo_estado;
-                spriteRenderer.color = new Vector4(255f, 0f, 255f, 1f);
+                spriteRenderer.color = Color.magenta;//magenta
             }
             else if (novo_estado == "normal") // selecionavel do primeiro clique
             {
