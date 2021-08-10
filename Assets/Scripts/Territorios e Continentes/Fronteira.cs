@@ -4,7 +4,8 @@ using UnityEngine;
 
 namespace FormigaWar.Territorios
 {
-    [System.Serializable] public class Fronteira
+    [System.Serializable]
+    public class Fronteira
     {
         [SerializeField] private Territorio territorioA;
         [SerializeField] private Territorio territorioB;
@@ -22,6 +23,12 @@ namespace FormigaWar.Territorios
         {
             if (territorio == territorioA) return territorioB;
             else return territorioB;
+        }
+
+        public bool Equals(Fronteira obj)
+        {
+            return (territorioA == obj.territorioA && territorioB == obj.territorioB)
+                    || (territorioA == obj.territorioB && territorioB == obj.territorioA);
         }
     }
 }

@@ -10,24 +10,26 @@ namespace FormigaWar.Territorios
 
         //atributos de classe
         [SerializeField] private string nome;
-        [SerializeField] private List<Fronteira> fronteiras;
         [SerializeField] private CartaTerritorio cartaterritorio;
         [SerializeField] private Continente continente;
+        [SerializeField] private List<Fronteira> fronteiras;
 
-        public string Nome { get => nome; private set => this.nome = value; }
+
+        public string Nome { get => nome; }
         public List<Fronteira> Fronteiras { get => fronteiras; private set => this.fronteiras = value; }
         public CartaTerritorio Carta { get => cartaterritorio; private set => this.cartaterritorio = value; }
         public Continente Continente { get => continente; internal set { this.continente = value; } }
 
-        //public Territorio(string nome, List<Fronteira> fronteiras, Carta cartaterritorio, int numtropas, Continente continente) // construtor basico
-        //{
-        //    this.nome = nome;
-        //    this.fronteiras = fronteiras;
-        //    this.cartaterritorio = cartaterritorio;
-        //    this.numtropas = numtropas;
-        //    this.continente = continente; // talvez colocar isso na hora de fazer o continente?
-        //}
+        [Tooltip("Arraste um territorio aqui para adicionar como fronteira")]
+        [SerializeField] private Territorio adicionarFronteira;
 
-
+        void OnValidate()
+        {
+            if (adicionarFronteira != null)
+            {
+                FronteiraManager.getFronteira(this, adicionarFronteira);
+                adicionarFronteira = null;
+            }
+        }
     }
 }

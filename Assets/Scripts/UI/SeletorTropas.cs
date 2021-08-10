@@ -33,12 +33,6 @@ namespace FormigaWar
             btncancela.onClick.AddListener(BtnCancelaOnClick);
         }
 
-        // Update is called once per frame
-        void Update()
-        {
-
-        }
-
         void BtnMenosOnClick()
         {
             number--;
