@@ -4,13 +4,8 @@ using UnityEngine;
 
 namespace FormigaWar.Territorios
 {
-    public abstract class Carta
+    public interface Carta
     {
-        public bool TemSimbolo()
-        {
-            //if (simbolo == "") return false;
-            //else
-            return true;
-        }
+        bool TemSimbolo(Simbolo simbolo);
     }
 }

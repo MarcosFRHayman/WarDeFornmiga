@@ -4,7 +4,11 @@ using UnityEngine;
 
 namespace FormigaWar.Territorios
 {
-    public class Simbolo
+    [CreateAssetMenu(menuName = "ScriptableObjects/Simbolo", fileName = "newSimbolo")]
+    public class Simbolo : ScriptableObject
     {
+        [SerializeField] private Sprite image;
+
+        public Simbolo() { }
     }
 }

@@ -4,36 +4,32 @@ using UnityEngine;
 
 namespace FormigaWar.Territorios
 {
-    public class Territorio : MonoBehaviour
+    [CreateAssetMenu(menuName = "ScriptableObjects/Territorio", fileName = "newTerritorio")]
+    public class Territorio : ScriptableObject
     {
-        private string nome;
-        private List<Fronteira> fronteiras;
-        private Carta cartaterritorio;
-        private int numtropas;
-        private Continente continente;
 
-        public Territorio(string nome, List<Fronteira> fronteiras, Carta cartaterritorio, int numtropas, Continente continente) // construtor basico
+        //atributos de classe
+        [SerializeField] private string nome;
+        [SerializeField] private CartaTerritorio cartaterritorio;
+        [SerializeField] private Continente continente;
+        [SerializeField] private List<Fronteira> fronteiras;
+
+
+        public string Nome { get => nome; }
+        public List<Fronteira> Fronteiras { get => fronteiras; private set => this.fronteiras = value; }
+        public CartaTerritorio Carta { get => cartaterritorio; private set => this.cartaterritorio = value; }
+        public Continente Continente { get => continente; internal set { this.continente = value; } }
+
+        [Tooltip("Arraste um territorio aqui para adicionar como fronteira")]
+        [SerializeField] private Territorio adicionarFronteira;
+
+        void OnValidate()
         {
-            this.nome = nome;
-            this.fronteiras = fronteiras;
-            this.cartaterritorio = cartaterritorio;
-            this.numtropas = numtropas;
-            this.continente = continente; // talvez colocar isso na hora de fazer o continente?
+            if (adicionarFronteira != null)
+            {
+                FronteiraManager.getFronteira(this, adicionarFronteira);
+                adicionarFronteira = null;
+            }
         }
-
-        // Setters
-        public void SetNome(string nome) { this.nome = nome; }
-        public void SetFronteiras(List<Fronteira> fronteiras) { this.fronteiras = fronteiras; }
-        public void SetCarta(Carta cartaterritorio) { this.cartaterritorio = cartaterritorio; }
-        public void SetNumTropas(int numtropas) { this.numtropas = numtropas; }
-        public void SetContinente(Continente continente) { this.continente = continente; }
-
-        // Getters
-        public string GetNome() { return this.nome; }
-        public List<Fronteira> GetFronteiras() { return this.fronteiras; }
-        public Carta GetCartaTerritorio() { return this.cartaterritorio; }
-        public int GetNumTropas() { return this.numtropas; }
-        public Continente GetContinente() { return this.continente; }
-
     }
 }

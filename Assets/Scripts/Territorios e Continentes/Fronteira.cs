@@ -4,11 +4,12 @@ using UnityEngine;
 
 namespace FormigaWar.Territorios
 {
+    [System.Serializable]
     public class Fronteira
     {
-        private Territorio territorioA;
-        private Territorio territorioB;
-        private string tipo;
+        [SerializeField] private Territorio territorioA;
+        [SerializeField] private Territorio territorioB;
+        [SerializeField] private string tipo;
 
 
         public Fronteira(Territorio territorioA, Territorio territorioB, string tipo)
@@ -18,10 +19,16 @@ namespace FormigaWar.Territorios
             this.tipo = tipo;
         }
 
-        Territorio OtherTerritorio(Territorio territorio)
+        public Territorio OtherTerritorio(Territorio territorio)
         {
-            if (territorio == territorioA) return territorioA;
-            else return territorioB;
+            if (territorio.Equals(territorioA)) return territorioB;
+            else return territorioA;
+        }
+
+        public bool Equals(Fronteira obj)
+        {
+            return (territorioA == obj.territorioA && territorioB == obj.territorioB)
+                    || (territorioA == obj.territorioB && territorioB == obj.territorioA);
         }
     }
 }
