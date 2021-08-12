@@ -21,8 +21,8 @@ namespace FormigaWar.Territorios
 
         public Territorio OtherTerritorio(Territorio territorio)
         {
-            if (territorio == territorioA) return territorioB;
-            else return territorioB;
+            if (territorio.Equals(territorioA)) return territorioB;
+            else return territorioA;
         }
 
         public bool Equals(Fronteira obj)

@@ -19,7 +19,7 @@ namespace tests
             GameObject gameObject = GameObject.Instantiate(prefab);
             TerritorioDisplay display = gameObject.GetComponent<TerritorioDisplay>();
 
-            display.AtualizaEstado("normal");
+            display.AtualizaEstado(TerritorioDisplay.Estado.Normal);
             Assert.AreEqual(Color.white, gameObject.GetComponent<SpriteRenderer>().color);
 
             yield return null;
@@ -31,7 +31,7 @@ namespace tests
             GameObject gameObject = GameObject.Instantiate(prefab);
             TerritorioDisplay display = gameObject.GetComponent<TerritorioDisplay>();
 
-            display.AtualizaEstado("selecionado");
+            display.AtualizaEstado(TerritorioDisplay.Estado.Selecionado);
             Assert.AreEqual(Color.yellow, gameObject.GetComponent<SpriteRenderer>().color);
 
             yield return null;
@@ -43,7 +43,7 @@ namespace tests
             GameObject gameObject = GameObject.Instantiate(prefab);
             TerritorioDisplay display = gameObject.GetComponent<TerritorioDisplay>();
 
-            display.AtualizaEstado("selecionavel");
+            display.AtualizaEstado(TerritorioDisplay.Estado.Selecionavel);
             Assert.AreEqual(Color.magenta, gameObject.GetComponent<SpriteRenderer>().color);
 
             yield return null;
@@ -55,7 +55,7 @@ namespace tests
             GameObject gameObject = GameObject.Instantiate(prefab);
             TerritorioDisplay display = gameObject.GetComponent<TerritorioDisplay>();
 
-            display.AtualizaEstado("indisponivel");
+            display.AtualizaEstado(TerritorioDisplay.Estado.Indisponivel);
             Assert.AreEqual(Color.gray, gameObject.GetComponent<SpriteRenderer>().color);
 
             yield return null;
