@@ -11,12 +11,19 @@ public class Tabuleiro : MonoBehaviour // TODO : Separar os dados desta classe p
     [SerializeField] private SeletorTropas seletortropas;
     [SerializeField] private List<Continente> continentes; // talvez tabuleiro guarde apenas os continentes?
     [SerializeField] private List<TerritorioDisplay> territoriosInstanciados;
-
-
     void Start()
     {
         seletortropas = GameObject.Find("Canvas")?.GetComponent<SeletorTropas>();
         InicializarTabuleiro();
+        InicializaBaralhoComTerritorios();
+    }
+
+    private void InicializaBaralhoComTerritorios()
+    {
+        List<Territorio> territorioLista = new List<Territorio>();
+        foreach (Continente continente in continentes)
+            territorioLista.AddRange(continente.GetTerritorios());
+        BaralhoDeCartas.Inicializar(territorioLista);
     }
 
     public void InicializarTabuleiro()
