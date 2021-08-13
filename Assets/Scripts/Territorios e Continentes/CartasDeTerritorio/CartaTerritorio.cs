@@ -4,10 +4,10 @@ using UnityEngine;
 
 namespace FormigaWar.Territorios
 {
-    [CreateAssetMenu(menuName = "ScriptableObjects/CartaDeTerritorio", fileName = "newCartaTerritorio")]
-    public class CartaTerritorio : ScriptableObject, Carta
+    [System.Serializable]
+    public class CartaTerritorio : Carta
     {
-        [SerializeField] private Territorio territorio;
+        public Territorio territorio { get; internal set; }
         [SerializeField] private Simbolo simbolo;
         public bool TemSimbolo(Simbolo simbolo) => simbolo.Equals(this.simbolo);
     }
