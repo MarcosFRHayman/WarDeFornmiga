@@ -11,9 +11,15 @@ namespace FormigaWar
         private int exercitosPorTerritorio; // quantos exercitos por exercitos no territorio
         public override bool Checar()
         {
-            //checar territorios do jogador
-            //se o jogador tem a qtd de territorios com os exercitos pedidos
-            //return true;
+            if(jogador.territorioDisplay.Count >= territoriosNecessarios && exercitosPorTerritorio == 1)return true;
+            else
+            {
+                int counter = 0;
+                foreach(TerritorioDisplay t in jogador.territorioDisplay){
+                    if(t.NumTropas >= exercitosPorTerritorio)counter++;
+                }
+                if(counter >= territoriosNecessarios)return true;
+            }
             return false;
         }
     }

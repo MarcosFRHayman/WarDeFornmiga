@@ -8,11 +8,19 @@ namespace FormigaWar
     public abstract class ObjetivoPorContinente : Objetivo
     {
         private List<Continente> continentes;
+        private int continenteAEscolha;
         public override bool Checar()
         {
-            //checar territorios do jogador
-            //se o jogador tem todos os continentes
-            //return true;
+            
+            int counter = continentes.Count;
+            foreach(Continente c in continentes)
+            {
+                if(jogador.continentes.Contains(c))counter--;
+            }
+
+            //se o jogador tem todos os continentes e mais os continentes a escolha, retorne true.
+            if(jogador.continentes.Count >= (continentes.Count + continenteAEscolha) && counter == 0) return true;
+            
             return false;
         }
     }

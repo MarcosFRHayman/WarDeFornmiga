@@ -13,9 +13,7 @@ namespace FormigaWar
         {
             if(nemesisDerrotado)
             {
-                //checa se o jogador tem 24 territorios
-                //se tiver
-                //return true;
+                if(jogador.territorioDisplay.Count >= 42)return true;
             }
             else
             {
@@ -26,7 +24,7 @@ namespace FormigaWar
             
             return false;
         }
-        
+
         public void MudarObjetivo()
         {
             nemesisDerrotado = true;
