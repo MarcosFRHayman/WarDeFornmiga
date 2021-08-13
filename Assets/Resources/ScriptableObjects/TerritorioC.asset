@@ -13,14 +13,13 @@ MonoBehaviour:
   m_Name: TerritorioC
   m_EditorClassIdentifier: 
   nome: TerritorioC
-  fronteiras:
-  - territorioA: {fileID: 11400000}
-    territorioB: {fileID: 11400000, guid: ef17d750a4a151840beec071ab7beb74, type: 2}
-    tipo: 0
-  - territorioA: {fileID: 11400000}
-    territorioB: {fileID: 11400000, guid: 2000fd531caa46b489662c002b842158, type: 2}
-    tipo: 0
-  cartaterritorio: {fileID: 0}
+  cartaTerritorio:
+    simbolo: {fileID: 0}
   continente:
     nome: 
     territorios: []
+  fronteiras:
+  - territorioA: {fileID: 11400000, guid: 2000fd531caa46b489662c002b842158, type: 2}
+    territorioB: {fileID: 11400000}
+    tipo: 
+  adicionarFronteira: {fileID: 0}
