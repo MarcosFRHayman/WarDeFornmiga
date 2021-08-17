@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0d484a6bdcff6a145aaa10596ff8d8db, type: 3}
-  m_Name: NO3
+  m_Name: NL9
   m_EditorClassIdentifier: 
   nome: 
   cartaTerritorio:
@@ -18,5 +18,11 @@ MonoBehaviour:
   continente:
     nome: 
     territorios: []
-  fronteiras: []
+  fronteiras:
+  - territorioA: {fileID: 11400000, guid: 6c69b75c9f571b645995257ee0ffe622, type: 2}
+    territorioB: {fileID: 11400000}
+    tipo: 
+  - territorioA: {fileID: 11400000}
+    territorioB: {fileID: 11400000, guid: 499a5080184fa7c4ca7d7b00e8f0be9e, type: 2}
+    tipo: 
   adicionarFronteira: {fileID: 0}

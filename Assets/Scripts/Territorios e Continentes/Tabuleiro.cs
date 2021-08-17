@@ -45,6 +45,7 @@ public class Tabuleiro : MonoBehaviour // TODO : Separar os dados desta classe p
         {
             foreach(TerritorioDisplay t in territoriosInstanciados)
             {
+                t.NumTropas = 1;
                 InicializarTabuleiroAux(t);
             }
             return;

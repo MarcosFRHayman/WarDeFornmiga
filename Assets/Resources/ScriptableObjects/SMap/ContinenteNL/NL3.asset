@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d484a6bdcff6a145aaa10596ff8d8db, type: 3}
+  m_Name: NL3
+  m_EditorClassIdentifier: 
+  nome: 
+  cartaTerritorio:
+    simbolo: {fileID: 0}
+  continente:
+    nome: 
+    territorios: []
+  fronteiras:
+  - territorioA: {fileID: 11400000}
+    territorioB: {fileID: 11400000, guid: 1d3944d02f90b9f47946e9d7d33e07f4, type: 2}
+    tipo: 
+  - territorioA: {fileID: 11400000}
+    territorioB: {fileID: 11400000, guid: d9ba5d76172945a46b58c14002efee14, type: 2}
+    tipo: 
+  - territorioA: {fileID: 11400000}
+    territorioB: {fileID: 11400000, guid: be78b069a2e3b614281e77e2efce519d, type: 2}
+    tipo: 
+  adicionarFronteira: {fileID: 0}
