@@ -25,4 +25,7 @@ MonoBehaviour:
   - territorioA: {fileID: 11400000}
     territorioB: {fileID: 11400000, guid: 469f4b024800a044aa6db9f4e12ebc94, type: 2}
     tipo: 
+  - territorioA: {fileID: 11400000, guid: 86b54aee5a31d1f48a8983ae0baf8b2a, type: 2}
+    territorioB: {fileID: 11400000}
+    tipo: 
   adicionarFronteira: {fileID: 0}
