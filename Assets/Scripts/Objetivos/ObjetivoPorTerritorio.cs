@@ -5,7 +5,7 @@ using FormigaWar.Territorios;
 
 namespace FormigaWar
 {
-    public abstract class ObjetivoPorTerritorio : Objetivo
+    public class ObjetivoPorTerritorio : Objetivo
     {
         private int territoriosNecessarios; // quantos territorios eu preciso
         private int exercitosPorTerritorio; // quantos exercitos por exercitos no territorio

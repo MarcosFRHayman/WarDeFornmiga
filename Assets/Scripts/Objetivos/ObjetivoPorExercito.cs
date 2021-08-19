@@ -7,7 +7,7 @@ using FormigaWar.jogador;
 
 namespace FormigaWar
 {
-    public abstract class ObjetivoPorExercito : Objetivo
+    public class ObjetivoPorExercito : Objetivo
     {
         private Jogador nemesis;
         private bool nemesisDerrotado;
@@ -15,7 +15,7 @@ namespace FormigaWar
         {
             if(nemesisDerrotado)
             {
-                if(jogador.territorioDisplay.Count >= 42)return true;
+                if(jogador.territorioDisplay.Count >= 24)return true;
             }
             else
             {

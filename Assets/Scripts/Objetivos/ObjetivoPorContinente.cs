@@ -5,7 +5,7 @@ using FormigaWar.Territorios;
 
 namespace FormigaWar
 {
-    public abstract class ObjetivoPorContinente : Objetivo
+    public class ObjetivoPorContinente : Objetivo
     {
         private List<Continente> continentes;
         private int continenteAEscolha;
