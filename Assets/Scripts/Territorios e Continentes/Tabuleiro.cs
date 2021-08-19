@@ -4,19 +4,37 @@ using UnityEngine;
 using FormigaWar.Territorios;
 using FormigaWar;
 
-public class Tabuleiro : MonoBehaviour // TODO : Separar os dados desta classe para uma outra classe tabuleiro
+[System.Serializable]
+public class Tabuleiro // TODO : Separar os dados desta classe para uma outra classe tabuleiro
 {
 
     [SerializeField] private GameObject territorioprefab;
-    [SerializeField] private SeletorTropas seletortropas;
-    [SerializeField] private List<Continente> continentes; // talvez tabuleiro guarde apenas os continentes?
-    [SerializeField] private List<TerritorioDisplay> territoriosInstanciados;
-    void Start()
+    // [SerializeField] private SeletorTropas seletortropas;
+    [SerializeField] private List<Continente> continentes = new List<Continente>(); // talvez tabuleiro guarde apenas os continentes?
+    private List<TerritorioDisplay> territoriosInstanciados = new List<TerritorioDisplay>();
+    public TerritorioDisplay[] TerritoriosInstanciados => territoriosInstanciados.ToArray();
+    // public void setSeletorDeTropasPelaPrimeiraVez(SeletorTropas seletor)
+    // {
+    //     if (seletortropas == null)
+    //         seletortropas = seletor;
+    // }
+    public void Inicializa()
     {
-        seletortropas = GameObject.Find("Canvas")?.GetComponent<SeletorTropas>();
-        InicializarTabuleiro();
+        SpawnaTerritorios();
         InicializaBaralhoComTerritorios();
     }
+    public void InicializaTabuleiro(List<Continente> continentes)
+    {
+        this.continentes = continentes;
+        SpawnaTerritorios();
+        InicializaBaralhoComTerritorios();
+    }
+    // public Tabuleiro(SeletorTropas seletorDeTropas)
+    // {
+    //     setSeletorDeTropasPelaPrimeiraVez(seletorDeTropas);
+    //     InicializarTabuleiro();
+    //     InicializaBaralhoComTerritorios();
+    // }
 
     private void InicializaBaralhoComTerritorios()
     {
@@ -26,22 +44,22 @@ public class Tabuleiro : MonoBehaviour // TODO : Separar os dados desta classe p
         BaralhoDeCartas.Inicializar(territorioLista);
     }
 
-    public void InicializarTabuleiro()
+    private void SpawnaTerritorios()
     {
         Continente c = continentes[0]; // foreach(Continente c in continentes)
 
-        var obj = Instantiate(territorioprefab, new Vector3(), Quaternion.identity);
+        var obj = GameObject.Instantiate(territorioprefab, new Vector3(), Quaternion.identity);
         TerritorioDisplay td = obj.GetComponent<TerritorioDisplay>();
 
-        td.SetTerritorio(c.GetTerritorios()[0]);
+        td.Territorio = c.GetTerritorios()[0];
         td.NumTropas = 1;
         territoriosInstanciados.Add(td);
 
-        InicializarTabuleiroAux(td);
+        SpawnaTerritoriosAux(td);
 
     }
 
-    private void InicializarTabuleiroAux(TerritorioDisplay td)
+    private void SpawnaTerritoriosAux(TerritorioDisplay td)
     {
         //Debug.Log("Vendo os vizinhos de " +td.Territorio.Nome);
         Vector3 spawnpos = td.transform.position + new Vector3(1.7f, 1f, 0f);
@@ -69,14 +87,14 @@ public class Tabuleiro : MonoBehaviour // TODO : Separar os dados desta classe p
 
             if (jexiste) continue;
 
-            var obj = Instantiate(territorioprefab, spawnpos, spawnrot);
+            var obj = GameObject.Instantiate(territorioprefab, spawnpos, spawnrot);
             TerritorioDisplay td2 = obj.GetComponent<TerritorioDisplay>();
-            td2.SetTerritorio(tadd);
+            td2.Territorio = tadd;
             td2.NumTropas = 1;
             td.fronteirasDisplay.Add(td2);
             td2.fronteirasDisplay.Add(td);
             territoriosInstanciados.Add(td2);
-            InicializarTabuleiroAux(td2);
+            SpawnaTerritoriosAux(td2);
         }
     }
 
