@@ -4,21 +4,35 @@ using System.Collections.Generic;
 using UnityEngine;
 using FormigaWar.Territorios;
 
-namespace FormigaWar.jogador
+namespace FormigaWar.Jogador
 {
-    public class Mesa
+    public class Mesa : MonoBehaviour
     {
-        public readonly Tabuleiro tabuleiro;
-        public readonly Jogador[] jogadores;
-        public Mesa(Tabuleiro tabuleiro, Jogador[] jogadores)
+        [SerializeField] private Tabuleiro tabuleiro = new Tabuleiro();
+        [SerializeField] private Jogador[] jogadores;
+
+        void Start()
         {
-            this.tabuleiro = tabuleiro;
-            this.jogadores = jogadores;
+            tabuleiro?.Inicializa();
         }
         public void DistribuiTerritorios()
         {
             List<TerritorioDisplay> territoriosEmbaralhados = EmbaralhaTerritorios();
             DistribuiParaJogadores(territoriosEmbaralhados);
+        }
+        private List<TerritorioDisplay> EmbaralhaTerritorios()
+        {
+            List<TerritorioDisplay> territorios = new List<TerritorioDisplay>();
+            territorios.AddRange(tabuleiro.TerritoriosInstanciados);
+            List<TerritorioDisplay> territoriosEmbaralhados = new List<TerritorioDisplay>();
+            while (territorios.Count > 0)
+            {
+                TerritorioDisplay escolhido = territorios[(int)UnityEngine.Random.Range(0, territorios.Count)];
+                territorios.Remove(escolhido);
+                territoriosEmbaralhados.Add(escolhido);
+            }
+
+            return territoriosEmbaralhados;
         }
         private void DistribuiParaJogadores(List<TerritorioDisplay> territoriosEmbaralhados)
         {
@@ -37,20 +51,6 @@ namespace FormigaWar.jogador
                 int fim = (i + 1) * valorParaCada - 1;
                 jogadores[i].Territorios.AddRange(territoriosEmbaralhados.GetRange(inicio, fim));
             }
-        }
-        private List<TerritorioDisplay> EmbaralhaTerritorios()
-        {
-            List<TerritorioDisplay> territorios = new List<TerritorioDisplay>();
-            territorios.AddRange(tabuleiro.TerritoriosInstanciados);
-            List<TerritorioDisplay> territoriosEmbaralhados = new List<TerritorioDisplay>();
-            while (territorios.Count > 0)
-            {
-                TerritorioDisplay escolhido = territorios[(int)UnityEngine.Random.Range(0, territorios.Count)];
-                territorios.Remove(escolhido);
-                territoriosEmbaralhados.Add(escolhido);
-            }
-
-            return territoriosEmbaralhados;
         }
     }
 }
