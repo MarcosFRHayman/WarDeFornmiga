@@ -57,6 +57,11 @@ namespace FormigaWar
         {
             if (t_invoker == null) return; // cheque de sanidade, ele foi chamado mas n�o foi dada tropas
 
+            if (t_invoker2 == null) // se não tiver um segundo territorio no bagulho, eh pq isso esta sendo usado pela fase de fortificacao
+            {
+                t_invoker.NumTropas += number;
+                return;
+            }
             t_invoker.NumTropas -= number;
             t_invoker.AtualizarNumTropas();
             t_invoker2.numtropas_to_move += number;// talvez seja mudado depois, mas para testes isso vai dar

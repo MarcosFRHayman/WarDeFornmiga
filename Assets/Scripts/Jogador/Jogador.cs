@@ -11,6 +11,7 @@ namespace FormigaWar.jogador
         public Color Cor { get; internal set; }
         public List<TerritorioDisplay> territorioDisplay;
         public List<Continente> continentes;
+        public Objetivo objetivo;
         private List<Carta> mao;
     }
 }

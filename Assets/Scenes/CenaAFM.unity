@@ -2103,6 +2103,10 @@ PrefabInstance:
       propertyPath: continentes.Array.data[1].territorios.Array.data[2]
       value: 
       objectReference: {fileID: 11400000, guid: e41e5e688571d6147bf1153e03786db7, type: 2}
+    - target: {fileID: 7644279164603314438, guid: b571e1ec3ed3f214bac4b55936069e6c, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7644279165305120001, guid: b571e1ec3ed3f214bac4b55936069e6c, type: 3}
       propertyPath: m_Name
       value: Canvas

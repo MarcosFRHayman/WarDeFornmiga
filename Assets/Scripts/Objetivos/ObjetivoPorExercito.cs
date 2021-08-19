@@ -2,12 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using FormigaWar.Territorios;
+using FormigaWar.jogador;
+
 
 namespace FormigaWar
 {
     public abstract class ObjetivoPorExercito : Objetivo
     {
-        //private Jogador nemesis;
+        private Jogador nemesis;
         private bool nemesisDerrotado;
         public override bool Checar()
         {
