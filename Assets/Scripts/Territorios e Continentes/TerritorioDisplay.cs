@@ -10,14 +10,14 @@ namespace FormigaWar.Territorios
         [SerializeField] private Territorio territorio;
         [SerializeField] private TextMesh numtropas_txt;
         [SerializeField] private SpriteRenderer spriteRenderer;
-        [SerializeField] private Tabuleiro tabuleiro;
+        public Tabuleiro Tabuleiro { get; set; }
         [SerializeField] private int numtropas = 1; // numero atual de tropas
-        public int numtropas_to_move = 0; // numero de tropas que vao mover para o territorio (importante para fase de movimento)
+        public int numtropas_to_move = 0; // numero de tropas disponiveis para mover (importante para fase de movimento)
 
-        // fronteiras dadas na inicialização do tabuleiro, sim ta publico
-        [SerializeField] public List<TerritorioDisplay> fronteirasDisplay;
+        // fronteiras dadas na inicialização do tabuleiro, sim ta internal
+        internal List<TerritorioDisplay> fronteirasDisplay = new List<TerritorioDisplay>();
 
-        public Territorio Territorio { get => territorio; private set => territorio = value; }
+        public Territorio Territorio { get => territorio; internal set => territorio = value; }
         public int NumTropas { get => numtropas; internal set => this.numtropas = value; }
 
         //atributo de estado da classe
@@ -31,7 +31,6 @@ namespace FormigaWar.Territorios
         {
             numtropas_txt.text = numtropas.ToString();
             spriteRenderer = GetComponent<SpriteRenderer>();
-            tabuleiro = GameObject.Find("Canvas")?.GetComponent<Tabuleiro>(); // muito cuidado com esta linha de codigo
         }
 
         public void AtualizarNumTropas() => numtropas_txt.text = (numtropas + numtropas_to_move).ToString();
@@ -63,11 +62,6 @@ namespace FormigaWar.Territorios
 
         }
 
-        public void SetTerritorio(Territorio t)
-        {
-            territorio = t;
-        }
-
         void OnMouseDown() // quando o territorio for clicado...
         {
             var seletorTropas = GameObject.Find("Canvas").GetComponent<SeletorTropas>();
@@ -76,7 +70,7 @@ namespace FormigaWar.Territorios
             switch (estado)
             {
                 case Estado.Normal:
-                    tabuleiro.DeselecionarTodosTerritorios();
+                    Tabuleiro.DeselecionarTodosTerritorios();
                     seletorTropas.t_invoker = this;
                     AtualizaEstado(Estado.Selecionado);
 
@@ -89,7 +83,7 @@ namespace FormigaWar.Territorios
                     seletorTropas.AbrirSeletor(this);
                     break;
                 case Estado.Selecionado:
-                    tabuleiro.DeselecionarTodosTerritorios();
+                    Tabuleiro.DeselecionarTodosTerritorios();
                     seletorTropas.FecharSeletor();
                     break;
                 case Estado.Indisponivel:
