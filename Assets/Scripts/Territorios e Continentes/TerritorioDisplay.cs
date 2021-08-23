@@ -15,9 +15,9 @@ namespace FormigaWar.Territorios
         public int numtropas_to_move = 0; // numero de tropas disponiveis para mover (importante para fase de movimento)
 
         // fronteiras dadas na inicialização do tabuleiro, sim ta internal
-        internal List<TerritorioDisplay> fronteirasDisplay = new List<TerritorioDisplay>();
+        [SerializeField] internal List<TerritorioDisplay> fronteirasDisplay = new List<TerritorioDisplay>();
 
-        public Territorio Territorio { get => territorio; internal set => territorio = value; }
+        public Territorio Territorio { get => territorio; set => territorio = value; }
         public int NumTropas { get => numtropas; internal set => this.numtropas = value; }
 
         //atributo de estado da classe
