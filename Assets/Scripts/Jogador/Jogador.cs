@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using FormigaWar.Territorios;
 using UnityEngine;
 
-namespace FormigaWar.jogador
+namespace FormigaWar.Jogador
 {
     public abstract class Jogador
     {
@@ -12,6 +12,6 @@ namespace FormigaWar.jogador
         public List<TerritorioDisplay> territorioDisplay;
         public List<Continente> continentes;
         public Objetivo objetivo;
-        private List<Carta> mao;
+        protected List<Carta> mao;
     }
 }
