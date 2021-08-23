@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 7644279165305120007}
   - component: {fileID: 7644279165305120006}
   - component: {fileID: 7644279165305120506}
+  - component: {fileID: 1191327639}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -122,6 +123,78 @@ MonoBehaviour:
   btnmenos: {fileID: 1570905612673165026}
   btnconfirma: {fileID: 362548942231585556}
   btncancela: {fileID: 3667325375518416217}
+--- !u!114 &1191327639
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7644279165305120001}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cfa0c15aa46d69d42aad6394070fb4c5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tabuleiro:
+    territorioprefab: {fileID: 8183680617057803079, guid: a535a52e846dd8c4b87d3cd43c915be0, type: 3}
+    continentes:
+    - nome: NO
+      territorios: []
+    - nome: NOO
+      territorios: []
+    - nome: SO
+      territorios: []
+    - nome: C
+      territorios: []
+    - nome: N
+      territorios: []
+    - nome: SL
+      territorios: []
+    - nome: NL
+      territorios: []
+    territoriosInstanciados:
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
 --- !u!1001 &6167091697182190303
 PrefabInstance:
   m_ObjectHideFlags: 0

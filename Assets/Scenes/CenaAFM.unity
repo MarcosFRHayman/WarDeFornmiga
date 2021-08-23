@@ -1907,206 +1907,370 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 5625822594634057860, guid: b571e1ec3ed3f214bac4b55936069e6c, type: 3}
-      propertyPath: continentes.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5625822594634057860, guid: b571e1ec3ed3f214bac4b55936069e6c, type: 3}
-      propertyPath: continentes.Array.data[1].nome
-      value: Testinente
-      objectReference: {fileID: 0}
-    - target: {fileID: 5625822594634057860, guid: b571e1ec3ed3f214bac4b55936069e6c, type: 3}
-      propertyPath: territoriosInstanciados.Array.size
-      value: 42
-      objectReference: {fileID: 0}
-    - target: {fileID: 5625822594634057860, guid: b571e1ec3ed3f214bac4b55936069e6c, type: 3}
-      propertyPath: territoriosInstanciados.Array.data[0]
+    - target: {fileID: 1191327639, guid: b571e1ec3ed3f214bac4b55936069e6c, type: 3}
+      propertyPath: tabuleiro.territoriosInstanciados.Array.data[0]
       value: 
       objectReference: {fileID: 1514855074}
-    - target: {fileID: 5625822594634057860, guid: b571e1ec3ed3f214bac4b55936069e6c, type: 3}
-      propertyPath: territoriosInstanciados.Array.data[1]
+    - target: {fileID: 1191327639, guid: b571e1ec3ed3f214bac4b55936069e6c, type: 3}
+      propertyPath: tabuleiro.territoriosInstanciados.Array.data[1]
       value: 
       objectReference: {fileID: 744280897}
-    - target: {fileID: 5625822594634057860, guid: b571e1ec3ed3f214bac4b55936069e6c, type: 3}
-      propertyPath: territoriosInstanciados.Array.data[2]
+    - target: {fileID: 1191327639, guid: b571e1ec3ed3f214bac4b55936069e6c, type: 3}
+      propertyPath: tabuleiro.territoriosInstanciados.Array.data[2]
       value: 
       objectReference: {fileID: 15047277}
-    - target: {fileID: 5625822594634057860, guid: b571e1ec3ed3f214bac4b55936069e6c, type: 3}
-      propertyPath: territoriosInstanciados.Array.data[3]
+    - target: {fileID: 1191327639, guid: b571e1ec3ed3f214bac4b55936069e6c, type: 3}
+      propertyPath: tabuleiro.territoriosInstanciados.Array.data[3]
       value: 
       objectReference: {fileID: 2059079901}
-    - target: {fileID: 5625822594634057860, guid: b571e1ec3ed3f214bac4b55936069e6c, type: 3}
-      propertyPath: territoriosInstanciados.Array.data[4]
+    - target: {fileID: 1191327639, guid: b571e1ec3ed3f214bac4b55936069e6c, type: 3}
+      propertyPath: tabuleiro.territoriosInstanciados.Array.data[4]
       value: 
       objectReference: {fileID: 1443944880}
-    - target: {fileID: 5625822594634057860, guid: b571e1ec3ed3f214bac4b55936069e6c, type: 3}
-      propertyPath: territoriosInstanciados.Array.data[5]
+    - target: {fileID: 1191327639, guid: b571e1ec3ed3f214bac4b55936069e6c, type: 3}
+      propertyPath: tabuleiro.territoriosInstanciados.Array.data[5]
       value: 
       objectReference: {fileID: 1730027134}
-    - target: {fileID: 5625822594634057860, guid: b571e1ec3ed3f214bac4b55936069e6c, type: 3}
-      propertyPath: territoriosInstanciados.Array.data[6]
+    - target: {fileID: 1191327639, guid: b571e1ec3ed3f214bac4b55936069e6c, type: 3}
+      propertyPath: tabuleiro.territoriosInstanciados.Array.data[6]
       value: 
       objectReference: {fileID: 362289100}
-    - target: {fileID: 5625822594634057860, guid: b571e1ec3ed3f214bac4b55936069e6c, type: 3}
-      propertyPath: territoriosInstanciados.Array.data[7]
+    - target: {fileID: 1191327639, guid: b571e1ec3ed3f214bac4b55936069e6c, type: 3}
+      propertyPath: tabuleiro.territoriosInstanciados.Array.data[7]
       value: 
       objectReference: {fileID: 1105394053}
-    - target: {fileID: 5625822594634057860, guid: b571e1ec3ed3f214bac4b55936069e6c, type: 3}
-      propertyPath: territoriosInstanciados.Array.data[8]
+    - target: {fileID: 1191327639, guid: b571e1ec3ed3f214bac4b55936069e6c, type: 3}
+      propertyPath: tabuleiro.territoriosInstanciados.Array.data[8]
       value: 
       objectReference: {fileID: 753008625}
-    - target: {fileID: 5625822594634057860, guid: b571e1ec3ed3f214bac4b55936069e6c, type: 3}
-      propertyPath: territoriosInstanciados.Array.data[9]
+    - target: {fileID: 1191327639, guid: b571e1ec3ed3f214bac4b55936069e6c, type: 3}
+      propertyPath: tabuleiro.territoriosInstanciados.Array.data[9]
       value: 
       objectReference: {fileID: 2014385520}
-    - target: {fileID: 5625822594634057860, guid: b571e1ec3ed3f214bac4b55936069e6c, type: 3}
-      propertyPath: territoriosInstanciados.Array.data[10]
+    - target: {fileID: 1191327639, guid: b571e1ec3ed3f214bac4b55936069e6c, type: 3}
+      propertyPath: tabuleiro.territoriosInstanciados.Array.data[10]
       value: 
       objectReference: {fileID: 2074041015}
-    - target: {fileID: 5625822594634057860, guid: b571e1ec3ed3f214bac4b55936069e6c, type: 3}
-      propertyPath: territoriosInstanciados.Array.data[11]
+    - target: {fileID: 1191327639, guid: b571e1ec3ed3f214bac4b55936069e6c, type: 3}
+      propertyPath: tabuleiro.territoriosInstanciados.Array.data[11]
       value: 
       objectReference: {fileID: 23307053}
-    - target: {fileID: 5625822594634057860, guid: b571e1ec3ed3f214bac4b55936069e6c, type: 3}
-      propertyPath: territoriosInstanciados.Array.data[12]
+    - target: {fileID: 1191327639, guid: b571e1ec3ed3f214bac4b55936069e6c, type: 3}
+      propertyPath: tabuleiro.territoriosInstanciados.Array.data[12]
       value: 
       objectReference: {fileID: 1875308556}
-    - target: {fileID: 5625822594634057860, guid: b571e1ec3ed3f214bac4b55936069e6c, type: 3}
-      propertyPath: territoriosInstanciados.Array.data[13]
+    - target: {fileID: 1191327639, guid: b571e1ec3ed3f214bac4b55936069e6c, type: 3}
+      propertyPath: tabuleiro.territoriosInstanciados.Array.data[13]
       value: 
       objectReference: {fileID: 923024298}
-    - target: {fileID: 5625822594634057860, guid: b571e1ec3ed3f214bac4b55936069e6c, type: 3}
-      propertyPath: territoriosInstanciados.Array.data[14]
+    - target: {fileID: 1191327639, guid: b571e1ec3ed3f214bac4b55936069e6c, type: 3}
+      propertyPath: tabuleiro.territoriosInstanciados.Array.data[14]
       value: 
       objectReference: {fileID: 1437667376}
-    - target: {fileID: 5625822594634057860, guid: b571e1ec3ed3f214bac4b55936069e6c, type: 3}
-      propertyPath: territoriosInstanciados.Array.data[15]
+    - target: {fileID: 1191327639, guid: b571e1ec3ed3f214bac4b55936069e6c, type: 3}
+      propertyPath: tabuleiro.territoriosInstanciados.Array.data[15]
       value: 
       objectReference: {fileID: 227531984}
-    - target: {fileID: 5625822594634057860, guid: b571e1ec3ed3f214bac4b55936069e6c, type: 3}
-      propertyPath: territoriosInstanciados.Array.data[16]
+    - target: {fileID: 1191327639, guid: b571e1ec3ed3f214bac4b55936069e6c, type: 3}
+      propertyPath: tabuleiro.territoriosInstanciados.Array.data[16]
       value: 
       objectReference: {fileID: 118628455}
-    - target: {fileID: 5625822594634057860, guid: b571e1ec3ed3f214bac4b55936069e6c, type: 3}
-      propertyPath: territoriosInstanciados.Array.data[17]
+    - target: {fileID: 1191327639, guid: b571e1ec3ed3f214bac4b55936069e6c, type: 3}
+      propertyPath: tabuleiro.territoriosInstanciados.Array.data[17]
       value: 
       objectReference: {fileID: 1110069643}
-    - target: {fileID: 5625822594634057860, guid: b571e1ec3ed3f214bac4b55936069e6c, type: 3}
-      propertyPath: territoriosInstanciados.Array.data[18]
+    - target: {fileID: 1191327639, guid: b571e1ec3ed3f214bac4b55936069e6c, type: 3}
+      propertyPath: tabuleiro.territoriosInstanciados.Array.data[18]
       value: 
       objectReference: {fileID: 1348880656}
-    - target: {fileID: 5625822594634057860, guid: b571e1ec3ed3f214bac4b55936069e6c, type: 3}
-      propertyPath: territoriosInstanciados.Array.data[19]
+    - target: {fileID: 1191327639, guid: b571e1ec3ed3f214bac4b55936069e6c, type: 3}
+      propertyPath: tabuleiro.territoriosInstanciados.Array.data[19]
       value: 
       objectReference: {fileID: 1084155850}
-    - target: {fileID: 5625822594634057860, guid: b571e1ec3ed3f214bac4b55936069e6c, type: 3}
-      propertyPath: territoriosInstanciados.Array.data[20]
+    - target: {fileID: 1191327639, guid: b571e1ec3ed3f214bac4b55936069e6c, type: 3}
+      propertyPath: tabuleiro.territoriosInstanciados.Array.data[20]
       value: 
       objectReference: {fileID: 1222421853}
-    - target: {fileID: 5625822594634057860, guid: b571e1ec3ed3f214bac4b55936069e6c, type: 3}
-      propertyPath: territoriosInstanciados.Array.data[21]
+    - target: {fileID: 1191327639, guid: b571e1ec3ed3f214bac4b55936069e6c, type: 3}
+      propertyPath: tabuleiro.territoriosInstanciados.Array.data[21]
       value: 
       objectReference: {fileID: 337898893}
-    - target: {fileID: 5625822594634057860, guid: b571e1ec3ed3f214bac4b55936069e6c, type: 3}
-      propertyPath: territoriosInstanciados.Array.data[22]
+    - target: {fileID: 1191327639, guid: b571e1ec3ed3f214bac4b55936069e6c, type: 3}
+      propertyPath: tabuleiro.territoriosInstanciados.Array.data[22]
       value: 
       objectReference: {fileID: 1121322296}
-    - target: {fileID: 5625822594634057860, guid: b571e1ec3ed3f214bac4b55936069e6c, type: 3}
-      propertyPath: territoriosInstanciados.Array.data[23]
+    - target: {fileID: 1191327639, guid: b571e1ec3ed3f214bac4b55936069e6c, type: 3}
+      propertyPath: tabuleiro.territoriosInstanciados.Array.data[23]
       value: 
       objectReference: {fileID: 342002930}
-    - target: {fileID: 5625822594634057860, guid: b571e1ec3ed3f214bac4b55936069e6c, type: 3}
-      propertyPath: territoriosInstanciados.Array.data[24]
+    - target: {fileID: 1191327639, guid: b571e1ec3ed3f214bac4b55936069e6c, type: 3}
+      propertyPath: tabuleiro.territoriosInstanciados.Array.data[24]
       value: 
       objectReference: {fileID: 754851961}
-    - target: {fileID: 5625822594634057860, guid: b571e1ec3ed3f214bac4b55936069e6c, type: 3}
-      propertyPath: territoriosInstanciados.Array.data[25]
+    - target: {fileID: 1191327639, guid: b571e1ec3ed3f214bac4b55936069e6c, type: 3}
+      propertyPath: tabuleiro.territoriosInstanciados.Array.data[25]
       value: 
       objectReference: {fileID: 1229554580}
-    - target: {fileID: 5625822594634057860, guid: b571e1ec3ed3f214bac4b55936069e6c, type: 3}
-      propertyPath: territoriosInstanciados.Array.data[26]
+    - target: {fileID: 1191327639, guid: b571e1ec3ed3f214bac4b55936069e6c, type: 3}
+      propertyPath: tabuleiro.territoriosInstanciados.Array.data[26]
       value: 
       objectReference: {fileID: 1648843449}
-    - target: {fileID: 5625822594634057860, guid: b571e1ec3ed3f214bac4b55936069e6c, type: 3}
-      propertyPath: territoriosInstanciados.Array.data[27]
+    - target: {fileID: 1191327639, guid: b571e1ec3ed3f214bac4b55936069e6c, type: 3}
+      propertyPath: tabuleiro.territoriosInstanciados.Array.data[27]
       value: 
       objectReference: {fileID: 1806476227}
-    - target: {fileID: 5625822594634057860, guid: b571e1ec3ed3f214bac4b55936069e6c, type: 3}
-      propertyPath: territoriosInstanciados.Array.data[28]
+    - target: {fileID: 1191327639, guid: b571e1ec3ed3f214bac4b55936069e6c, type: 3}
+      propertyPath: tabuleiro.territoriosInstanciados.Array.data[28]
       value: 
       objectReference: {fileID: 1503089278}
-    - target: {fileID: 5625822594634057860, guid: b571e1ec3ed3f214bac4b55936069e6c, type: 3}
-      propertyPath: territoriosInstanciados.Array.data[29]
+    - target: {fileID: 1191327639, guid: b571e1ec3ed3f214bac4b55936069e6c, type: 3}
+      propertyPath: tabuleiro.territoriosInstanciados.Array.data[29]
       value: 
       objectReference: {fileID: 608158685}
-    - target: {fileID: 5625822594634057860, guid: b571e1ec3ed3f214bac4b55936069e6c, type: 3}
-      propertyPath: territoriosInstanciados.Array.data[30]
+    - target: {fileID: 1191327639, guid: b571e1ec3ed3f214bac4b55936069e6c, type: 3}
+      propertyPath: tabuleiro.territoriosInstanciados.Array.data[30]
       value: 
       objectReference: {fileID: 81192437}
-    - target: {fileID: 5625822594634057860, guid: b571e1ec3ed3f214bac4b55936069e6c, type: 3}
-      propertyPath: territoriosInstanciados.Array.data[31]
+    - target: {fileID: 1191327639, guid: b571e1ec3ed3f214bac4b55936069e6c, type: 3}
+      propertyPath: tabuleiro.territoriosInstanciados.Array.data[31]
       value: 
       objectReference: {fileID: 631042432}
-    - target: {fileID: 5625822594634057860, guid: b571e1ec3ed3f214bac4b55936069e6c, type: 3}
-      propertyPath: territoriosInstanciados.Array.data[32]
+    - target: {fileID: 1191327639, guid: b571e1ec3ed3f214bac4b55936069e6c, type: 3}
+      propertyPath: tabuleiro.territoriosInstanciados.Array.data[32]
       value: 
       objectReference: {fileID: 1139472690}
-    - target: {fileID: 5625822594634057860, guid: b571e1ec3ed3f214bac4b55936069e6c, type: 3}
-      propertyPath: territoriosInstanciados.Array.data[33]
+    - target: {fileID: 1191327639, guid: b571e1ec3ed3f214bac4b55936069e6c, type: 3}
+      propertyPath: tabuleiro.territoriosInstanciados.Array.data[33]
       value: 
       objectReference: {fileID: 2024315736}
-    - target: {fileID: 5625822594634057860, guid: b571e1ec3ed3f214bac4b55936069e6c, type: 3}
-      propertyPath: territoriosInstanciados.Array.data[34]
+    - target: {fileID: 1191327639, guid: b571e1ec3ed3f214bac4b55936069e6c, type: 3}
+      propertyPath: tabuleiro.territoriosInstanciados.Array.data[34]
       value: 
       objectReference: {fileID: 950442477}
-    - target: {fileID: 5625822594634057860, guid: b571e1ec3ed3f214bac4b55936069e6c, type: 3}
-      propertyPath: territoriosInstanciados.Array.data[35]
+    - target: {fileID: 1191327639, guid: b571e1ec3ed3f214bac4b55936069e6c, type: 3}
+      propertyPath: tabuleiro.territoriosInstanciados.Array.data[35]
       value: 
       objectReference: {fileID: 1555009776}
-    - target: {fileID: 5625822594634057860, guid: b571e1ec3ed3f214bac4b55936069e6c, type: 3}
-      propertyPath: territoriosInstanciados.Array.data[36]
+    - target: {fileID: 1191327639, guid: b571e1ec3ed3f214bac4b55936069e6c, type: 3}
+      propertyPath: tabuleiro.territoriosInstanciados.Array.data[36]
       value: 
       objectReference: {fileID: 2020184466}
-    - target: {fileID: 5625822594634057860, guid: b571e1ec3ed3f214bac4b55936069e6c, type: 3}
-      propertyPath: territoriosInstanciados.Array.data[37]
+    - target: {fileID: 1191327639, guid: b571e1ec3ed3f214bac4b55936069e6c, type: 3}
+      propertyPath: tabuleiro.territoriosInstanciados.Array.data[37]
       value: 
       objectReference: {fileID: 978517601}
-    - target: {fileID: 5625822594634057860, guid: b571e1ec3ed3f214bac4b55936069e6c, type: 3}
-      propertyPath: territoriosInstanciados.Array.data[38]
+    - target: {fileID: 1191327639, guid: b571e1ec3ed3f214bac4b55936069e6c, type: 3}
+      propertyPath: tabuleiro.territoriosInstanciados.Array.data[38]
       value: 
       objectReference: {fileID: 1775984210}
-    - target: {fileID: 5625822594634057860, guid: b571e1ec3ed3f214bac4b55936069e6c, type: 3}
-      propertyPath: territoriosInstanciados.Array.data[39]
+    - target: {fileID: 1191327639, guid: b571e1ec3ed3f214bac4b55936069e6c, type: 3}
+      propertyPath: tabuleiro.territoriosInstanciados.Array.data[39]
       value: 
       objectReference: {fileID: 639047648}
-    - target: {fileID: 5625822594634057860, guid: b571e1ec3ed3f214bac4b55936069e6c, type: 3}
-      propertyPath: territoriosInstanciados.Array.data[40]
+    - target: {fileID: 1191327639, guid: b571e1ec3ed3f214bac4b55936069e6c, type: 3}
+      propertyPath: tabuleiro.territoriosInstanciados.Array.data[40]
       value: 
       objectReference: {fileID: 634544966}
-    - target: {fileID: 5625822594634057860, guid: b571e1ec3ed3f214bac4b55936069e6c, type: 3}
-      propertyPath: territoriosInstanciados.Array.data[41]
+    - target: {fileID: 1191327639, guid: b571e1ec3ed3f214bac4b55936069e6c, type: 3}
+      propertyPath: tabuleiro.territoriosInstanciados.Array.data[41]
       value: 
       objectReference: {fileID: 793719596}
-    - target: {fileID: 5625822594634057860, guid: b571e1ec3ed3f214bac4b55936069e6c, type: 3}
-      propertyPath: continentes.Array.data[1].territorios.Array.size
-      value: 3
+    - target: {fileID: 1191327639, guid: b571e1ec3ed3f214bac4b55936069e6c, type: 3}
+      propertyPath: tabuleiro.continentes.Array.data[0].territorios.Array.size
+      value: 5
       objectReference: {fileID: 0}
-    - target: {fileID: 5625822594634057860, guid: b571e1ec3ed3f214bac4b55936069e6c, type: 3}
-      propertyPath: continentes.Array.data[1].territorios.Array.data[0]
-      value: 
-      objectReference: {fileID: 11400000, guid: ef17d750a4a151840beec071ab7beb74, type: 2}
-    - target: {fileID: 5625822594634057860, guid: b571e1ec3ed3f214bac4b55936069e6c, type: 3}
-      propertyPath: continentes.Array.data[1].territorios.Array.data[1]
-      value: 
-      objectReference: {fileID: 11400000, guid: 2000fd531caa46b489662c002b842158, type: 2}
-    - target: {fileID: 5625822594634057860, guid: b571e1ec3ed3f214bac4b55936069e6c, type: 3}
-      propertyPath: continentes.Array.data[1].territorios.Array.data[2]
-      value: 
-      objectReference: {fileID: 11400000, guid: e41e5e688571d6147bf1153e03786db7, type: 2}
-    - target: {fileID: 7644279164603314438, guid: b571e1ec3ed3f214bac4b55936069e6c, type: 3}
-      propertyPath: m_IsActive
-      value: 0
+    - target: {fileID: 1191327639, guid: b571e1ec3ed3f214bac4b55936069e6c, type: 3}
+      propertyPath: tabuleiro.continentes.Array.data[1].territorios.Array.size
+      value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 1191327639, guid: b571e1ec3ed3f214bac4b55936069e6c, type: 3}
+      propertyPath: tabuleiro.continentes.Array.data[2].territorios.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1191327639, guid: b571e1ec3ed3f214bac4b55936069e6c, type: 3}
+      propertyPath: tabuleiro.continentes.Array.data[3].territorios.Array.size
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1191327639, guid: b571e1ec3ed3f214bac4b55936069e6c, type: 3}
+      propertyPath: tabuleiro.continentes.Array.data[4].territorios.Array.size
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 1191327639, guid: b571e1ec3ed3f214bac4b55936069e6c, type: 3}
+      propertyPath: tabuleiro.continentes.Array.data[5].territorios.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1191327639, guid: b571e1ec3ed3f214bac4b55936069e6c, type: 3}
+      propertyPath: tabuleiro.continentes.Array.data[6].territorios.Array.size
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 1191327639, guid: b571e1ec3ed3f214bac4b55936069e6c, type: 3}
+      propertyPath: tabuleiro.continentes.Array.data[0].territorios.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: 8f9c80d856681834bbc0739505c8ab36, type: 2}
+    - target: {fileID: 1191327639, guid: b571e1ec3ed3f214bac4b55936069e6c, type: 3}
+      propertyPath: tabuleiro.continentes.Array.data[0].territorios.Array.data[1]
+      value: 
+      objectReference: {fileID: 11400000, guid: b5087cab81f692a4bb262b2bfe751dcd, type: 2}
+    - target: {fileID: 1191327639, guid: b571e1ec3ed3f214bac4b55936069e6c, type: 3}
+      propertyPath: tabuleiro.continentes.Array.data[0].territorios.Array.data[2]
+      value: 
+      objectReference: {fileID: 11400000, guid: e19def5c50e88d64d8afb78f6d2f6725, type: 2}
+    - target: {fileID: 1191327639, guid: b571e1ec3ed3f214bac4b55936069e6c, type: 3}
+      propertyPath: tabuleiro.continentes.Array.data[0].territorios.Array.data[3]
+      value: 
+      objectReference: {fileID: 11400000, guid: 1fb0212e5ed56844da09f97b62e27954, type: 2}
+    - target: {fileID: 1191327639, guid: b571e1ec3ed3f214bac4b55936069e6c, type: 3}
+      propertyPath: tabuleiro.continentes.Array.data[0].territorios.Array.data[4]
+      value: 
+      objectReference: {fileID: 11400000, guid: f457ff4337c0b1d4cbd5257960168f9f, type: 2}
+    - target: {fileID: 1191327639, guid: b571e1ec3ed3f214bac4b55936069e6c, type: 3}
+      propertyPath: tabuleiro.continentes.Array.data[1].territorios.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: 07dfefd787e4324489b4143aa43de1f9, type: 2}
+    - target: {fileID: 1191327639, guid: b571e1ec3ed3f214bac4b55936069e6c, type: 3}
+      propertyPath: tabuleiro.continentes.Array.data[1].territorios.Array.data[1]
+      value: 
+      objectReference: {fileID: 11400000, guid: 1cf8555ea0323174797cc6d559115154, type: 2}
+    - target: {fileID: 1191327639, guid: b571e1ec3ed3f214bac4b55936069e6c, type: 3}
+      propertyPath: tabuleiro.continentes.Array.data[1].territorios.Array.data[2]
+      value: 
+      objectReference: {fileID: 11400000, guid: 4654ebd862e17a74689e029e544adb7c, type: 2}
+    - target: {fileID: 1191327639, guid: b571e1ec3ed3f214bac4b55936069e6c, type: 3}
+      propertyPath: tabuleiro.continentes.Array.data[1].territorios.Array.data[3]
+      value: 
+      objectReference: {fileID: 11400000, guid: d0aa7584c883bfe4b8c97403d93bff69, type: 2}
+    - target: {fileID: 1191327639, guid: b571e1ec3ed3f214bac4b55936069e6c, type: 3}
+      propertyPath: tabuleiro.continentes.Array.data[2].territorios.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: 22a2d5ae3c44dff4bab47eecaa884ac1, type: 2}
+    - target: {fileID: 1191327639, guid: b571e1ec3ed3f214bac4b55936069e6c, type: 3}
+      propertyPath: tabuleiro.continentes.Array.data[2].territorios.Array.data[1]
+      value: 
+      objectReference: {fileID: 11400000, guid: fc0691d0e558fe548b8748dd0dd7b109, type: 2}
+    - target: {fileID: 1191327639, guid: b571e1ec3ed3f214bac4b55936069e6c, type: 3}
+      propertyPath: tabuleiro.continentes.Array.data[2].territorios.Array.data[2]
+      value: 
+      objectReference: {fileID: 11400000, guid: 14abc25c1f8bdc34389f473d485b90ac, type: 2}
+    - target: {fileID: 1191327639, guid: b571e1ec3ed3f214bac4b55936069e6c, type: 3}
+      propertyPath: tabuleiro.continentes.Array.data[2].territorios.Array.data[3]
+      value: 
+      objectReference: {fileID: 11400000, guid: c4175f2b8359da7449ff053f35f32fb1, type: 2}
+    - target: {fileID: 1191327639, guid: b571e1ec3ed3f214bac4b55936069e6c, type: 3}
+      propertyPath: tabuleiro.continentes.Array.data[3].territorios.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: 757545bc304dc8d4fb6e59d33df0d44d, type: 2}
+    - target: {fileID: 1191327639, guid: b571e1ec3ed3f214bac4b55936069e6c, type: 3}
+      propertyPath: tabuleiro.continentes.Array.data[3].territorios.Array.data[1]
+      value: 
+      objectReference: {fileID: 11400000, guid: e95e7dfb7bdb8b242be691015bd0aa16, type: 2}
+    - target: {fileID: 1191327639, guid: b571e1ec3ed3f214bac4b55936069e6c, type: 3}
+      propertyPath: tabuleiro.continentes.Array.data[3].territorios.Array.data[2]
+      value: 
+      objectReference: {fileID: 11400000, guid: 2fada65646c79d14aa01e33fc74b0b30, type: 2}
+    - target: {fileID: 1191327639, guid: b571e1ec3ed3f214bac4b55936069e6c, type: 3}
+      propertyPath: tabuleiro.continentes.Array.data[3].territorios.Array.data[3]
+      value: 
+      objectReference: {fileID: 11400000, guid: 469f4b024800a044aa6db9f4e12ebc94, type: 2}
+    - target: {fileID: 1191327639, guid: b571e1ec3ed3f214bac4b55936069e6c, type: 3}
+      propertyPath: tabuleiro.continentes.Array.data[3].territorios.Array.data[4]
+      value: 
+      objectReference: {fileID: 11400000, guid: 17baec67f17226c40be88a1ca2d7bb4a, type: 2}
+    - target: {fileID: 1191327639, guid: b571e1ec3ed3f214bac4b55936069e6c, type: 3}
+      propertyPath: tabuleiro.continentes.Array.data[3].territorios.Array.data[5]
+      value: 
+      objectReference: {fileID: 11400000, guid: 9d0d462fc9266ad4695ee7445632dcc5, type: 2}
+    - target: {fileID: 1191327639, guid: b571e1ec3ed3f214bac4b55936069e6c, type: 3}
+      propertyPath: tabuleiro.continentes.Array.data[4].territorios.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: e127a064db6214a4897d5f0a9634d4af, type: 2}
+    - target: {fileID: 1191327639, guid: b571e1ec3ed3f214bac4b55936069e6c, type: 3}
+      propertyPath: tabuleiro.continentes.Array.data[4].territorios.Array.data[1]
+      value: 
+      objectReference: {fileID: 11400000, guid: 9c392ad5d20c6a04397725fe48ff1266, type: 2}
+    - target: {fileID: 1191327639, guid: b571e1ec3ed3f214bac4b55936069e6c, type: 3}
+      propertyPath: tabuleiro.continentes.Array.data[4].territorios.Array.data[2]
+      value: 
+      objectReference: {fileID: 11400000, guid: 37b18e37ecb9c9745b928a42bfcbd887, type: 2}
+    - target: {fileID: 1191327639, guid: b571e1ec3ed3f214bac4b55936069e6c, type: 3}
+      propertyPath: tabuleiro.continentes.Array.data[4].territorios.Array.data[3]
+      value: 
+      objectReference: {fileID: 11400000, guid: 62271cb7bd75c744f8dda5249f95f58e, type: 2}
+    - target: {fileID: 1191327639, guid: b571e1ec3ed3f214bac4b55936069e6c, type: 3}
+      propertyPath: tabuleiro.continentes.Array.data[4].territorios.Array.data[4]
+      value: 
+      objectReference: {fileID: 11400000, guid: be78b069a2e3b614281e77e2efce519d, type: 2}
+    - target: {fileID: 1191327639, guid: b571e1ec3ed3f214bac4b55936069e6c, type: 3}
+      propertyPath: tabuleiro.continentes.Array.data[4].territorios.Array.data[5]
+      value: 
+      objectReference: {fileID: 11400000, guid: 86b54aee5a31d1f48a8983ae0baf8b2a, type: 2}
+    - target: {fileID: 1191327639, guid: b571e1ec3ed3f214bac4b55936069e6c, type: 3}
+      propertyPath: tabuleiro.continentes.Array.data[4].territorios.Array.data[6]
+      value: 
+      objectReference: {fileID: 11400000, guid: 7b6f7ed7acc9c1047b4eebe25f8aa5db, type: 2}
+    - target: {fileID: 1191327639, guid: b571e1ec3ed3f214bac4b55936069e6c, type: 3}
+      propertyPath: tabuleiro.continentes.Array.data[5].territorios.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: a34173244987cde4cb4e1b320224392f, type: 2}
+    - target: {fileID: 1191327639, guid: b571e1ec3ed3f214bac4b55936069e6c, type: 3}
+      propertyPath: tabuleiro.continentes.Array.data[5].territorios.Array.data[1]
+      value: 
+      objectReference: {fileID: 11400000, guid: b41e4b2f850328f41b2ef7bc6612d1e7, type: 2}
+    - target: {fileID: 1191327639, guid: b571e1ec3ed3f214bac4b55936069e6c, type: 3}
+      propertyPath: tabuleiro.continentes.Array.data[5].territorios.Array.data[2]
+      value: 
+      objectReference: {fileID: 11400000, guid: 6006c87543486034288734b973f2cd14, type: 2}
+    - target: {fileID: 1191327639, guid: b571e1ec3ed3f214bac4b55936069e6c, type: 3}
+      propertyPath: tabuleiro.continentes.Array.data[5].territorios.Array.data[3]
+      value: 
+      objectReference: {fileID: 11400000, guid: a3f5f1b6bd2c62a489cd5d2487f8333c, type: 2}
+    - target: {fileID: 1191327639, guid: b571e1ec3ed3f214bac4b55936069e6c, type: 3}
+      propertyPath: tabuleiro.continentes.Array.data[6].territorios.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: 0473984fe5229ae41a0e36730f11dde9, type: 2}
+    - target: {fileID: 1191327639, guid: b571e1ec3ed3f214bac4b55936069e6c, type: 3}
+      propertyPath: tabuleiro.continentes.Array.data[6].territorios.Array.data[1]
+      value: 
+      objectReference: {fileID: 11400000, guid: ed6158b5d43f4664ca94a6ef763cf4ba, type: 2}
+    - target: {fileID: 1191327639, guid: b571e1ec3ed3f214bac4b55936069e6c, type: 3}
+      propertyPath: tabuleiro.continentes.Array.data[6].territorios.Array.data[2]
+      value: 
+      objectReference: {fileID: 11400000, guid: c90bfde3c81f4b44a858bc1f06efd88c, type: 2}
+    - target: {fileID: 1191327639, guid: b571e1ec3ed3f214bac4b55936069e6c, type: 3}
+      propertyPath: tabuleiro.continentes.Array.data[6].territorios.Array.data[3]
+      value: 
+      objectReference: {fileID: 11400000, guid: 1d3944d02f90b9f47946e9d7d33e07f4, type: 2}
+    - target: {fileID: 1191327639, guid: b571e1ec3ed3f214bac4b55936069e6c, type: 3}
+      propertyPath: tabuleiro.continentes.Array.data[6].territorios.Array.data[4]
+      value: 
+      objectReference: {fileID: 11400000, guid: 9bd9412798d873743abe9dbfdec32cb9, type: 2}
+    - target: {fileID: 1191327639, guid: b571e1ec3ed3f214bac4b55936069e6c, type: 3}
+      propertyPath: tabuleiro.continentes.Array.data[6].territorios.Array.data[5]
+      value: 
+      objectReference: {fileID: 11400000, guid: 6c69b75c9f571b645995257ee0ffe622, type: 2}
+    - target: {fileID: 1191327639, guid: b571e1ec3ed3f214bac4b55936069e6c, type: 3}
+      propertyPath: tabuleiro.continentes.Array.data[6].territorios.Array.data[6]
+      value: 
+      objectReference: {fileID: 11400000, guid: d9ba5d76172945a46b58c14002efee14, type: 2}
+    - target: {fileID: 1191327639, guid: b571e1ec3ed3f214bac4b55936069e6c, type: 3}
+      propertyPath: tabuleiro.continentes.Array.data[6].territorios.Array.data[7]
+      value: 
+      objectReference: {fileID: 11400000, guid: 5d675aaded4142c4bb4580be98380fa0, type: 2}
+    - target: {fileID: 1191327639, guid: b571e1ec3ed3f214bac4b55936069e6c, type: 3}
+      propertyPath: tabuleiro.continentes.Array.data[6].territorios.Array.data[8]
+      value: 
+      objectReference: {fileID: 11400000, guid: 2e383042b75175140b2ab038854c3a3a, type: 2}
+    - target: {fileID: 1191327639, guid: b571e1ec3ed3f214bac4b55936069e6c, type: 3}
+      propertyPath: tabuleiro.continentes.Array.data[6].territorios.Array.data[9]
+      value: 
+      objectReference: {fileID: 11400000, guid: 499a5080184fa7c4ca7d7b00e8f0be9e, type: 2}
+    - target: {fileID: 1191327639, guid: b571e1ec3ed3f214bac4b55936069e6c, type: 3}
+      propertyPath: tabuleiro.continentes.Array.data[6].territorios.Array.data[10]
+      value: 
+      objectReference: {fileID: 11400000, guid: 7f393f03f0f1e0249904d56a39bb1239, type: 2}
+    - target: {fileID: 1191327639, guid: b571e1ec3ed3f214bac4b55936069e6c, type: 3}
+      propertyPath: tabuleiro.continentes.Array.data[6].territorios.Array.data[11]
+      value: 
+      objectReference: {fileID: 11400000, guid: 56c5ce33cc8ec3447927e0933cce373a, type: 2}
     - target: {fileID: 7644279165305120001, guid: b571e1ec3ed3f214bac4b55936069e6c, type: 3}
       propertyPath: m_Name
       value: Canvas
