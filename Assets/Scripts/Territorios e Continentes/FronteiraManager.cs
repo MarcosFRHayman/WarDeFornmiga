@@ -23,7 +23,7 @@ namespace FormigaWar.Territorios
                     return fronteira;
                 }
             }
-            foreach (Fronteira fronteira in territorioB.Fronteiras)
+            foreach(Fronteira fronteira in territorioB.Fronteiras)
             {
                 if (novaFronteira.Equals(fronteira))
                 {
