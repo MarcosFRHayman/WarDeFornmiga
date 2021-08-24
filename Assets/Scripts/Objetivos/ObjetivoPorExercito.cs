@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using FormigaWar.Territorios;
-using FormigaWar.jogador;
+using FormigaWar.Jogadores;
 
 
 namespace FormigaWar

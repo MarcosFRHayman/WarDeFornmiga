@@ -11,7 +11,7 @@ public class Tabuleiro // TODO : Separar os dados desta classe para uma outra cl
     [SerializeField] private GameObject territorioprefab;
     // [SerializeField] private SeletorTropas seletortropas;
     [SerializeField] private List<Continente> continentes = new List<Continente>(); // talvez tabuleiro guarde apenas os continentes?
-    private List<TerritorioDisplay> territoriosInstanciados = new List<TerritorioDisplay>();
+    [SerializeField] private List<TerritorioDisplay> territoriosInstanciados = new List<TerritorioDisplay>();
     public TerritorioDisplay[] TerritoriosInstanciados => territoriosInstanciados.ToArray();
     // public void setSeletorDeTropasPelaPrimeiraVez(SeletorTropas seletor)
     // {
@@ -46,15 +46,22 @@ public class Tabuleiro // TODO : Separar os dados desta classe para uma outra cl
 
     private void SpawnaTerritorios()
     {
+        for(int i = 0; i < territoriosInstanciados.Count; i++)
+        {
+            territoriosInstanciados[i].Tabuleiro = this;
+            territoriosInstanciados[i].NumTropas = 1;
+        }
+        
         Continente c = continentes[0]; // foreach(Continente c in continentes)
         TerritorioDisplay td;
 
         if(territoriosInstanciados.Count == 0)
         {
-            var obj = Instantiate(territorioprefab, new Vector3(), Quaternion.identity);
+            var obj = GameObject.Instantiate(territorioprefab, new Vector3(), Quaternion.identity);
             td = obj.GetComponent<TerritorioDisplay>();
-            td.SetTerritorio(c.GetTerritorios()[0]);
+            td.Territorio = c.GetTerritorios()[0];
             td.NumTropas = 1;
+            td.Tabuleiro = this;
             territoriosInstanciados.Add(td);
             SpawnaTerritoriosAux(td);
         }
@@ -62,8 +69,7 @@ public class Tabuleiro // TODO : Separar os dados desta classe para uma outra cl
         {
             foreach(TerritorioDisplay t in territoriosInstanciados)
             {
-                t.NumTropas = 1;
-                InicializarTabuleiroAux(t);
+                SpawnaTerritoriosAux(t);
             }
             return;
             
@@ -76,7 +82,8 @@ public class Tabuleiro // TODO : Separar os dados desta classe para uma outra cl
         Vector3 spawnpos = td.transform.position + new Vector3(1.7f, 1f, 0f);
         Quaternion spawnrot = new Quaternion();
 
-
+        td.NumTropas = 1;
+        td.Tabuleiro = this;
 
         foreach (Fronteira f in td.Territorio.Fronteiras)
         {

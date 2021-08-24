@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using FormigaWar.Territorios;
 
-namespace FormigaWar.Jogador
+namespace FormigaWar.Jogadores
 {
     public class Mesa : MonoBehaviour
     {
@@ -40,16 +40,16 @@ namespace FormigaWar.Jogador
             int sobra = territoriosEmbaralhados.Count % jogadores.Length;
             for (int i = 0; i < jogadores.Length; i++)
             {
-                jogadores[i].Territorios.Clear();
+                jogadores[i].territorioDisplay.Clear();
                 //Dá os Territorios que sobraram da divisao para os n primeiros jogadores
                 if (sobra > 0)
                 {
-                    jogadores[i].Territorios.Add(territoriosEmbaralhados[territoriosEmbaralhados.Count - sobra]);
+                    jogadores[i].territorioDisplay.Add(territoriosEmbaralhados[territoriosEmbaralhados.Count - sobra]);
                     sobra--;
                 }
                 int inicio = i * valorParaCada;
                 int fim = (i + 1) * valorParaCada - 1;
-                jogadores[i].Territorios.AddRange(territoriosEmbaralhados.GetRange(inicio, fim));
+                jogadores[i].territorioDisplay.AddRange(territoriosEmbaralhados.GetRange(inicio, fim));
             }
         }
     }
