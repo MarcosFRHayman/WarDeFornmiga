@@ -15,7 +15,9 @@ namespace FormigaWar
 
         // botoes sao as cartas
         public Button btncartaesq;
+        public Text btntextesq;
         public Button btncartadir;
+        public Text btntextdir;
 
         //Objetivos para o jogador escolher (1 esq, 2 dir)
         Objetivo obj1; 
@@ -24,6 +26,13 @@ namespace FormigaWar
         // Start is called before the first frame update
         void Start()
         {
+            
+            obj1 = BaralhoDeObjetivo.PuxarCarta();
+            obj2 = BaralhoDeObjetivo.PuxarCarta();
+
+            btntextesq.text = obj1.Descricao;
+            btntextdir.text = obj2.Descricao;
+            
             btncartaesq.onClick.AddListener(BtnCartaEsq);
             btncartadir.onClick.AddListener(BtnCartaDir);
         }

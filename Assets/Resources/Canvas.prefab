@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 7644279165305120006}
   - component: {fileID: 7644279165305120506}
   - component: {fileID: 1191327639}
+  - component: {fileID: 1191327645}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -139,19 +140,61 @@ MonoBehaviour:
     territorioprefab: {fileID: 8183680617057803079, guid: a535a52e846dd8c4b87d3cd43c915be0, type: 3}
     continentes:
     - nome: NO
-      territorios: []
+      territorios:
+      - {fileID: 11400000, guid: 8f9c80d856681834bbc0739505c8ab36, type: 2}
+      - {fileID: 11400000, guid: b5087cab81f692a4bb262b2bfe751dcd, type: 2}
+      - {fileID: 11400000, guid: e19def5c50e88d64d8afb78f6d2f6725, type: 2}
+      - {fileID: 11400000, guid: 1fb0212e5ed56844da09f97b62e27954, type: 2}
+      - {fileID: 11400000, guid: f457ff4337c0b1d4cbd5257960168f9f, type: 2}
     - nome: NOO
-      territorios: []
+      territorios:
+      - {fileID: 11400000, guid: 07dfefd787e4324489b4143aa43de1f9, type: 2}
+      - {fileID: 11400000, guid: 1cf8555ea0323174797cc6d559115154, type: 2}
+      - {fileID: 11400000, guid: 4654ebd862e17a74689e029e544adb7c, type: 2}
+      - {fileID: 11400000, guid: d0aa7584c883bfe4b8c97403d93bff69, type: 2}
     - nome: SO
-      territorios: []
+      territorios:
+      - {fileID: 11400000, guid: 22a2d5ae3c44dff4bab47eecaa884ac1, type: 2}
+      - {fileID: 11400000, guid: fc0691d0e558fe548b8748dd0dd7b109, type: 2}
+      - {fileID: 11400000, guid: 14abc25c1f8bdc34389f473d485b90ac, type: 2}
+      - {fileID: 11400000, guid: c4175f2b8359da7449ff053f35f32fb1, type: 2}
     - nome: C
-      territorios: []
+      territorios:
+      - {fileID: 11400000, guid: 757545bc304dc8d4fb6e59d33df0d44d, type: 2}
+      - {fileID: 11400000, guid: e95e7dfb7bdb8b242be691015bd0aa16, type: 2}
+      - {fileID: 11400000, guid: 2fada65646c79d14aa01e33fc74b0b30, type: 2}
+      - {fileID: 11400000, guid: 469f4b024800a044aa6db9f4e12ebc94, type: 2}
+      - {fileID: 11400000, guid: 17baec67f17226c40be88a1ca2d7bb4a, type: 2}
+      - {fileID: 11400000, guid: 9d0d462fc9266ad4695ee7445632dcc5, type: 2}
     - nome: N
-      territorios: []
+      territorios:
+      - {fileID: 11400000, guid: e127a064db6214a4897d5f0a9634d4af, type: 2}
+      - {fileID: 11400000, guid: 9c392ad5d20c6a04397725fe48ff1266, type: 2}
+      - {fileID: 11400000, guid: 37b18e37ecb9c9745b928a42bfcbd887, type: 2}
+      - {fileID: 11400000, guid: 62271cb7bd75c744f8dda5249f95f58e, type: 2}
+      - {fileID: 11400000, guid: be78b069a2e3b614281e77e2efce519d, type: 2}
+      - {fileID: 11400000, guid: 86b54aee5a31d1f48a8983ae0baf8b2a, type: 2}
+      - {fileID: 11400000, guid: 7b6f7ed7acc9c1047b4eebe25f8aa5db, type: 2}
     - nome: SL
-      territorios: []
+      territorios:
+      - {fileID: 11400000, guid: a34173244987cde4cb4e1b320224392f, type: 2}
+      - {fileID: 11400000, guid: b41e4b2f850328f41b2ef7bc6612d1e7, type: 2}
+      - {fileID: 11400000, guid: 6006c87543486034288734b973f2cd14, type: 2}
+      - {fileID: 11400000, guid: a3f5f1b6bd2c62a489cd5d2487f8333c, type: 2}
     - nome: NL
-      territorios: []
+      territorios:
+      - {fileID: 11400000, guid: 0473984fe5229ae41a0e36730f11dde9, type: 2}
+      - {fileID: 11400000, guid: ed6158b5d43f4664ca94a6ef763cf4ba, type: 2}
+      - {fileID: 11400000, guid: c90bfde3c81f4b44a858bc1f06efd88c, type: 2}
+      - {fileID: 11400000, guid: 1d3944d02f90b9f47946e9d7d33e07f4, type: 2}
+      - {fileID: 11400000, guid: 9bd9412798d873743abe9dbfdec32cb9, type: 2}
+      - {fileID: 11400000, guid: 6c69b75c9f571b645995257ee0ffe622, type: 2}
+      - {fileID: 11400000, guid: d9ba5d76172945a46b58c14002efee14, type: 2}
+      - {fileID: 11400000, guid: 5d675aaded4142c4bb4580be98380fa0, type: 2}
+      - {fileID: 11400000, guid: 2e383042b75175140b2ab038854c3a3a, type: 2}
+      - {fileID: 11400000, guid: 499a5080184fa7c4ca7d7b00e8f0be9e, type: 2}
+      - {fileID: 11400000, guid: 7f393f03f0f1e0249904d56a39bb1239, type: 2}
+      - {fileID: 11400000, guid: 56c5ce33cc8ec3447927e0933cce373a, type: 2}
     territoriosInstanciados:
     - {fileID: 0}
     - {fileID: 0}
@@ -195,6 +238,23 @@ MonoBehaviour:
     - {fileID: 0}
     - {fileID: 0}
     - {fileID: 0}
+--- !u!114 &1191327645
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7644279165305120001}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c83ba365cf07f024f88e0b5572a41220, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  panel: {fileID: 7644279164603314438}
+  btncartaesq: {fileID: 7644279164154844160}
+  btntextesq: {fileID: 7644279164649443601}
+  btncartadir: {fileID: 7644279164086400813}
+  btntextdir: {fileID: 7644279165724978702}
 --- !u!1001 &6167091697182190303
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -294,13 +354,63 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 4575664228544256987, guid: 0a1b752f595b3ea4b9d1f4108b51cf77, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 0a1b752f595b3ea4b9d1f4108b51cf77, type: 3}
+--- !u!1 &7644279164603314438 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4575664228544256985, guid: 0a1b752f595b3ea4b9d1f4108b51cf77, type: 3}
+  m_PrefabInstance: {fileID: 6167091697182190303}
+  m_PrefabAsset: {fileID: 0}
 --- !u!224 &7644279164603314439 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 4575664228544256984, guid: 0a1b752f595b3ea4b9d1f4108b51cf77, type: 3}
   m_PrefabInstance: {fileID: 6167091697182190303}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &7644279164154844160 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4575664228053073631, guid: 0a1b752f595b3ea4b9d1f4108b51cf77, type: 3}
+  m_PrefabInstance: {fileID: 6167091697182190303}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &7644279164649443601 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4575664228632345550, guid: 0a1b752f595b3ea4b9d1f4108b51cf77, type: 3}
+  m_PrefabInstance: {fileID: 6167091697182190303}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &7644279164086400813 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4575664227985137138, guid: 0a1b752f595b3ea4b9d1f4108b51cf77, type: 3}
+  m_PrefabInstance: {fileID: 6167091697182190303}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &7644279165724978702 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4575664227560899793, guid: 0a1b752f595b3ea4b9d1f4108b51cf77, type: 3}
+  m_PrefabInstance: {fileID: 6167091697182190303}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &7644279164339226417
 PrefabInstance:
   m_ObjectHideFlags: 0

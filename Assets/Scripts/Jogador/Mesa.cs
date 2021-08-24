@@ -10,6 +10,7 @@ namespace FormigaWar.Jogadores
     {
         [SerializeField] private Tabuleiro tabuleiro = new Tabuleiro();
         [SerializeField] private Jogador[] jogadores;
+        public Jogador[] Jogadores {get; set;} // esse get eh usado pelo ObjetivoPorExercito
 
         void Start()
         {
