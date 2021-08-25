@@ -12,6 +12,6 @@ namespace FormigaWar.Jogadores
         public List<TerritorioDisplay> territorioDisplay;
         public List<Continente> continentes;
         public Objetivo objetivo;
-        protected List<Carta> mao;
+        private List<Carta> mao;
     }
 }

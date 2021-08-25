@@ -12,7 +12,6 @@ namespace FormigaWar
 
         public static Objetivo PuxarCarta()
         {
-            
             if(cartas.Count == 0)return new ObjetivoPorTerritorio();
             int i = (int)Random.Range(0, cartas.Count);
 

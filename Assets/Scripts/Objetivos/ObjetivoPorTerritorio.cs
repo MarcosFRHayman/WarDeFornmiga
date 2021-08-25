@@ -9,7 +9,7 @@ namespace FormigaWar
     {
         private int territoriosNecessarios; // quantos territorios eu preciso
         private int exercitosPorTerritorio; // quantos exercitos por exercitos no territorio
-        
+
         public ObjetivoPorTerritorio() // construtor de testes
         {
             this.descricao = "Este eh um objetivo de testes.";
