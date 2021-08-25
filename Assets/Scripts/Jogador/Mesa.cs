@@ -14,6 +14,7 @@ namespace FormigaWar.Jogadores
         void Start()
         {
             tabuleiro?.Inicializa();
+            TurnoManager.InicializarManager(jogadores);
         }
         public void DistribuiTerritorios()
         {

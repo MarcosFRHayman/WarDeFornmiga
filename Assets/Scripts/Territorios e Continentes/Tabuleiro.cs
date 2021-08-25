@@ -50,6 +50,7 @@ public class Tabuleiro // TODO : Separar os dados desta classe para uma outra cl
         {
             territoriosInstanciados[i].Tabuleiro = this;
             territoriosInstanciados[i].NumTropas = 1;
+            territoriosInstanciados[i].AtualizarNumTropas();
         }
         
         Continente c = continentes[0]; // foreach(Continente c in continentes)
@@ -118,13 +119,14 @@ public class Tabuleiro // TODO : Separar os dados desta classe para uma outra cl
 
     public void DeselecionarTodosTerritorios() // usado quando um territorio eh clicado
     {
-        for (int i = 0; i < territoriosInstanciados.Count; i++)
+        int i = 0;
+        for (i = 0; i < territoriosInstanciados.Count; i++)
         {
-            territoriosInstanciados[i].AtualizaEstado(TerritorioDisplay.Estado.Normal);
+            territoriosInstanciados[i].AtualizaEstado(TerritorioDisplay.Estado.Indisponivel);
         }
     }
 
-    public void DesabilitarContinentesMenosUm() // para fase de fortificacao, quando o jogador tiver conquistado um continente
+    public void DesabilitarContinentesMenosUm(Continente c) // para fase de fortificacao, quando o jogador tiver conquistado um continente
     {
 
     }

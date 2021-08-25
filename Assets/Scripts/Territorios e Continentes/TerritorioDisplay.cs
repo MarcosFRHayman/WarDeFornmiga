@@ -1,12 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using FormigaWar.Jogadores;
 
 namespace FormigaWar.Territorios
 {
     [RequireComponent(typeof(SpriteRenderer))]
     public class TerritorioDisplay : MonoBehaviour
     {
+        [SerializeField] private Jogador jogador; // jogador que tem o territorio
         [SerializeField] private Territorio territorio;
         [SerializeField] private TextMesh numtropas_txt;
         [SerializeField] private SpriteRenderer spriteRenderer;
@@ -34,6 +36,12 @@ namespace FormigaWar.Territorios
         }
 
         public void AtualizarNumTropas() => numtropas_txt.text = (numtropas + numtropas_to_move).ToString();
+
+        public void ConquistaTerritorio(Jogador j) // metodo usado quando na fase de ataque, alguem conquistar um territorio
+        {
+            jogador = j;                    // bota o jogador que o conquistou
+            spriteRenderer.color = j.Cor;   // e bota a cor do territorio pra cor do exercito
+        }
 
         public void AtualizaEstado(Estado novo_estado)
         {
