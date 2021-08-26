@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using FormigaWar.Territorios;
 using UnityEngine;
 
-namespace FormigaWar.jogador
+namespace FormigaWar.Jogadores
 {
     public abstract class Jogador
     {

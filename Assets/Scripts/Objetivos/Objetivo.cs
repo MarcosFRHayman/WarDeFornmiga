@@ -1,13 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using FormigaWar.jogador;
+using FormigaWar.Jogadores;
 
 namespace FormigaWar
 {
     public abstract class Objetivo
     {
         protected string descricao;
+        public string Descricao {get => descricao;}
         protected Jogador jogador;
         public abstract bool Checar(); // metodo checa se o objetivo foi completado.
     }

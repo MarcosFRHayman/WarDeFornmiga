@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using FormigaWar.jogador;
+using FormigaWar.Jogadores;
 
 namespace FormigaWar
 {
@@ -12,12 +12,8 @@ namespace FormigaWar
 
         public static Objetivo PuxarCarta()
         {
-            
-            // como conversao de int ignora a virgula 
-            // a ultima carta tem uma chance extremamente pequena de ser puxada
-            // e a primeira carta tem cerca de metade da chance de ser puxada
-            // para balancear as probabilidades, a range eh ]-1, cartas.Count[
-            int i = (int)Random.Range(-0.9999999f, cartas.Count + 0.9999999f);
+            if(cartas.Count == 0)return new ObjetivoPorTerritorio();
+            int i = (int)Random.Range(0, cartas.Count);
 
 
             Objetivo result = cartas[i];

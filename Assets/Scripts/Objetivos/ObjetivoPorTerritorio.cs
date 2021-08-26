@@ -9,6 +9,17 @@ namespace FormigaWar
     {
         private int territoriosNecessarios; // quantos territorios eu preciso
         private int exercitosPorTerritorio; // quantos exercitos por exercitos no territorio
+
+        public ObjetivoPorTerritorio() // construtor de testes
+        {
+            this.descricao = "Este eh um objetivo de testes.";
+        }
+
+        public ObjetivoPorTerritorio(int i, int j) // construtor a ser utilizado
+        {
+
+        }
+
         public override bool Checar()
         {
             if(jogador.territorioDisplay.Count >= territoriosNecessarios && exercitosPorTerritorio == 1)return true;
