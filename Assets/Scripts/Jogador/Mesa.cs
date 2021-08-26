@@ -4,17 +4,37 @@ using System.Collections.Generic;
 using UnityEngine;
 using FormigaWar.Territorios;
 
-namespace FormigaWar.Jogador
+namespace FormigaWar.Jogadores
 {
     public class Mesa : MonoBehaviour
     {
         [SerializeField] private Tabuleiro tabuleiro = new Tabuleiro();
         [SerializeField] private Jogador[] jogadores;
+        private BaralhoDeCartas baralhoTerritorios;
+        public BaralhoDeCartas BaralhoDeTerritorios { get => baralhoTerritorios; }
 
-        void Start()
+        // #if UNITY_EDITOR
+        public void Start()
         {
-            tabuleiro?.Inicializa();
+            Inicializa(new Jogador[] { new JogadorHumano() });
         }
+        // #endif
+        public void Inicializa(Jogador[] jogadores)
+        {
+            this.jogadores = jogadores;
+            tabuleiro?.Inicializa();
+            InicializaBaralhoComTabuleiro();
+            DistribuiTerritorios();
+        }
+        private void InicializaBaralhoComTabuleiro()
+        {
+            baralhoTerritorios = new BaralhoDeCartas();
+            List<Territorio> territorioLista = new List<Territorio>();
+            foreach (Continente continente in tabuleiro.Continentes)
+                territorioLista.AddRange(continente.GetTerritorios());
+            baralhoTerritorios.Inicializar(territorioLista);
+        }
+
         public void DistribuiTerritorios()
         {
             List<TerritorioDisplay> territoriosEmbaralhados = EmbaralhaTerritorios();

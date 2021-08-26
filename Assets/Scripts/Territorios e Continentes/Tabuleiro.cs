@@ -13,6 +13,7 @@ public class Tabuleiro // TODO : Separar os dados desta classe para uma outra cl
     [SerializeField] private List<Continente> continentes = new List<Continente>(); // talvez tabuleiro guarde apenas os continentes?
     private List<TerritorioDisplay> territoriosInstanciados = new List<TerritorioDisplay>();
     public TerritorioDisplay[] TerritoriosInstanciados => territoriosInstanciados.ToArray();
+    public Continente[] Continentes => continentes.ToArray();
     // public void setSeletorDeTropasPelaPrimeiraVez(SeletorTropas seletor)
     // {
     //     if (seletortropas == null)
@@ -21,13 +22,11 @@ public class Tabuleiro // TODO : Separar os dados desta classe para uma outra cl
     public void Inicializa()
     {
         SpawnaTerritorios();
-        InicializaBaralhoComTerritorios();
     }
     public void InicializaTabuleiro(List<Continente> continentes)
     {
         this.continentes = continentes;
         SpawnaTerritorios();
-        InicializaBaralhoComTerritorios();
     }
     // public Tabuleiro(SeletorTropas seletorDeTropas)
     // {
@@ -35,14 +34,6 @@ public class Tabuleiro // TODO : Separar os dados desta classe para uma outra cl
     //     InicializarTabuleiro();
     //     InicializaBaralhoComTerritorios();
     // }
-
-    private void InicializaBaralhoComTerritorios()
-    {
-        List<Territorio> territorioLista = new List<Territorio>();
-        foreach (Continente continente in continentes)
-            territorioLista.AddRange(continente.GetTerritorios());
-        BaralhoDeCartas.Inicializar(territorioLista);
-    }
 
     private void SpawnaTerritorios()
     {
