@@ -28,7 +28,7 @@ Transform:
   m_GameObject: {fileID: 8183680617057803079}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0.982, y: 0.1053, z: 0}
-  m_LocalScale: {x: 2, y: 2, z: 1}
+  m_LocalScale: {x: 0.78601426, y: 0.80010986, z: 1}
   m_Children:
   - {fileID: 8183680617360994274}
   m_Father: {fileID: 0}
@@ -51,7 +51,9 @@ MonoBehaviour:
   spriteRenderer: {fileID: 8183680617057803077}
   tabuleiro: {fileID: 0}
   numtropas: 0
-  estado: normal
+  numtropas_to_move: 0
+  fronteirasDisplay: []
+  estado: 0
 --- !u!212 &8183680617057803077
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -93,7 +95,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 2747690628134850419, guid: 16037dbd798344f57a526d53d48f5ead, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.34117648}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0

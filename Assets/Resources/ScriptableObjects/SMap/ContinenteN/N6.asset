@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d484a6bdcff6a145aaa10596ff8d8db, type: 3}
+  m_Name: N6
+  m_EditorClassIdentifier: 
+  nome: 
+  cartaTerritorio:
+    simbolo: {fileID: 0}
+  continente:
+    nome: 
+    territorios: []
+  fronteiras:
+  - territorioA: {fileID: 11400000}
+    territorioB: {fileID: 11400000, guid: 62271cb7bd75c744f8dda5249f95f58e, type: 2}
+    tipo: 
+  - territorioA: {fileID: 11400000}
+    territorioB: {fileID: 11400000, guid: 7b6f7ed7acc9c1047b4eebe25f8aa5db, type: 2}
+    tipo: 
+  - territorioA: {fileID: 11400000}
+    territorioB: {fileID: 11400000, guid: e95e7dfb7bdb8b242be691015bd0aa16, type: 2}
+    tipo: 
+  adicionarFronteira: {fileID: 0}

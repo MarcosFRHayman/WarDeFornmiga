@@ -38,16 +38,28 @@ public class Tabuleiro // TODO : Separar os dados desta classe para uma outra cl
     private void SpawnaTerritorios()
     {
         Continente c = continentes[0]; // foreach(Continente c in continentes)
+        TerritorioDisplay td;
 
-        var obj = GameObject.Instantiate(territorioprefab, new Vector3(), Quaternion.identity);
-        TerritorioDisplay td = obj.GetComponent<TerritorioDisplay>();
+        if (territoriosInstanciados.Count == 0)
+        {
+            var obj = GameObject.Instantiate(territorioprefab, new Vector3(), Quaternion.identity);
+            td = obj.GetComponent<TerritorioDisplay>();
+            td.Territorio = c.GetTerritorios()[0];
+            td.Tabuleiro = this;
+            td.NumTropas = 1;
+            territoriosInstanciados.Add(td);
+            SpawnaTerritoriosAux(td);
+        }
+        else
+        {
+            foreach (TerritorioDisplay t in territoriosInstanciados)
+            {
+                t.NumTropas = 1;
+                SpawnaTerritoriosAux(t);
+            }
+            return;
 
-        td.Territorio = c.GetTerritorios()[0];
-        td.NumTropas = 1;
-        territoriosInstanciados.Add(td);
-
-        SpawnaTerritoriosAux(td);
-
+        }
     }
 
     private void SpawnaTerritoriosAux(TerritorioDisplay td)
@@ -81,6 +93,7 @@ public class Tabuleiro // TODO : Separar os dados desta classe para uma outra cl
             var obj = GameObject.Instantiate(territorioprefab, spawnpos, spawnrot);
             TerritorioDisplay td2 = obj.GetComponent<TerritorioDisplay>();
             td2.Territorio = tadd;
+            td2.Tabuleiro = this;
             td2.NumTropas = 1;
             td.fronteirasDisplay.Add(td2);
             td2.fronteirasDisplay.Add(td);
