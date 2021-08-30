@@ -9,11 +9,22 @@ namespace FormigaWar.Jogadores
     public class Mesa : MonoBehaviour
     {
         [SerializeField] private Tabuleiro tabuleiro = new Tabuleiro();
-        [SerializeField] private Jogador[] jogadores;
+        private Jogador[] jogadores;
 
         void Start()
         {
             tabuleiro?.Inicializa();
+            
+            // essa parte toda aqui é de testes, pode comentar ou deletar caso nao esteja na branch 2.3
+            Jogador j = new JogadorHumano(); 
+            j.territorioDisplay.Add(tabuleiro.TerritoriosInstanciados[0]);
+            j.territorioDisplay.Add(tabuleiro.TerritoriosInstanciados[1]);
+            j.territorioDisplay.Add(tabuleiro.TerritoriosInstanciados[2]);
+            j.territorioDisplay.Add(tabuleiro.TerritoriosInstanciados[3]);
+            j.territorioDisplay.Add(tabuleiro.TerritoriosInstanciados[4]);
+            jogadores = new Jogador[1] {j};
+            // fim da sessão de testes, cuidado com o que apaga abaixo
+
             TurnoManager.InicializarManager(jogadores);
         }
         public void DistribuiTerritorios()

@@ -15,7 +15,7 @@ public static class TurnoManager
 
     public static Jogador[] jogadoresNaMesa; // jogadores na mesa
     public static int jogadorDaVez = 0;
-    public static int faseAtual = 0;
+    public static int faseAtual = 3;
 
     public static void InicializarManager(Jogador[] j)
     {
@@ -25,5 +25,9 @@ public static class TurnoManager
     public static void AvancarTurno() // avanca o fase atual, se fase atual tiver em 4, pega o proximo jogador e faz fase atual 0
     {
         
+    }
+    public static Jogador GetJogadorDaVez() // Pega o jogador da vez como readonly
+    {
+        return jogadoresNaMesa[jogadorDaVez];
     }
 }

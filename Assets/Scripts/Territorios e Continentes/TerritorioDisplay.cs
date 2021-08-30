@@ -75,28 +75,51 @@ namespace FormigaWar.Territorios
             var seletorTropas = GameObject.Find("Canvas").GetComponent<SeletorTropas>();
             // de inicio esta eh a logica da fase de movimentacao
 
-            switch (estado)
+            switch((int)TurnoManager.faseAtual)
             {
-                case Estado.Normal:
-                    Tabuleiro.DeselecionarTodosTerritorios();
-                    seletorTropas.t_invoker = this;
-                    AtualizaEstado(Estado.Selecionado);
-
-                    for (int i = 0; i < fronteirasDisplay.Count; i++)
+                case 0:
+                break;
+                case 1:
+                break;
+                case 2:
+                break;
+                case 3:
+                    switch (estado)
                     {
-                        fronteirasDisplay[i].AtualizaEstado(Estado.Selecionavel);
+                        case Estado.Normal:
+                            Tabuleiro.DeselecionarTodosTerritorios();
+                            Tabuleiro.NormalizarTerritoriosDoJogador(TurnoManager.GetJogadorDaVez());
+                            seletorTropas.t_invoker = this;
+                            AtualizaEstado(Estado.Selecionado);
+                            
+                            
+                            for (int i = 0; i < fronteirasDisplay.Count; i++)
+                            {
+                                TerritorioDisplay t = fronteirasDisplay[i];
+                                if(TurnoManager.GetJogadorDaVez().territorioDisplay.Contains(t))t.AtualizaEstado(Estado.Selecionavel);
+                            }
+                            break;
+                        case Estado.Selecionavel:
+                            seletorTropas.AbrirSeletor(this);
+                            break;
+                        case Estado.Selecionado:
+                            Tabuleiro.DeselecionarTodosTerritorios();
+                            Tabuleiro.NormalizarTerritoriosDoJogador(TurnoManager.GetJogadorDaVez());
+                            seletorTropas.FecharSeletor();
+                            break;
+                        case Estado.Indisponivel:
+                            break;
                     }
-                    break;
-                case Estado.Selecionavel:
-                    seletorTropas.AbrirSeletor(this);
-                    break;
-                case Estado.Selecionado:
-                    Tabuleiro.DeselecionarTodosTerritorios();
-                    seletorTropas.FecharSeletor();
-                    break;
-                case Estado.Indisponivel:
-                    break;
+                break;
+                default:
+                break;
             }
+                
+        }
+    
+        void InteragirTerritorio()
+        {
+
         }
     }
 }

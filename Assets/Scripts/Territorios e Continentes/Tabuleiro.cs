@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using FormigaWar.Territorios;
+using FormigaWar.Jogadores;
 using FormigaWar;
 
 [System.Serializable]
@@ -123,6 +124,14 @@ public class Tabuleiro // TODO : Separar os dados desta classe para uma outra cl
         for (i = 0; i < territoriosInstanciados.Count; i++)
         {
             territoriosInstanciados[i].AtualizaEstado(TerritorioDisplay.Estado.Indisponivel);
+        }
+    }
+
+    public void NormalizarTerritoriosDoJogador(Jogador j)
+    {
+        for (int i = 0; i < j.territorioDisplay.Count; i++)
+        {
+            j.territorioDisplay[i].AtualizaEstado(TerritorioDisplay.Estado.Normal);
         }
     }
 
