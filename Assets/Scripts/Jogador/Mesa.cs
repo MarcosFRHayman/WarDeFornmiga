@@ -16,12 +16,17 @@ namespace FormigaWar.Jogadores
             tabuleiro?.Inicializa();
             
             // essa parte toda aqui é de testes, pode comentar ou deletar caso nao esteja na branch 2.3
-            Jogador j = new JogadorHumano(); 
+            Jogador j = new JogadorHumano();
+            j.Cor = Color.cyan; 
             j.territorioDisplay.Add(tabuleiro.TerritoriosInstanciados[0]);
             j.territorioDisplay.Add(tabuleiro.TerritoriosInstanciados[1]);
             j.territorioDisplay.Add(tabuleiro.TerritoriosInstanciados[2]);
             j.territorioDisplay.Add(tabuleiro.TerritoriosInstanciados[3]);
             j.territorioDisplay.Add(tabuleiro.TerritoriosInstanciados[4]);
+            foreach(TerritorioDisplay t in j.territorioDisplay)
+            {
+                t.ConquistaTerritorio(j);
+            }
             jogadores = new Jogador[1] {j};
             // fim da sessão de testes, cuidado com o que apaga abaixo
 

@@ -11,7 +11,9 @@ namespace FormigaWar.Territorios
         [SerializeField] private Jogador jogador; // jogador que tem o territorio
         [SerializeField] private Territorio territorio;
         [SerializeField] private TextMesh numtropas_txt;
-        [SerializeField] private SpriteRenderer spriteRenderer;
+        [SerializeField] private SpriteRenderer spriteEstado;
+        [SerializeField] private SpriteRenderer spriteJogador; // segundo sprite com a cor do jogador
+        
         public Tabuleiro Tabuleiro { get; set; }
         [SerializeField] private int numtropas = 1; // numero atual de tropas
         public int numtropas_to_move = 0; // numero de tropas disponiveis para mover (importante para fase de movimento)
@@ -32,7 +34,6 @@ namespace FormigaWar.Territorios
         void Start()
         {
             numtropas_txt.text = numtropas.ToString();
-            spriteRenderer = GetComponent<SpriteRenderer>();
         }
 
         public void AtualizarNumTropas() => numtropas_txt.text = (numtropas + numtropas_to_move).ToString();
@@ -40,7 +41,7 @@ namespace FormigaWar.Territorios
         public void ConquistaTerritorio(Jogador j) // metodo usado quando na fase de ataque, alguem conquistar um territorio
         {
             jogador = j;                    // bota o jogador que o conquistou
-            spriteRenderer.color = j.Cor;   // e bota a cor do territorio pra cor do exercito
+            spriteJogador.color = j.Cor;   // e bota a cor do territorio pra cor do exercito
         }
 
         public void AtualizaEstado(Estado novo_estado)
@@ -49,19 +50,19 @@ namespace FormigaWar.Territorios
             {
                 case Estado.Normal:
                     estado = novo_estado;
-                    spriteRenderer.color = Color.white;
+                    spriteEstado.color = Color.white;
                     break;
                 case Estado.Selecionado:
                     estado = novo_estado;
-                    spriteRenderer.color = Color.yellow;
+                    spriteEstado.color = Color.yellow;
                     break;
                 case Estado.Selecionavel:
                     estado = novo_estado;
-                    spriteRenderer.color = Color.magenta;
+                    spriteEstado.color = Color.magenta;
                     break;
                 case Estado.Indisponivel:
                     estado = novo_estado;
-                    spriteRenderer.color = Color.gray;
+                    spriteEstado.color = Color.gray;
                     break;
                 default:
                     Debug.Log("AtualizaEstado foi chamado mas com um estado n�o identificado");
