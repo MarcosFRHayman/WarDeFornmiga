@@ -129,9 +129,9 @@ public class Tabuleiro // TODO : Separar os dados desta classe para uma outra cl
 
     public void NormalizarTerritoriosDoJogador(Jogador j)
     {
-        for (int i = 0; i < j.territorioDisplay.Count; i++)
+        for (int i = 0; i < j.Territorios.Count; i++)
         {
-            j.territorioDisplay[i].AtualizaEstado(TerritorioDisplay.Estado.Normal);
+            j.Territorios[i].AtualizaEstado(TerritorioDisplay.Estado.Normal);
         }
     }
 

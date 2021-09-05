@@ -18,12 +18,12 @@ namespace FormigaWar.Jogadores
             // essa parte toda aqui é de testes, pode comentar ou deletar caso nao esteja na branch 2.3
             Jogador j = new JogadorHumano();
             j.Cor = Color.cyan; 
-            j.territorioDisplay.Add(tabuleiro.TerritoriosInstanciados[0]);
-            j.territorioDisplay.Add(tabuleiro.TerritoriosInstanciados[1]);
-            j.territorioDisplay.Add(tabuleiro.TerritoriosInstanciados[2]);
-            j.territorioDisplay.Add(tabuleiro.TerritoriosInstanciados[3]);
-            j.territorioDisplay.Add(tabuleiro.TerritoriosInstanciados[4]);
-            foreach(TerritorioDisplay t in j.territorioDisplay)
+            j.Territorios.Add(tabuleiro.TerritoriosInstanciados[0]);
+            j.Territorios.Add(tabuleiro.TerritoriosInstanciados[1]);
+            j.Territorios.Add(tabuleiro.TerritoriosInstanciados[2]);
+            j.Territorios.Add(tabuleiro.TerritoriosInstanciados[3]);
+            j.Territorios.Add(tabuleiro.TerritoriosInstanciados[4]);
+            foreach(TerritorioDisplay t in j.Territorios)
             {
                 t.ConquistaTerritorio(j);
             }
@@ -57,16 +57,16 @@ namespace FormigaWar.Jogadores
             int sobra = territoriosEmbaralhados.Count % jogadores.Length;
             for (int i = 0; i < jogadores.Length; i++)
             {
-                jogadores[i].territorioDisplay.Clear();
+                jogadores[i].Territorios.Clear();
                 //Dá os Territorios que sobraram da divisao para os n primeiros jogadores
                 if (sobra > 0)
                 {
-                    jogadores[i].territorioDisplay.Add(territoriosEmbaralhados[territoriosEmbaralhados.Count - sobra]);
+                    jogadores[i].Territorios.Add(territoriosEmbaralhados[territoriosEmbaralhados.Count - sobra]);
                     sobra--;
                 }
                 int inicio = i * valorParaCada;
                 int fim = (i + 1) * valorParaCada - 1;
-                jogadores[i].territorioDisplay.AddRange(territoriosEmbaralhados.GetRange(inicio, fim));
+                jogadores[i].Territorios.AddRange(territoriosEmbaralhados.GetRange(inicio, fim));
             }
         }
     }

@@ -15,7 +15,7 @@ namespace FormigaWar
         {
             if(nemesisDerrotado)
             {
-                if(jogador.territorioDisplay.Count >= 24)return true;
+                if(jogador.Territorios.Count >= 24)return true;
             }
             else
             {

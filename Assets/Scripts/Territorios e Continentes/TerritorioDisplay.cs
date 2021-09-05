@@ -97,7 +97,7 @@ namespace FormigaWar.Territorios
                             for (int i = 0; i < fronteirasDisplay.Count; i++)
                             {
                                 TerritorioDisplay t = fronteirasDisplay[i];
-                                if(TurnoManager.GetJogadorDaVez().territorioDisplay.Contains(t))t.AtualizaEstado(Estado.Selecionavel);
+                                if(TurnoManager.GetJogadorDaVez().Territorios.Contains(t))t.AtualizaEstado(Estado.Selecionavel);
                             }
                             break;
                         case Estado.Selecionavel:
