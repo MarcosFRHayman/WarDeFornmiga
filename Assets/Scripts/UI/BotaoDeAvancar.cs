@@ -23,9 +23,9 @@ namespace FormigaWar
             {
                 TurnoManager.faseAtual = 0;
                 TurnoManager.jogadorDaVez += 1;
-                Debug.Log("final!!!!!!");
-                Debug.Log(TurnoManager.faseAtual);
-                Debug.Log(TurnoManager.jogadorDaVez);
+                //Debug.Log("final!!!!!!");
+                //Debug.Log(TurnoManager.faseAtual);
+                //Debug.Log(TurnoManager.jogadorDaVez);
                 if (TurnoManager.jogadorDaVez>= TurnoManager.jogadoresNaMesa.Length)
                 {
                     TurnoManager.jogadorDaVez = 0;

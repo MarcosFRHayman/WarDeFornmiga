@@ -15,7 +15,7 @@ public static class TurnoManager
 
     public static Jogador[] jogadoresNaMesa; // jogadores na mesa
     public static int jogadorDaVez = 0;
-    public static int faseAtual = 3;
+    public static int faseAtual = 2;
 
     public static void InicializarManager(Jogador[] j)
     {

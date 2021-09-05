@@ -8,6 +8,8 @@ namespace FormigaWar.Territorios
     [RequireComponent(typeof(SpriteRenderer))]
     public class TerritorioDisplay : MonoBehaviour
     {
+        private SeletorTropas seletorTropas;
+        private RoladorDeDados roladorDeDados;
         [SerializeField] private Jogador jogador; // jogador que tem o territorio
         [SerializeField] private Territorio territorio;
         [SerializeField] private TextMesh numtropas_txt;
@@ -33,6 +35,8 @@ namespace FormigaWar.Territorios
 
         void Start()
         {
+            seletorTropas = GameObject.Find("Canvas").GetComponent<SeletorTropas>();
+            roladorDeDados = GameObject.Find("Canvas").GetComponent<RoladorDeDados>();
             numtropas_txt.text = numtropas.ToString();
         }
 
@@ -73,18 +77,44 @@ namespace FormigaWar.Territorios
 
         void OnMouseDown() // quando o territorio for clicado...
         {
-            var seletorTropas = GameObject.Find("Canvas").GetComponent<SeletorTropas>();
             // de inicio esta eh a logica da fase de movimentacao
 
             switch((int)TurnoManager.faseAtual)
             {
-                case 0:
+                case 0: // fortificacao continental
                 break;
-                case 1:
+                case 1: // fortificacao
                 break;
-                case 2:
+                case 2: // ataque
+                    switch (estado)
+                    {
+                        case Estado.Normal:
+                            Tabuleiro.DeselecionarTodosTerritorios();
+                            Tabuleiro.NormalizarTerritoriosDoJogador(TurnoManager.GetJogadorDaVez());
+                            roladorDeDados.tdAtacante = this;
+                            AtualizaEstado(Estado.Selecionado);
+                            
+                            
+                            for (int i = 0; i < fronteirasDisplay.Count; i++)
+                            {
+                                TerritorioDisplay t = fronteirasDisplay[i];
+                                if(!TurnoManager.GetJogadorDaVez().Territorios.Contains(t))t.AtualizaEstado(Estado.Selecionavel);
+                            }
+                            break;
+                        case Estado.Selecionavel:
+                            roladorDeDados.AbrirRolador(this);
+                            //seletorTropas.AbrirSeletor(this);
+                            break;
+                        case Estado.Selecionado:
+                            Tabuleiro.DeselecionarTodosTerritorios();
+                            Tabuleiro.NormalizarTerritoriosDoJogador(TurnoManager.GetJogadorDaVez());
+                            seletorTropas.FecharSeletor();
+                            break;
+                        case Estado.Indisponivel:
+                            break;
+                    }
                 break;
-                case 3:
+                case 3: // movimentacao
                     switch (estado)
                     {
                         case Estado.Normal:

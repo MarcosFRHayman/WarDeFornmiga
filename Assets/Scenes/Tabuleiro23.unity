@@ -532,6 +532,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c0a414b2c138e34a826f049180e746b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &199766541 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8065170476149562334, guid: b571e1ec3ed3f214bac4b55936069e6c, type: 3}
+  m_PrefabInstance: {fileID: 876947932}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &219558966
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2075,6 +2086,54 @@ PrefabInstance:
       propertyPath: tabuleiro.territoriosInstanciados.Array.data[41]
       value: 
       objectReference: {fileID: 793719596}
+    - target: {fileID: 1570905611695090408, guid: b571e1ec3ed3f214bac4b55936069e6c, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1926122165265372714, guid: b571e1ec3ed3f214bac4b55936069e6c, type: 3}
+      propertyPath: m_FontData.m_BestFit
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1926122165265372714, guid: b571e1ec3ed3f214bac4b55936069e6c, type: 3}
+      propertyPath: m_FontData.m_MaxSize
+      value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: 1926122165265372714, guid: b571e1ec3ed3f214bac4b55936069e6c, type: 3}
+      propertyPath: m_FontData.m_MinSize
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1926122165265372714, guid: b571e1ec3ed3f214bac4b55936069e6c, type: 3}
+      propertyPath: m_FontData.m_FontSize
+      value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: 4430699136337357355, guid: b571e1ec3ed3f214bac4b55936069e6c, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: -47.62
+      objectReference: {fileID: 0}
+    - target: {fileID: 4430699136337357355, guid: b571e1ec3ed3f214bac4b55936069e6c, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -23.809998
+      objectReference: {fileID: 0}
+    - target: {fileID: 5042810952953403538, guid: b571e1ec3ed3f214bac4b55936069e6c, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5042810952953403538, guid: b571e1ec3ed3f214bac4b55936069e6c, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6577861223785302502, guid: b571e1ec3ed3f214bac4b55936069e6c, type: 3}
+      propertyPath: avancar
+      value: 
+      objectReference: {fileID: 199766541}
+    - target: {fileID: 7094915063181658259, guid: b571e1ec3ed3f214bac4b55936069e6c, type: 3}
+      propertyPath: m_FontData.m_BestFit
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7094915063181658259, guid: b571e1ec3ed3f214bac4b55936069e6c, type: 3}
+      propertyPath: m_FontData.m_MaxSize
+      value: 14
+      objectReference: {fileID: 0}
     - target: {fileID: 7644279165305120001, guid: b571e1ec3ed3f214bac4b55936069e6c, type: 3}
       propertyPath: m_Name
       value: Canvas
