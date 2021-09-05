@@ -13,9 +13,9 @@ namespace FormigaWar
         private bool nemesisDerrotado;
         public override bool Checar()
         {
-            if (nemesisDerrotado)
+            if(nemesisDerrotado)
             {
-                if (jogador.Territorios.Count >= 24) return true;
+                if(jogador.Territorios.Count >= 24)return true;
             }
             else
             {
@@ -23,7 +23,7 @@ namespace FormigaWar
                 //se o nemesis tem 0 territorios
                 //return true;
             }
-
+            
             return false;
         }
 

@@ -10,8 +10,8 @@ namespace FormigaWar
     {
 
         [SerializeField] private Text tnum;
-        [HideInInspector] public TerritorioDisplay t_invoker = null; // primeiro territorio clicado, para fase de movimentacao eh de onde saem as tropas
-        private TerritorioDisplay t_invoker2 = null;
+        public TerritorioDisplay t_invoker = null; // primeiro territorio clicado, para fase de movimentacao eh de onde saem as tropas
+        [SerializeField] private TerritorioDisplay t_invoker2 = null;
         [SerializeField] private GameObject panel;
 
         // botoes de incremento e decremento

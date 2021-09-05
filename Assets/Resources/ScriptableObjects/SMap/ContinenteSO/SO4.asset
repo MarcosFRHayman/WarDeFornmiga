@@ -18,5 +18,8 @@ MonoBehaviour:
   continente:
     nome: 
     territorios: []
-  fronteiras: []
+  fronteiras:
+  - territorioA: {fileID: 11400000, guid: 14abc25c1f8bdc34389f473d485b90ac, type: 2}
+    territorioB: {fileID: 11400000}
+    tipo: 
   adicionarFronteira: {fileID: 0}

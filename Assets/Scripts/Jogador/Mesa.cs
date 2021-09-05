@@ -9,32 +9,29 @@ namespace FormigaWar.Jogadores
     public class Mesa : MonoBehaviour
     {
         [SerializeField] private Tabuleiro tabuleiro = new Tabuleiro();
-        [SerializeField] private Jogador[] jogadores;
-        private BaralhoDeCartas baralhoTerritorios;
-        public BaralhoDeCartas BaralhoDeTerritorios { get => baralhoTerritorios; }
+        private Jogador[] jogadores;
 
-        // #if UNITY_EDITOR
-        public void Start()
+        void Start()
         {
-            Inicializa(new Jogador[] { new JogadorHumano() });
-        }
-        // #endif
-        public void Inicializa(Jogador[] jogadores)
-        {
-            this.jogadores = jogadores;
             tabuleiro?.Inicializa();
-            InicializaBaralhoComTabuleiro();
-            DistribuiTerritorios();
-        }
-        private void InicializaBaralhoComTabuleiro()
-        {
-            baralhoTerritorios = new BaralhoDeCartas();
-            List<Territorio> territorioLista = new List<Territorio>();
-            foreach (Continente continente in tabuleiro.Continentes)
-                territorioLista.AddRange(continente.GetTerritorios());
-            baralhoTerritorios.Inicializar(territorioLista);
-        }
+            
+            // essa parte toda aqui é de testes, pode comentar ou deletar caso nao esteja na branch 2.3
+            Jogador j = new JogadorHumano();
+            j.Cor = Color.cyan; 
+            j.Territorios.Add(tabuleiro.TerritoriosInstanciados[0]);
+            j.Territorios.Add(tabuleiro.TerritoriosInstanciados[1]);
+            j.Territorios.Add(tabuleiro.TerritoriosInstanciados[2]);
+            j.Territorios.Add(tabuleiro.TerritoriosInstanciados[3]);
+            j.Territorios.Add(tabuleiro.TerritoriosInstanciados[4]);
+            foreach(TerritorioDisplay t in j.Territorios)
+            {
+                t.ConquistaTerritorio(j);
+            }
+            jogadores = new Jogador[1] {j};
+            // fim da sessão de testes, cuidado com o que apaga abaixo
 
+            TurnoManager.InicializarManager(jogadores);
+        }
         public void DistribuiTerritorios()
         {
             List<TerritorioDisplay> territoriosEmbaralhados = EmbaralhaTerritorios();

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using FormigaWar.Territorios;
+using FormigaWar.Jogadores;
 using FormigaWar;
 
 [System.Serializable]
@@ -11,9 +12,8 @@ public class Tabuleiro // TODO : Separar os dados desta classe para uma outra cl
     [SerializeField] private GameObject territorioprefab;
     // [SerializeField] private SeletorTropas seletortropas;
     [SerializeField] private List<Continente> continentes = new List<Continente>(); // talvez tabuleiro guarde apenas os continentes?
-    private List<TerritorioDisplay> territoriosInstanciados = new List<TerritorioDisplay>();
+    [SerializeField] private List<TerritorioDisplay> territoriosInstanciados = new List<TerritorioDisplay>();
     public TerritorioDisplay[] TerritoriosInstanciados => territoriosInstanciados.ToArray();
-    public Continente[] Continentes => continentes.ToArray();
     // public void setSeletorDeTropasPelaPrimeiraVez(SeletorTropas seletor)
     // {
     //     if (seletortropas == null)
@@ -22,11 +22,13 @@ public class Tabuleiro // TODO : Separar os dados desta classe para uma outra cl
     public void Inicializa()
     {
         SpawnaTerritorios();
+        InicializaBaralhoComTerritorios();
     }
     public void InicializaTabuleiro(List<Continente> continentes)
     {
         this.continentes = continentes;
         SpawnaTerritorios();
+        InicializaBaralhoComTerritorios();
     }
     // public Tabuleiro(SeletorTropas seletorDeTropas)
     // {
@@ -35,30 +37,44 @@ public class Tabuleiro // TODO : Separar os dados desta classe para uma outra cl
     //     InicializaBaralhoComTerritorios();
     // }
 
+    private void InicializaBaralhoComTerritorios()
+    {
+        List<Territorio> territorioLista = new List<Territorio>();
+        foreach (Continente continente in continentes)
+            territorioLista.AddRange(continente.GetTerritorios());
+        BaralhoDeCartas.Inicializar(territorioLista);
+    }
+
     private void SpawnaTerritorios()
     {
+        for(int i = 0; i < territoriosInstanciados.Count; i++)
+        {
+            territoriosInstanciados[i].Tabuleiro = this;
+            territoriosInstanciados[i].NumTropas = 1;
+            territoriosInstanciados[i].AtualizarNumTropas();
+        }
+        
         Continente c = continentes[0]; // foreach(Continente c in continentes)
         TerritorioDisplay td;
 
-        if (territoriosInstanciados.Count == 0)
+        if(territoriosInstanciados.Count == 0)
         {
             var obj = GameObject.Instantiate(territorioprefab, new Vector3(), Quaternion.identity);
             td = obj.GetComponent<TerritorioDisplay>();
             td.Territorio = c.GetTerritorios()[0];
-            td.Tabuleiro = this;
             td.NumTropas = 1;
+            td.Tabuleiro = this;
             territoriosInstanciados.Add(td);
             SpawnaTerritoriosAux(td);
         }
         else
         {
-            foreach (TerritorioDisplay t in territoriosInstanciados)
+            foreach(TerritorioDisplay t in territoriosInstanciados)
             {
-                t.NumTropas = 1;
                 SpawnaTerritoriosAux(t);
             }
             return;
-
+            
         }
     }
 
@@ -68,7 +84,8 @@ public class Tabuleiro // TODO : Separar os dados desta classe para uma outra cl
         Vector3 spawnpos = td.transform.position + new Vector3(1.7f, 1f, 0f);
         Quaternion spawnrot = new Quaternion();
 
-
+        td.NumTropas = 1;
+        td.Tabuleiro = this;
 
         foreach (Fronteira f in td.Territorio.Fronteiras)
         {
@@ -88,12 +105,11 @@ public class Tabuleiro // TODO : Separar os dados desta classe para uma outra cl
                 }
             }
 
-            if (jexiste) continue;
+            if (jexiste)continue;
 
             var obj = GameObject.Instantiate(territorioprefab, spawnpos, spawnrot);
             TerritorioDisplay td2 = obj.GetComponent<TerritorioDisplay>();
             td2.Territorio = tadd;
-            td2.Tabuleiro = this;
             td2.NumTropas = 1;
             td.fronteirasDisplay.Add(td2);
             td2.fronteirasDisplay.Add(td);
@@ -104,13 +120,22 @@ public class Tabuleiro // TODO : Separar os dados desta classe para uma outra cl
 
     public void DeselecionarTodosTerritorios() // usado quando um territorio eh clicado
     {
-        for (int i = 0; i < territoriosInstanciados.Count; i++)
+        int i = 0;
+        for (i = 0; i < territoriosInstanciados.Count; i++)
         {
-            territoriosInstanciados[i].AtualizaEstado(TerritorioDisplay.Estado.Normal);
+            territoriosInstanciados[i].AtualizaEstado(TerritorioDisplay.Estado.Indisponivel);
         }
     }
 
-    public void DesabilitarContinentesMenosUm() // para fase de fortificacao, quando o jogador tiver conquistado um continente
+    public void NormalizarTerritoriosDoJogador(Jogador j)
+    {
+        for (int i = 0; i < j.Territorios.Count; i++)
+        {
+            j.Territorios[i].AtualizaEstado(TerritorioDisplay.Estado.Normal);
+        }
+    }
+
+    public void DesabilitarContinentesMenosUm(Continente c) // para fase de fortificacao, quando o jogador tiver conquistado um continente
     {
 
     }
