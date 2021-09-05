@@ -12,6 +12,7 @@ public class Tabuleiro // TODO : Separar os dados desta classe para uma outra cl
     [SerializeField] private GameObject territorioprefab;
     // [SerializeField] private SeletorTropas seletortropas;
     [SerializeField] private List<Continente> continentes = new List<Continente>(); // talvez tabuleiro guarde apenas os continentes?
+    public Continente[] Continentes => continentes.ToArray();
     [SerializeField] private List<TerritorioDisplay> territoriosInstanciados = new List<TerritorioDisplay>();
     public TerritorioDisplay[] TerritoriosInstanciados => territoriosInstanciados.ToArray();
     // public void setSeletorDeTropasPelaPrimeiraVez(SeletorTropas seletor)
@@ -22,13 +23,11 @@ public class Tabuleiro // TODO : Separar os dados desta classe para uma outra cl
     public void Inicializa()
     {
         SpawnaTerritorios();
-        InicializaBaralhoComTerritorios();
     }
     public void InicializaTabuleiro(List<Continente> continentes)
     {
         this.continentes = continentes;
         SpawnaTerritorios();
-        InicializaBaralhoComTerritorios();
     }
     // public Tabuleiro(SeletorTropas seletorDeTropas)
     // {
@@ -37,16 +36,9 @@ public class Tabuleiro // TODO : Separar os dados desta classe para uma outra cl
     //     InicializaBaralhoComTerritorios();
     // }
 
-    private void InicializaBaralhoComTerritorios()
-    {
-        List<Territorio> territorioLista = new List<Territorio>();
-        foreach (Continente continente in continentes)
-            territorioLista.AddRange(continente.GetTerritorios());
-        BaralhoDeCartas.Inicializar(territorioLista);
-    }
-
     private void SpawnaTerritorios()
     {
+        
         for(int i = 0; i < territoriosInstanciados.Count; i++)
         {
             territoriosInstanciados[i].Tabuleiro = this;

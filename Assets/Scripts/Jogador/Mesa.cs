@@ -9,8 +9,11 @@ namespace FormigaWar.Jogadores
     public class Mesa : MonoBehaviour
     {
         [SerializeField] private Tabuleiro tabuleiro = new Tabuleiro();
-        private Jogador[] jogadores;
+        [SerializeField] private Jogador[] jogadores;
+        private BaralhoDeCartas baralhoTerritorios;
+        public BaralhoDeCartas BaralhoDeTerritorios { get => baralhoTerritorios; }
 
+        // #if UNITY_EDITOR
         void Start()
         {
             tabuleiro?.Inicializa();
@@ -31,6 +34,23 @@ namespace FormigaWar.Jogadores
             // fim da sessão de testes, cuidado com o que apaga abaixo
 
             TurnoManager.InicializarManager(jogadores);
+        }
+
+        // #endif
+        public void Inicializa(Jogador[] jogadores)
+        {
+            this.jogadores = jogadores;
+            tabuleiro?.Inicializa();
+            InicializaBaralhoComTabuleiro();
+            DistribuiTerritorios();
+        }
+        private void InicializaBaralhoComTabuleiro()
+        {
+            baralhoTerritorios = new BaralhoDeCartas();
+            List<Territorio> territorioLista = new List<Territorio>();
+            foreach (Continente continente in tabuleiro.Continentes)
+                territorioLista.AddRange(continente.GetTerritorios());
+            baralhoTerritorios.Inicializar(territorioLista);
         }
         public void DistribuiTerritorios()
         {
