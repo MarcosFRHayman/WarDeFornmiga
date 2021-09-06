@@ -10,8 +10,8 @@ namespace FormigaWar
     {
 
         [SerializeField] private Text tnum;
-        public TerritorioDisplay t_invoker = null; // primeiro territorio clicado, para fase de movimentacao eh de onde saem as tropas
-        [SerializeField] private TerritorioDisplay t_invoker2 = null;
+        public TerritorioDisplay tdSaida = null; // primeiro territorio clicado, para fase de movimentacao eh de onde saem as tropas
+        [SerializeField] private TerritorioDisplay tdChegada = null;
         [SerializeField] private GameObject panel;
 
         // botoes de incremento e decremento
@@ -38,8 +38,12 @@ namespace FormigaWar
         }
         void AtualizaNumTxt()
         {
-            if (t_invoker == null) return;
-            tnum.text = number.ToString() + " / " + (t_invoker.NumTropas - 1).ToString();
+            if (tdSaida == null)
+            {
+                Debug.Log("tdSaida = null");
+                return;
+            }
+            tnum.text = number.ToString() + " / " + (tdSaida.NumTropas - 1).ToString();
         }
         void BtnMenosOnClick()
         {
@@ -49,44 +53,58 @@ namespace FormigaWar
         }
         void BtnMaisOnClick()
         {
-            if (number >= (t_invoker.NumTropas - 1)) return;
+            if (number >= (tdSaida.NumTropas - 1)) return;
             number++;
             AtualizaNumTxt();
         }
         void BtnConfirmaOnClick()
         {
-            if (t_invoker == null) return; // cheque de sanidade, ele foi chamado mas n�o foi dada tropas
-
-            if (t_invoker2 == null) // se não tiver um segundo territorio no bagulho, eh pq isso esta sendo usado pela fase de fortificacao
+            if (tdSaida == null) return; // cheque de sanidade, ele foi chamado mas n�o foi dado territorio
+            switch(TurnoManager.faseAtual)
             {
-                t_invoker.NumTropas += number;
-                return;
+                case 0:  // fase de fortificacao continental
+                    tdSaida.NumTropas += number;
+                break;
+                case 1:  // fase de fortificacao
+                    tdSaida.NumTropas += number;
+                break;
+                case 2:  // fase de ataque
+                    tdSaida.NumTropas -= number;
+                    tdSaida.AtualizarNumTropas();
+                    tdChegada.NumTropas += number;
+                    tdChegada.AtualizarNumTropas();
+                    tdChegada = null;
+                break;
+                case 3:  // fase de movimentacao
+                    tdSaida.NumTropas -= number;
+                    tdSaida.AtualizarNumTropas();
+                    tdChegada.numtropas_to_move += number;
+                    tdChegada.AtualizarNumTropas();
+                    tdChegada = null;
+                break;
+                default: // deu erro
+                break;
             }
-            t_invoker.NumTropas -= number;
-            t_invoker.AtualizarNumTropas();
-            t_invoker2.numtropas_to_move += number;// talvez seja mudado depois, mas para testes isso vai dar
-            t_invoker2.AtualizarNumTropas();
-            t_invoker2 = null;
             number = 0;
             panel.SetActive(false);
         }
         void BtnCancelaOnClick()
         {
             //t_invoker.AtualizaEstado("normal");
-            t_invoker2 = null;
+            tdChegada = null;
             number = 0;
             panel.SetActive(false);
         }
         public void AbrirSeletor(TerritorioDisplay t_invoker) // usado pelo territorio quando ele eh selecionado
         {
-            this.t_invoker2 = t_invoker;
+            this.tdChegada = t_invoker;
             AtualizaNumTxt();
             panel.SetActive(true);
         }
         public void FecharSeletor() // usado pelo territorio quando ele eh deselecionado
         {
-            t_invoker = null;
-            t_invoker2 = null;
+            tdSaida = null;
+            tdChegada = null;
             number = 0;
             panel.SetActive(false);
         }

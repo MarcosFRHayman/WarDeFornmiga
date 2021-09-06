@@ -39,6 +39,18 @@ namespace FormigaWar
                 else
                 {
                     // depois de rolado, o mesmo botao fecha e prossegue com o jogo
+                    bool ganhou = true; // nao precisa usar esse if
+                    if(ganhou)
+                    {
+                        tdDefensor.ConquistaTerritorio(TurnoManager.GetJogadorDaVez());
+                        
+                        st.tdSaida = tdAtacante;
+                        st.AbrirSeletor(tdDefensor);
+                    }
+                    else
+                    {
+
+                    }
                     tdAtacante = null;
                     tdDefensor = null;
                     panel.SetActive(false);
@@ -48,9 +60,16 @@ namespace FormigaWar
 
             public void AbrirRolador(TerritorioDisplay t)
             {
-                tdDefensor = t;
-                panel.SetActive(true);
-                btnConfirmaText.text = "Rolar";                
+                if(tdAtacante.NumTropas == 1)
+                {
+                    Debug.Log("Não se pode atacar com um exercito no territorio");
+                }
+                else
+                {
+                    tdDefensor = t;
+                    panel.SetActive(true);
+                    btnConfirmaText.text = "Rolar";                
+                }
             }
 
     }

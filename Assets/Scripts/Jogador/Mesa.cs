@@ -23,7 +23,12 @@ namespace FormigaWar.Jogadores
             j.Territorios.Add(tabuleiro.TerritoriosInstanciados[2]);
             j.Territorios.Add(tabuleiro.TerritoriosInstanciados[3]);
             j.Territorios.Add(tabuleiro.TerritoriosInstanciados[4]);
+            List<TerritorioDisplay> jTerritorios = new List<TerritorioDisplay>(); 
             foreach(TerritorioDisplay t in j.Territorios)
+            {
+                jTerritorios.Add(t);
+            }
+            foreach(TerritorioDisplay t in jTerritorios)
             {
                 t.ConquistaTerritorio(j);
             }

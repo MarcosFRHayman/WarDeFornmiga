@@ -139,4 +139,13 @@ public class Tabuleiro // TODO : Separar os dados desta classe para uma outra cl
     {
 
     }
+
+    public void AplicarMovimento() // feito para aplicar a movimentação da fase de movimentos
+    {
+        foreach(TerritorioDisplay t in territoriosInstanciados)
+        {
+            t.NumTropas += t.numtropas_to_move;
+            t.numtropas_to_move = 0;
+        }
+    }
 }

@@ -18,9 +18,12 @@ namespace FormigaWar
 
         private void Taskavanca()
         {
+            //if(TurnoManager.faseAtual == 2)Invoke(acabaMovimento);
             TurnoManager.faseAtual += 1;
             if (TurnoManager.faseAtual>=4)
             {
+                
+                
                 TurnoManager.faseAtual = 0;
                 TurnoManager.jogadorDaVez += 1;
                 //Debug.Log("final!!!!!!");
@@ -31,8 +34,8 @@ namespace FormigaWar
                     TurnoManager.jogadorDaVez = 0;
                 }
             }
-            Debug.Log(TurnoManager.faseAtual);
-            Debug.Log(TurnoManager.jogadorDaVez);
+            //Debug.Log(TurnoManager.jogadorDaVez);
+            //Debug.Log(TurnoManager.faseAtual);
         }
     }
 }
