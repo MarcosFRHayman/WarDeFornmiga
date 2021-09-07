@@ -40,7 +40,7 @@ namespace FormigaWar
         {
             if (tdSaida == null)
             {
-                Debug.Log("tdSaida = null");
+                //Debug.Log("tdSaida = null");
                 return;
             }
             tnum.text = number.ToString() + " / " + (tdSaida.NumTropas - 1).ToString();

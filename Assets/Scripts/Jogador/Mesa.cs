@@ -14,6 +14,7 @@ namespace FormigaWar.Jogadores
         void Start()
         {
             tabuleiro?.Inicializa();
+            TurnoManager.tabuleiro = tabuleiro; // o turnomanager precisa do tabuleiro para aplicar o movimento nas tropas
             
             // essa parte toda aqui é de testes, pode comentar ou deletar caso nao esteja na branch 2.3
             Jogador j = new JogadorHumano();

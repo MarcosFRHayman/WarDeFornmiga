@@ -18,7 +18,7 @@ namespace FormigaWar
 
         private void Taskavanca()
         {
-            //if(TurnoManager.faseAtual == 2)Invoke(acabaMovimento);
+            TurnoManager.AvancarTurno();
             TurnoManager.faseAtual += 1;
             if (TurnoManager.faseAtual>=4)
             {

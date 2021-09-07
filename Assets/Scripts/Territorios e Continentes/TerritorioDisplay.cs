@@ -34,20 +34,11 @@ namespace FormigaWar.Territorios
         }
         public Estado estado = Estado.Normal;
 
-        // eventos
-        public UnityEvent acabaMovimento = new UnityEvent();
-
         void Start()
         {
             seletorTropas = GameObject.Find("Canvas").GetComponent<SeletorTropas>();
             roladorDeDados = GameObject.Find("Canvas").GetComponent<RoladorDeDados>();
             numtropas_txt.text = numtropas.ToString();
-            acabaMovimento.AddListener(acabaMovimentoMetodo);
-        }
-
-        void acabaMovimentoMetodo()
-        {
-            Tabuleiro.AplicarMovimento();
         }
 
         public void AtualizarNumTropas() => numtropas_txt.text = (numtropas + numtropas_to_move).ToString();
