@@ -20,7 +20,7 @@ namespace FormigaWar
             public TerritorioDisplay tdAtacante;
             public TerritorioDisplay tdDefensor;
 
-            // Demais atributos
+            // Demais atributos--
 
             void Start()
             {
@@ -30,34 +30,80 @@ namespace FormigaWar
 
             void BtnConfirma()
             {
-                
-                if(btnConfirmaText.text == "Rolar")
+            List<int> dadosatacantes = new List<int>();
+            List<int> dadosdefensores = new List<int>();
+            int somatorio = 0;
+            if(btnConfirmaText.text == "Rolar")
+            {
+                while(somatorio < 3)
                 {
-                    // fazer a parte de rolador aqui   
-                    btnConfirmaText.text = "Fechar";
+                    if ((tdAtacante.NumTropas - 1) >= ( somatorio+1))
+                    {
+                    dadosatacantes.Add(Random.Range(1,6));
+                    dadosatacantes.Sort();
+                    }
+
+                    if ((tdDefensor.NumTropas - 1) >= somatorio)
+                    {
+                    dadosdefensores.Add(Random.Range(1, 6));
+                    dadosdefensores.Sort();
+                    }
+                    somatorio += 1;
+                }
+                dadosatacantes.Reverse();
+                dadosdefensores.Reverse();
+                if (dadosatacantes.Count <= dadosdefensores.Count)
+                {   
+                    for(int i = 0; i<dadosatacantes.Count; i++)
+                    {
+                        if (dadosatacantes[i] > dadosdefensores[i])
+                        {
+                            tdDefensor.NumTropas -= 1;
+                        }
+                        else
+                        {
+                            tdAtacante.NumTropas -= 1;
+                        }
+                    }
                 }
                 else
                 {
-                    // depois de rolado, o mesmo botao fecha e prossegue com o jogo
-                    bool ganhou = true; // nao precisa usar esse if
-                    if(ganhou)
-                    {
-                        tdDefensor.ConquistaTerritorio(TurnoManager.GetJogadorDaVez());
-                        
-                        st.tdSaida = tdAtacante;
-                        st.AbrirSeletor(tdDefensor);
+                    for (int i = 0; i < dadosdefensores.Count; i++)
+                        {
+                        if (dadosatacantes[i] > dadosdefensores[i])
+                        {
+                            tdDefensor.NumTropas -= 1;
+                        }
                     }
-                    else
-                    {
-
-                    }
-                    tdAtacante = null;
-                    tdDefensor = null;
-                    panel.SetActive(false);
                 }
+                if ((tdDefensor.NumTropas >= 0)||( tdAtacante.NumTropas == 1)){
+                    btnConfirmaText.text = "Fechar";
+                }
+                dadosatacantes.Clear();
+                dadosdefensores.Clear();
+            }
+            else
+            {
+                if(tdAtacante.NumTropas<=0)
+                {
+                    tdDefensor.ConquistaTerritorio(TurnoManager.GetJogadorDaVez());
+                        
+                    st.tdSaida = tdAtacante;
+                    st.AbrirSeletor(tdDefensor);
+                }
+                else
+                {
+
+                }
+                tdAtacante = null;
+                tdDefensor = null;
+                panel.SetActive(false);
+            }
                 
             }
 
+         
+            
             public void AbrirRolador(TerritorioDisplay t)
             {
                 if(tdAtacante.NumTropas == 1)
