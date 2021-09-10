@@ -54,22 +54,19 @@ namespace FormigaWar.Territorios
 
         public void AtualizaEstado(Estado novo_estado)
         {
+            estado = novo_estado;
             switch (novo_estado)
             {
-                case Estado.Normal:
-                    estado = novo_estado;
+                case Estado.Normal:                   
                     spriteEstado.color = Color.white;
                     break;
                 case Estado.Selecionado:
-                    estado = novo_estado;
                     spriteEstado.color = Color.yellow;
                     break;
                 case Estado.Selecionavel:
-                    estado = novo_estado;
                     spriteEstado.color = Color.magenta;
                     break;
                 case Estado.Indisponivel:
-                    estado = novo_estado;
                     spriteEstado.color = Color.gray;
                     break;
                 default:

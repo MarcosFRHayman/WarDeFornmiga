@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using FormigaWar.Territorios;
+using FormigaWar.Jogadores;
 
 namespace FormigaWar
 {
@@ -12,18 +13,17 @@ namespace FormigaWar
             // Atributos que apontam para outras classes
             public GameObject panel;
             public Button btnConfirma;
-            public Text btnConfirmaText;
-            private SeletorTropas st; // talvez seja desnecessario
+            public Text btnConfirmaText;     
+            private SeletorTropas st;
+            //private Mesa mesa; // talvez necessario pois ao dar merge na main baralhoDeTerritorios nao sera mais static
 
             // Atributos dos territorioDisplay manipulados
-
             public TerritorioDisplay tdAtacante;
             public TerritorioDisplay tdDefensor;
 
-            // Demais atributos--
-
             void Start()
             {
+                //mesa = GetComponent<Mesa>();
                 st = GetComponent<SeletorTropas>();
                 btnConfirma.onClick.AddListener(BtnConfirma);
             }
@@ -52,6 +52,10 @@ namespace FormigaWar
                 }
                 dadosatacantes.Reverse();
                 dadosdefensores.Reverse();
+
+                Debug.Log("Atacantes: "+ dadosatacantes[0].ToString() + " " + dadosatacantes[1].ToString() + " " + dadosatacantes[2].ToString());
+                Debug.Log("Defensores: "+ dadosdefensores[0].ToString());
+
                 if (dadosatacantes.Count <= dadosdefensores.Count)
                 {   
                     for(int i = 0; i<dadosatacantes.Count; i++)
@@ -76,7 +80,7 @@ namespace FormigaWar
                         }
                     }
                 }
-                if ((tdDefensor.NumTropas >= 0)||( tdAtacante.NumTropas == 1)){
+                if ((tdDefensor.NumTropas <= 0)||( tdAtacante.NumTropas == 1)){
                     btnConfirmaText.text = "Fechar";
                 }
                 dadosatacantes.Clear();
@@ -84,17 +88,33 @@ namespace FormigaWar
             }
             else
             {
-                if(tdAtacante.NumTropas<=0)
+                if(tdDefensor.NumTropas <= 0) // este eh o if que diz se ganhou ou nao
                 {
                     tdDefensor.ConquistaTerritorio(TurnoManager.GetJogadorDaVez());
-                        
+                    
+                    // Colocar carta no inventario do jogador caso possa
+                    /* Por enquanto, com um baralho de cartas vazio, isso da erro nos nossos testes.
+                    if(!TurnoManager.ConquistouUmTerritorio)
+                    {
+                        Carta c = BaralhoDeCartas.PuxarCarta();
+                        TurnoManager.GetJogadorDaVez().AddCarta(c);
+
+                        // esta flag abaixa quando BotaoDeAvancar passa o turno para o proximo jogador
+                        TurnoManager.ConquistouUmTerritorio = true;
+                    }
+                    */                  
+                    // Abrir o painel seletor de tropas
                     st.tdSaida = tdAtacante;
                     st.AbrirSeletor(tdDefensor);
+                    tdAtacante.AtualizaEstado(TerritorioDisplay.Estado.Normal);
+                    tdDefensor.AtualizaEstado(TerritorioDisplay.Estado.Normal);
                 }
                 else
                 {
-
+                    tdAtacante.AtualizaEstado(TerritorioDisplay.Estado.Normal);
+                    tdDefensor.AtualizaEstado(TerritorioDisplay.Estado.Indisponivel);
                 }
+
                 tdAtacante = null;
                 tdDefensor = null;
                 panel.SetActive(false);

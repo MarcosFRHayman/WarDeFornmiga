@@ -6,6 +6,7 @@ using FormigaWar.Jogadores;
 public static class TurnoManager
 {
     public static Tabuleiro tabuleiro;
+    public static bool ConquistouUmTerritorio;
     public enum Fase
     {
         FortificacaoContinental = 0,    // quando a fortificacao lhe restringe para botar as tropas do continente conquistado
