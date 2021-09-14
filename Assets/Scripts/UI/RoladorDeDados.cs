@@ -30,95 +30,108 @@ namespace FormigaWar
 
             void BtnConfirma()
             {
-            List<int> dadosatacantes = new List<int>();
-            List<int> dadosdefensores = new List<int>();
-            int somatorio = 0;
-            if(btnConfirmaText.text == "Rolar")
-            {
-                while(somatorio < 3)
+                List<int> dadosatacantes = new List<int>();
+                List<int> dadosdefensores = new List<int>();
+                int somatorio = 0;
+                if(btnConfirmaText.text == "Rolar")
                 {
-                    if ((tdAtacante.NumTropas - 1) >= ( somatorio+1))
+                    while(somatorio < 3)
                     {
-                    dadosatacantes.Add(Random.Range(1,6));
-                    dadosatacantes.Sort();
-                    }
-
-                    if ((tdDefensor.NumTropas - 1) >= somatorio)
-                    {
-                    dadosdefensores.Add(Random.Range(1, 6));
-                    dadosdefensores.Sort();
-                    }
-                    somatorio += 1;
-                }
-                dadosatacantes.Reverse();
-                dadosdefensores.Reverse();
-
-                Debug.Log("Atacantes: "+ dadosatacantes[0].ToString() + " " + dadosatacantes[1].ToString() + " " + dadosatacantes[2].ToString());
-                Debug.Log("Defensores: "+ dadosdefensores[0].ToString());
-
-                if (dadosatacantes.Count <= dadosdefensores.Count)
-                {   
-                    for(int i = 0; i<dadosatacantes.Count; i++)
-                    {
-                        if (dadosatacantes[i] > dadosdefensores[i])
+                        
+                        if ((tdAtacante.NumTropas - 1) >= ( somatorio+1))
                         {
-                            tdDefensor.NumTropas -= 1;
+                        dadosatacantes.Add(Random.Range(1,6));
+                        dadosatacantes.Sort();
                         }
-                        else
+
+                        if ((tdDefensor.NumTropas - 1) >= somatorio)
                         {
-                            tdAtacante.NumTropas -= 1;
+                        dadosdefensores.Add(Random.Range(1, 6));
+                        dadosdefensores.Sort();
+                        }
+                        somatorio += 1;
+                    }
+                    dadosatacantes.Reverse();
+                    dadosdefensores.Reverse();
+
+                    if (dadosatacantes.Count <= dadosdefensores.Count)
+                    {   
+                        for(int i = 0; i<dadosatacantes.Count; i++)
+                        {
+                            if (dadosatacantes[i] > dadosdefensores[i])
+                            {
+                                Debug.Log("Atacante Venceu");
+                                tdDefensor.NumTropas -= 1;
+                                tdDefensor.AtualizarNumTropas();
+                            }
+                            else
+                            {
+                                tdAtacante.NumTropas -= 1;
+                                tdAtacante.AtualizarNumTropas();
+                                Debug.Log("Atacante Perdeu, agora tem " + tdAtacante.NumTropas.ToString() + "Tropas");
+                            }
                         }
                     }
+                    else
+                    {
+                        for (int i = 0; i < dadosdefensores.Count; i++)
+                        {
+                            if (dadosatacantes[i] > dadosdefensores[i])
+                            {
+                                Debug.Log("Atacante Venceu");
+                                tdDefensor.NumTropas -= 1;
+                                tdDefensor.AtualizarNumTropas();
+                            }
+                            else
+                            {
+                                tdAtacante.NumTropas -= 1;
+                                tdAtacante.AtualizarNumTropas();
+                                Debug.Log("Atacante Perdeu, agora tem " + tdAtacante.NumTropas.ToString() + "Tropas");
+                            }
+                        }
+                    }
+                    if ((tdDefensor.NumTropas <= 0)||( tdAtacante.NumTropas == 1)){
+                        btnConfirmaText.text = "Fechar";
+                    }
+                    dadosatacantes.Clear();
+                    dadosdefensores.Clear();
                 }
                 else
                 {
-                    for (int i = 0; i < dadosdefensores.Count; i++)
-                        {
-                        if (dadosatacantes[i] > dadosdefensores[i])
-                        {
-                            tdDefensor.NumTropas -= 1;
-                        }
-                    }
-                }
-                if ((tdDefensor.NumTropas <= 0)||( tdAtacante.NumTropas == 1)){
-                    btnConfirmaText.text = "Fechar";
-                }
-                dadosatacantes.Clear();
-                dadosdefensores.Clear();
-            }
-            else
-            {
-                if(tdDefensor.NumTropas <= 0) // este eh o if que diz se ganhou ou nao
-                {
-                    tdDefensor.ConquistaTerritorio(TurnoManager.GetJogadorDaVez());
                     
-                    // Colocar carta no inventario do jogador caso possa
-                    /* Por enquanto, com um baralho de cartas vazio, isso da erro nos nossos testes.
-                    if(!TurnoManager.ConquistouUmTerritorio)
+                    if(tdDefensor.NumTropas <= 0) // este eh o if que diz se ganhou ou nao
                     {
-                        Carta c = BaralhoDeCartas.PuxarCarta();
-                        TurnoManager.GetJogadorDaVez().AddCarta(c);
+                        tdDefensor.ConquistaTerritorio(TurnoManager.GetJogadorDaVez());
+                        
+                        // Colocar carta no inventario do jogador caso possa
+                        /* Por enquanto, com um baralho de cartas vazio, isso da erro nos nossos testes.
+                        if(!TurnoManager.ConquistouUmTerritorio)
+                        {
+                            Carta c = BaralhoDeCartas.PuxarCarta();
+                            TurnoManager.GetJogadorDaVez().AddCarta(c);
 
-                        // esta flag abaixa quando BotaoDeAvancar passa o turno para o proximo jogador
-                        TurnoManager.ConquistouUmTerritorio = true;
+                            // esta flag abaixa quando BotaoDeAvancar passa o turno para o proximo jogador
+                            TurnoManager.ConquistouUmTerritorio = true;
+                        }
+                        */                  
+                        // Abrir o painel seletor de tropas
+
+                        st.tdSaida = tdAtacante;
+                        st.AbrirSeletor(tdDefensor);
+                        tdAtacante.AtualizaEstado(TerritorioDisplay.Estado.Normal);
+                        tdDefensor.AtualizaEstado(TerritorioDisplay.Estado.Normal);
                     }
-                    */                  
-                    // Abrir o painel seletor de tropas
-                    st.tdSaida = tdAtacante;
-                    st.AbrirSeletor(tdDefensor);
-                    tdAtacante.AtualizaEstado(TerritorioDisplay.Estado.Normal);
-                    tdDefensor.AtualizaEstado(TerritorioDisplay.Estado.Normal);
-                }
-                else
-                {
-                    tdAtacante.AtualizaEstado(TerritorioDisplay.Estado.Normal);
-                    tdDefensor.AtualizaEstado(TerritorioDisplay.Estado.Indisponivel);
-                }
+                    else
+                    {
 
-                tdAtacante = null;
-                tdDefensor = null;
-                panel.SetActive(false);
-            }
+                        tdAtacante.AtualizaEstado(TerritorioDisplay.Estado.Normal);
+                        tdDefensor.AtualizaEstado(TerritorioDisplay.Estado.Indisponivel);
+                    }
+
+                    tdAtacante = null;
+                    tdDefensor = null;
+                    panel.SetActive(false);
+                }
                 
             }
 

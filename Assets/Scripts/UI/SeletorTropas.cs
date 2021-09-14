@@ -47,14 +47,38 @@ namespace FormigaWar
         }
         void BtnMenosOnClick()
         {
-            if (number <= 0) return;
-            number--;
+            switch(TurnoManager.faseAtual)
+            {
+                case 2: // ataque
+                    if (number <= 1) return;
+                    number--;
+                break;
+                case 3: // movimento
+                    if (number <= 0) return;
+                    number--;
+                break;
+                default:
+
+                break;
+            }
             AtualizaNumTxt();
         }
         void BtnMaisOnClick()
         {
-            if (number >= (tdSaida.NumTropas - 1)) return;
-            number++;
+            switch(TurnoManager.faseAtual)
+            {
+                case 2: // ataque
+                    if (number >= 3 || number >= tdSaida.NumTropas) return;
+                    number++;
+                break;
+                case 3: // movimento
+                    if (number >= tdSaida.NumTropas - 1) return;
+                    number++;
+                break;
+                default:
+
+                break;
+            }
             AtualizaNumTxt();
         }
         void BtnConfirmaOnClick()
@@ -99,6 +123,15 @@ namespace FormigaWar
         {
             this.tdChegada = t_invoker;
             AtualizaNumTxt();
+            
+            if(TurnoManager.faseAtual == 2)
+            {
+                number = 1;
+                AtualizaNumTxt();
+                btncancela.interactable = false;
+            }
+            else btncancela.interactable = true;
+
             panel.SetActive(true);
         }
         public void FecharSeletor() // usado pelo territorio quando ele eh deselecionado
