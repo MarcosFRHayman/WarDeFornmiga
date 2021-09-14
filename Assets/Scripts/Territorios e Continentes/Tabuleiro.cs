@@ -1,3 +1,4 @@
+using System.Linq;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -12,14 +13,11 @@ public class Tabuleiro // TODO : Separar os dados desta classe para uma outra cl
     [SerializeField] private GameObject territorioprefab;
     // [SerializeField] private SeletorTropas seletortropas;
     [SerializeField] private List<Continente> continentes = new List<Continente>(); // talvez tabuleiro guarde apenas os continentes?
-    [SerializeField] private List<TerritorioDisplay> territoriosInstanciados = new List<TerritorioDisplay>();
+    public Dictionary<Continente, List<TerritorioDisplay>> ContinentesDisplay { get; private set; }
+         = new Dictionary<Continente, List<TerritorioDisplay>>();
+    private List<TerritorioDisplay> territoriosInstanciados = new List<TerritorioDisplay>();
     public TerritorioDisplay[] TerritoriosInstanciados => territoriosInstanciados.ToArray();
     public Continente[] Continentes => continentes.ToArray();
-    // public void setSeletorDeTropasPelaPrimeiraVez(SeletorTropas seletor)
-    // {
-    //     if (seletortropas == null)
-    //         seletortropas = seletor;
-    // }
     public void Inicializa()
     {
         SpawnaTerritorios();
@@ -28,13 +26,12 @@ public class Tabuleiro // TODO : Separar os dados desta classe para uma outra cl
     {
         this.continentes = continentes;
         SpawnaTerritorios();
+        ContinentesDisplay =
+            territoriosInstanciados.GroupBy(k => k.Territorio.Continente, v => v)
+                .ToDictionary(k => k.Key, v => v.ToList());
+        territoriosInstanciados.GroupBy(k => k.Territorio.Continente, v => v)
+                .ToLookup(k => k.Key, v => v.ToList());
     }
-    // public Tabuleiro(SeletorTropas seletorDeTropas)
-    // {
-    //     setSeletorDeTropasPelaPrimeiraVez(seletorDeTropas);
-    //     InicializarTabuleiro();
-    //     InicializaBaralhoComTerritorios();
-    // }
 
 
     private void SpawnaTerritorios()
