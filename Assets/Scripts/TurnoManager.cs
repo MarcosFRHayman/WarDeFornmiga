@@ -5,6 +5,8 @@ using FormigaWar.Jogadores;
 
 public static class TurnoManager
 {
+    public static Tabuleiro tabuleiro;
+    public static bool ConquistouUmTerritorio;
     public enum Fase
     {
         FortificacaoContinental = 0,    // quando a fortificacao lhe restringe para botar as tropas do continente conquistado
@@ -15,7 +17,7 @@ public static class TurnoManager
 
     public static Jogador[] jogadoresNaMesa; // jogadores na mesa
     public static int jogadorDaVez = 0;
-    public static int faseAtual = 3;
+    public static int faseAtual = 0;
 
     public static void InicializarManager(Jogador[] j)
     {
@@ -24,7 +26,7 @@ public static class TurnoManager
 
     public static void AvancarTurno() // avanca o fase atual, se fase atual tiver em 4, pega o proximo jogador e faz fase atual 0
     {
-        
+        if (TurnoManager.faseAtual == 3) tabuleiro.AplicarMovimento();
     }
     public static Jogador GetJogadorDaVez() // Pega o jogador da vez como readonly
     {
