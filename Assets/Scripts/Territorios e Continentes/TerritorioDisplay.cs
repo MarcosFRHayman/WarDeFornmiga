@@ -16,7 +16,7 @@ namespace FormigaWar.Territorios
         [SerializeField] private TextMesh numtropas_txt;
         [SerializeField] private SpriteRenderer spriteEstado;
         [SerializeField] private SpriteRenderer spriteJogador; // segundo sprite com a cor do jogador
-        
+
         public Tabuleiro Tabuleiro { get; set; }
         [SerializeField] private int numtropas = 1; // numero atual de tropas
         public int numtropas_to_move = 0; // numero de tropas disponiveis para mover (importante para fase de movimento)
@@ -45,8 +45,8 @@ namespace FormigaWar.Territorios
 
         public void ConquistaTerritorio(Jogador j) // metodo usado quando na fase de ataque, alguem conquistar um territorio
         {
-            
-            if(jogador != null)jogador.Territorios.Remove(this);     // remove o territorio do antigo dono
+
+            if (jogador != null) jogador.Territorios.Remove(this);     // remove o territorio do antigo dono
             jogador = j;                                             // bota o jogador que o conquistou
             j.Territorios.Add(this);                                 // bota o territorio no jogador
             spriteJogador.color = j.Cor;                             // e bota a cor do territorio pra cor do exercito
@@ -57,7 +57,7 @@ namespace FormigaWar.Territorios
             estado = novo_estado;
             switch (novo_estado)
             {
-                case Estado.Normal:                   
+                case Estado.Normal:
                     spriteEstado.color = Color.white;
                     break;
                 case Estado.Selecionado:
@@ -80,12 +80,12 @@ namespace FormigaWar.Territorios
         {
             // de inicio esta eh a logica da fase de movimentacao
 
-            switch((int)TurnoManager.faseAtual)
+            switch ((int)TurnoManager.faseAtual)
             {
                 case 0: // fortificacao continental
-                break;
+                    break;
                 case 1: // fortificacao
-                break;
+                    break;
                 case 2: // ataque
                     switch (estado)
                     {
@@ -94,12 +94,12 @@ namespace FormigaWar.Territorios
                             Tabuleiro.NormalizarTerritoriosDoJogador(TurnoManager.GetJogadorDaVez());
                             roladorDeDados.tdAtacante = this;
                             AtualizaEstado(Estado.Selecionado);
-                            
-                            
+
+
                             for (int i = 0; i < fronteirasDisplay.Count; i++)
                             {
                                 TerritorioDisplay t = fronteirasDisplay[i];
-                                if(!TurnoManager.GetJogadorDaVez().Territorios.Contains(t))t.AtualizaEstado(Estado.Selecionavel);
+                                if (!TurnoManager.GetJogadorDaVez().Territorios.Contains(t)) t.AtualizaEstado(Estado.Selecionavel);
                             }
                             break;
                         case Estado.Selecionavel:
@@ -114,7 +114,7 @@ namespace FormigaWar.Territorios
                         case Estado.Indisponivel:
                             break;
                     }
-                break;
+                    break;
                 case 3: // movimentacao
                     switch (estado)
                     {
@@ -123,12 +123,12 @@ namespace FormigaWar.Territorios
                             Tabuleiro.NormalizarTerritoriosDoJogador(TurnoManager.GetJogadorDaVez());
                             seletorTropas.tdSaida = this;
                             AtualizaEstado(Estado.Selecionado);
-                            
-                            
+
+
                             for (int i = 0; i < fronteirasDisplay.Count; i++)
                             {
                                 TerritorioDisplay t = fronteirasDisplay[i];
-                                if(TurnoManager.GetJogadorDaVez().Territorios.Contains(t))t.AtualizaEstado(Estado.Selecionavel);
+                                if (TurnoManager.GetJogadorDaVez().Territorios.Contains(t)) t.AtualizaEstado(Estado.Selecionavel);
                             }
                             break;
                         case Estado.Selecionavel:
@@ -142,13 +142,13 @@ namespace FormigaWar.Territorios
                         case Estado.Indisponivel:
                             break;
                     }
-                break;
+                    break;
                 default:
-                break;
+                    break;
             }
-                
+
         }
-    
+
         void InteragirTerritorio()
         {
 

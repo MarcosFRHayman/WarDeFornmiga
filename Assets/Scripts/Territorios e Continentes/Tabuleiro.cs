@@ -14,6 +14,7 @@ public class Tabuleiro // TODO : Separar os dados desta classe para uma outra cl
     [SerializeField] private List<Continente> continentes = new List<Continente>(); // talvez tabuleiro guarde apenas os continentes?
     [SerializeField] private List<TerritorioDisplay> territoriosInstanciados = new List<TerritorioDisplay>();
     public TerritorioDisplay[] TerritoriosInstanciados => territoriosInstanciados.ToArray();
+    public Continente[] Continentes => continentes.ToArray();
     // public void setSeletorDeTropasPelaPrimeiraVez(SeletorTropas seletor)
     // {
     //     if (seletortropas == null)
@@ -22,13 +23,11 @@ public class Tabuleiro // TODO : Separar os dados desta classe para uma outra cl
     public void Inicializa()
     {
         SpawnaTerritorios();
-        InicializaBaralhoComTerritorios();
     }
     public void InicializaTabuleiro(List<Continente> continentes)
     {
         this.continentes = continentes;
         SpawnaTerritorios();
-        InicializaBaralhoComTerritorios();
     }
     // public Tabuleiro(SeletorTropas seletorDeTropas)
     // {
@@ -37,27 +36,20 @@ public class Tabuleiro // TODO : Separar os dados desta classe para uma outra cl
     //     InicializaBaralhoComTerritorios();
     // }
 
-    private void InicializaBaralhoComTerritorios()
-    {
-        List<Territorio> territorioLista = new List<Territorio>();
-        foreach (Continente continente in continentes)
-            territorioLista.AddRange(continente.GetTerritorios());
-        BaralhoDeCartas.Inicializar(territorioLista);
-    }
 
     private void SpawnaTerritorios()
     {
-        for(int i = 0; i < territoriosInstanciados.Count; i++)
+        for (int i = 0; i < territoriosInstanciados.Count; i++)
         {
             territoriosInstanciados[i].Tabuleiro = this;
             territoriosInstanciados[i].NumTropas = 1;
             territoriosInstanciados[i].AtualizarNumTropas();
         }
-        
+
         Continente c = continentes[0]; // foreach(Continente c in continentes)
         TerritorioDisplay td;
 
-        if(territoriosInstanciados.Count == 0)
+        if (territoriosInstanciados.Count == 0)
         {
             var obj = GameObject.Instantiate(territorioprefab, new Vector3(), Quaternion.identity);
             td = obj.GetComponent<TerritorioDisplay>();
@@ -69,12 +61,12 @@ public class Tabuleiro // TODO : Separar os dados desta classe para uma outra cl
         }
         else
         {
-            foreach(TerritorioDisplay t in territoriosInstanciados)
+            foreach (TerritorioDisplay t in territoriosInstanciados)
             {
                 SpawnaTerritoriosAux(t);
             }
             return;
-            
+
         }
     }
 
@@ -105,7 +97,7 @@ public class Tabuleiro // TODO : Separar os dados desta classe para uma outra cl
                 }
             }
 
-            if (jexiste)continue;
+            if (jexiste) continue;
 
             var obj = GameObject.Instantiate(territorioprefab, spawnpos, spawnrot);
             TerritorioDisplay td2 = obj.GetComponent<TerritorioDisplay>();
@@ -142,7 +134,7 @@ public class Tabuleiro // TODO : Separar os dados desta classe para uma outra cl
 
     public void AplicarMovimento() // feito para aplicar a movimentação da fase de movimentos
     {
-        foreach(TerritorioDisplay t in territoriosInstanciados)
+        foreach (TerritorioDisplay t in territoriosInstanciados)
         {
             t.NumTropas += t.numtropas_to_move;
             t.numtropas_to_move = 0;

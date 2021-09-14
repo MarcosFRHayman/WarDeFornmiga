@@ -47,67 +47,67 @@ namespace FormigaWar
         }
         void BtnMenosOnClick()
         {
-            switch(TurnoManager.faseAtual)
+            switch (TurnoManager.faseAtual)
             {
                 case 2: // ataque
                     if (number <= 1) return;
                     number--;
-                break;
+                    break;
                 case 3: // movimento
                     if (number <= 0) return;
                     number--;
-                break;
+                    break;
                 default:
 
-                break;
+                    break;
             }
             AtualizaNumTxt();
         }
         void BtnMaisOnClick()
         {
-            switch(TurnoManager.faseAtual)
+            switch (TurnoManager.faseAtual)
             {
                 case 2: // ataque
                     if (number >= 3 || number >= tdSaida.NumTropas) return;
                     number++;
-                break;
+                    break;
                 case 3: // movimento
                     if (number >= tdSaida.NumTropas - 1) return;
                     number++;
-                break;
+                    break;
                 default:
 
-                break;
+                    break;
             }
             AtualizaNumTxt();
         }
         void BtnConfirmaOnClick()
         {
             if (tdSaida == null) return; // cheque de sanidade, ele foi chamado mas n�o foi dado territorio
-            switch(TurnoManager.faseAtual)
+            switch (TurnoManager.faseAtual)
             {
                 case 0:  // fase de fortificacao continental
                     tdSaida.NumTropas += number;
-                break;
+                    break;
                 case 1:  // fase de fortificacao
                     tdSaida.NumTropas += number;
-                break;
+                    break;
                 case 2:  // fase de ataque
                     tdSaida.NumTropas -= number;
                     tdSaida.AtualizarNumTropas();
                     tdChegada.NumTropas += number;
                     tdChegada.AtualizarNumTropas();
                     tdChegada = null;
-                break;
+                    break;
                 case 3:  // fase de movimentacao
                     tdSaida.NumTropas -= number;
                     tdSaida.AtualizarNumTropas();
                     tdChegada.numtropas_to_move += number;
                     tdChegada.AtualizarNumTropas();
                     tdChegada = null;
-                break;
+                    break;
                 default: // deu erro
-                break;
+                    break;
             }
             number = 0;
             panel.SetActive(false);
@@ -123,8 +123,8 @@ namespace FormigaWar
         {
             this.tdChegada = t_invoker;
             AtualizaNumTxt();
-            
-            if(TurnoManager.faseAtual == 2)
+
+            if (TurnoManager.faseAtual == 2)
             {
                 number = 1;
                 AtualizaNumTxt();
