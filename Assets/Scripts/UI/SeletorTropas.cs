@@ -68,7 +68,7 @@ namespace FormigaWar
             switch (TurnoManager.faseAtual)
             {
                 case 2: // ataque
-                    if (number >= 3 || number >= tdSaida.NumTropas) return;
+                    if (number >= 3 || number >= tdSaida.NumTropas - 1) return;
                     number++;
                     break;
                 case 3: // movimento
