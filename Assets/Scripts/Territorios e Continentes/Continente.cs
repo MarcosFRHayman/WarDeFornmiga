@@ -9,6 +9,7 @@ namespace FormigaWar.Territorios
     {
         [SerializeField] private string nome;
         [SerializeField] private List<Territorio> territorios;
+        [SerializeField] private int TropaBonus; //qtd de tropas que o jogador recebe por ter o territorio conquistado
 
         public Continente(string nome, List<Territorio> territorios)
         {

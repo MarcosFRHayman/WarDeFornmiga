@@ -60,7 +60,7 @@ namespace FormigaWar
                         {
                             if (dadosatacantes[i] > dadosdefensores[i])
                             {
-                                Debug.Log("Atacante Venceu");
+                                //Debug.Log("Atacante Venceu");
                                 tdDefensor.NumTropas -= 1;
                                 tdDefensor.AtualizarNumTropas();
                             }
@@ -68,7 +68,7 @@ namespace FormigaWar
                             {
                                 tdAtacante.NumTropas -= 1;
                                 tdAtacante.AtualizarNumTropas();
-                                Debug.Log("Atacante Perdeu, agora tem " + tdAtacante.NumTropas.ToString() + "Tropas");
+                                //Debug.Log("Atacante Perdeu, agora tem " + tdAtacante.NumTropas.ToString() + "Tropas");
                             }
                         }
                     }
@@ -78,7 +78,7 @@ namespace FormigaWar
                         {
                             if (dadosatacantes[i] > dadosdefensores[i])
                             {
-                                Debug.Log("Atacante Venceu");
+                                //Debug.Log("Atacante Venceu");
                                 tdDefensor.NumTropas -= 1;
                                 tdDefensor.AtualizarNumTropas();
                             }
@@ -86,7 +86,7 @@ namespace FormigaWar
                             {
                                 tdAtacante.NumTropas -= 1;
                                 tdAtacante.AtualizarNumTropas();
-                                Debug.Log("Atacante Perdeu, agora tem " + tdAtacante.NumTropas.ToString() + "Tropas");
+                                //Debug.Log("Atacante Perdeu, agora tem " + tdAtacante.NumTropas.ToString() + "Tropas");
                             }
                         }
                     }

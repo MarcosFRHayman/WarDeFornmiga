@@ -83,6 +83,25 @@ namespace FormigaWar.Territorios
             switch ((int)TurnoManager.faseAtual)
             {
                 case 0: // fortificacao continental
+                    
+                    switch(estado)
+                    {
+                        case Estado.Normal:
+                            Tabuleiro.DeselecionarTodosTerritorios();
+                            Tabuleiro.NormalizarTerritoriosDoJogador(TurnoManager.GetJogadorDaVez());
+                            AtualizaEstado(Estado.Selecionado);
+                            seletorTropas.AbrirSeletor(this);
+                        break;
+                        case Estado.Selecionado:
+                            Tabuleiro.DeselecionarTodosTerritorios();
+                            Tabuleiro.NormalizarTerritoriosDoJogador(TurnoManager.GetJogadorDaVez());
+                            seletorTropas.FecharSeletor();
+                        break;
+                        default:
+                        
+                        break;
+                    }
+                    
                     break;
                 case 1: // fortificacao
                     break;
@@ -146,11 +165,6 @@ namespace FormigaWar.Territorios
                 default:
                     break;
             }
-
-        }
-
-        void InteragirTerritorio()
-        {
 
         }
     }
