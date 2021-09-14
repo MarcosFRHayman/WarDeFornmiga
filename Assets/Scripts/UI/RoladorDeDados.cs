@@ -15,7 +15,6 @@ namespace FormigaWar
             public Button btnConfirma;
             public Text btnConfirmaText;     
             private SeletorTropas st;
-            //private Mesa mesa; // talvez necessario pois ao dar merge na main baralhoDeTerritorios nao sera mais static
 
             // Atributos dos territorioDisplay manipulados
             public TerritorioDisplay tdAtacante;
@@ -23,7 +22,6 @@ namespace FormigaWar
 
             void Start()
             {
-                //mesa = GetComponent<Mesa>();
                 st = GetComponent<SeletorTropas>();
                 btnConfirma.onClick.AddListener(BtnConfirma);
             }
@@ -118,8 +116,10 @@ namespace FormigaWar
 
                         st.tdSaida = tdAtacante;
                         st.AbrirSeletor(tdDefensor);
-                        tdAtacante.AtualizaEstado(TerritorioDisplay.Estado.Normal);
-                        tdDefensor.AtualizaEstado(TerritorioDisplay.Estado.Normal);
+
+                        // mudar essa implementacao quando puder, ta feio
+                        tdAtacante.Tabuleiro.DeselecionarTodosTerritorios();
+                        tdAtacante.Tabuleiro.NormalizarTerritoriosDoJogador(TurnoManager.GetJogadorDaVez());
                     }
                     else
                     {

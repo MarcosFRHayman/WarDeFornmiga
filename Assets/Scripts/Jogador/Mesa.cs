@@ -21,26 +21,17 @@ namespace FormigaWar.Jogadores
             // essa parte toda aqui é de testes, pode comentar ou deletar caso nao esteja na branch 2.3
             Jogador j = new JogadorHumano();
             j.Cor = Color.cyan;
-            j.Territorios.Add(tabuleiro.TerritoriosInstanciados[0]);
-            j.Territorios.Add(tabuleiro.TerritoriosInstanciados[1]);
-            j.Territorios.Add(tabuleiro.TerritoriosInstanciados[2]);
-            j.Territorios.Add(tabuleiro.TerritoriosInstanciados[3]);
-            j.Territorios.Add(tabuleiro.TerritoriosInstanciados[4]);
-            List<TerritorioDisplay> jTerritorios = new List<TerritorioDisplay>();
-            foreach (TerritorioDisplay t in j.Territorios)
-            {
-                jTerritorios.Add(t);
-            }
-            foreach (TerritorioDisplay t in jTerritorios)
-            {
-                t.ConquistaTerritorio(j);
-            }
+
+            tabuleiro.TerritoriosInstanciados[0].ConquistaTerritorio(j);
+            tabuleiro.TerritoriosInstanciados[1].ConquistaTerritorio(j);
+            tabuleiro.TerritoriosInstanciados[2].ConquistaTerritorio(j);
+            tabuleiro.TerritoriosInstanciados[3].ConquistaTerritorio(j);
+            tabuleiro.TerritoriosInstanciados[4].ConquistaTerritorio(j);
+
             jogadores = new Jogador[1] { j };
             // fim da sessão de testes, cuidado com o que apaga abaixo
 
             TurnoManager.InicializarManager(jogadores);
-
-
         }
 
         // #endif

@@ -38,29 +38,19 @@ namespace FormigaWar
         }
         void AtualizaNumTxt()
         {
-            if (tdSaida == null)
+            if(TurnoManager.faseAtual < 2)
             {
-                //Debug.Log("tdSaida = null");
+                tnum.text = number.ToString() + " / " + TurnoManager.GetJogadorDaVez().reservas.ToString();
                 return;
             }
+            else if (tdSaida == null) return;
             tnum.text = number.ToString() + " / " + (tdSaida.NumTropas - 1).ToString();
+            
         }
         void BtnMenosOnClick()
         {
-            switch (TurnoManager.faseAtual)
-            {
-                case 2: // ataque
-                    if (number <= 1) return;
-                    number--;
-                    break;
-                case 3: // movimento
-                    if (number <= 0) return;
-                    number--;
-                    break;
-                default:
-
-                    break;
-            }
+            if(number <= 0)return;
+            number--;
             AtualizaNumTxt();
         }
         void BtnMaisOnClick()
@@ -75,22 +65,28 @@ namespace FormigaWar
                     if (number >= tdSaida.NumTropas - 1) return;
                     number++;
                     break;
-                default:
-
-                    break;
+                default: // fortificacao
+                    if(number >= TurnoManager.GetJogadorDaVez().reservas)return;
+                    number++;
+                break;
             }
             AtualizaNumTxt();
         }
         void BtnConfirmaOnClick()
         {
-            if (tdSaida == null) return; // cheque de sanidade, ele foi chamado mas n�o foi dado territorio
             switch (TurnoManager.faseAtual)
             {
                 case 0:  // fase de fortificacao continental
-                    tdSaida.NumTropas += number;
+                    tdChegada.NumTropas += number;
+                    TurnoManager.GetJogadorDaVez().reservas -= number;
+                    tdChegada.AtualizarNumTropas();
+                    FecharSeletor();
                     break;
                 case 1:  // fase de fortificacao
-                    tdSaida.NumTropas += number;
+                    tdChegada.NumTropas += number;
+                    TurnoManager.GetJogadorDaVez().reservas -= number;
+                    tdChegada.AtualizarNumTropas();
+                    FecharSeletor();
                     break;
                 case 2:  // fase de ataque
                     tdSaida.NumTropas -= number;
@@ -130,6 +126,7 @@ namespace FormigaWar
                 AtualizaNumTxt();
                 btncancela.interactable = false;
             }
+
             else btncancela.interactable = true;
 
             panel.SetActive(true);

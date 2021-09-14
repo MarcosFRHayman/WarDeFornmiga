@@ -20,6 +20,16 @@ namespace FormigaWar.Jogadores
             mao.Add(c);
         }
 
+        public void CalcularReservas()
+        {
+            foreach(TerritorioDisplay t in Territorios)
+            {
+                
+                //Debug.Log(t.Territorio);
+                reservas += 2; // TODO: Checar quantas tropas por territorio
+            }
+        }
+
 
     }
 }
