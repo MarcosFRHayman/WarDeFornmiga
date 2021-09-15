@@ -7,11 +7,12 @@ namespace FormigaWar.Jogadores
 {
     public class JogadorIA : Jogador
     {
+        private readonly int dificuldade;
         private ObjetivoBehaviour behaviour;
 
         public JogadorIA(Objetivo objetivo)
         {
-            behaviour = objetivo.behaviourFactory.criaBehaviour();
+            behaviour = objetivo.behaviourFactory.criaBehaviour(dificuldade);
         }
         public void JogaTurno() { }
     }

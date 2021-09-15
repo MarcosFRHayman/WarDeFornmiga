@@ -11,7 +11,7 @@ namespace FormigaWar
         {
         }
 
-        public override ObjetivoBehaviour criaBehaviour()
+        public override ObjetivoBehaviour criaBehaviour(int dificuldade)
         {
             return new ContinenteBehaviour((ObjetivoPorContinente)objetivo, 5);
         }

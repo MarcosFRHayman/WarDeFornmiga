@@ -10,9 +10,9 @@ namespace FormigaWar
         {
         }
 
-        public override ObjetivoBehaviour criaBehaviour()
+        public override ObjetivoBehaviour criaBehaviour(int dificuldade)
         {
-            throw new System.NotImplementedException();
+            return new TerritorioBehaviour((ObjetivoPorTerritorio)objetivo, dificuldade);
         }
     }
 }

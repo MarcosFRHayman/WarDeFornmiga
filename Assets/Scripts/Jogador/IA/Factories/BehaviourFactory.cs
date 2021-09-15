@@ -12,6 +12,6 @@ namespace FormigaWar
         {
             this.objetivo = objetivo;
         }
-        public abstract ObjetivoBehaviour criaBehaviour();
+        public abstract ObjetivoBehaviour criaBehaviour(int dificuldade);
     }
 }
