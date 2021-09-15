@@ -125,7 +125,7 @@ namespace FormigaWar
                     {
 
                         tdAtacante.AtualizaEstado(TerritorioDisplay.Estado.Normal);
-                        tdDefensor.AtualizaEstado(TerritorioDisplay.Estado.Indisponivel);
+                        tdDefensor.Tabuleiro.DeselecionarSelecionaveis();
                     }
 
                     tdAtacante = null;
