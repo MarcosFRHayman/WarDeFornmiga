@@ -32,7 +32,8 @@ namespace FormigaWar
                 btnConfirma.onClick.AddListener(BtnConfirma);
             }
 
-            void BtnConfirma()
+        [System.Obsolete]
+        void BtnConfirma()
             {
                 List<int> dadosatacantes = new List<int>();
                 List<int> dadosdefensores = new List<int>();
@@ -107,6 +108,26 @@ namespace FormigaWar
                     if ((tdDefensor.NumTropas <= 0)||( tdAtacante.NumTropas == 1)){
                         btnConfirmaText.text = "Fechar";
                     }
+                    GameObject temp;
+                    j = 2;
+                    while (j >-1)
+                    {
+                        if (DadoA.Count-1 <= (j))
+                        {
+                            temp = DadoA[j];
+                            DadoA.Remove(DadoA[j]);
+                            DestroyObject(temp, 500f);
+                        }
+                        if (DadoD.Count-1 <= (j))
+                        {
+                        temp = DadoD[j];
+                        DadoD.Remove(DadoD[j]);
+                        DestroyObject(temp, 500f);
+                        }
+                    j--;
+                    }
+                    DadoA.Clear();
+                    DadoD.Clear();
                     dadosatacantes.Clear();
                     dadosdefensores.Clear();
                 }
