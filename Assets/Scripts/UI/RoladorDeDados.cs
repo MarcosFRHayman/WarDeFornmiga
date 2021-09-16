@@ -65,7 +65,7 @@ namespace FormigaWar
                         }
                         if(dadosatacantes.Count >= j) {
                         DadoD.Add(Instantiate(Dadodef, new Vector3(posdef.x, posdef.y + (2.13f * j), posdef.z), valor(dadosdefensores[j])));
-                    }
+                        }
                     j++;
                     }
                     if (dadosatacantes.Count <= dadosdefensores.Count)
@@ -141,7 +141,7 @@ namespace FormigaWar
                     {
 
                         tdAtacante.AtualizaEstado(TerritorioDisplay.Estado.Normal);
-                        tdDefensor.Tabuleiro.DeselecionarSelecionaveis();
+                        tdDefensor.AtualizaEstado(TerritorioDisplay.Estado.Indisponivel);
                     }
 
                     tdAtacante = null;
