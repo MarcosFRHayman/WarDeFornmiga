@@ -32,7 +32,7 @@ namespace FormigaWar.Jogadores
             tabuleiro.TerritoriosInstanciados[7].ConquistaTerritorio(j);
             tabuleiro.TerritoriosInstanciados[8].ConquistaTerritorio(j);
 
-            j.continentes.Add(tabuleiro.Continentes[0]);
+            //j.continentes.Add(tabuleiro.Continentes[0]);
 
             jogadores = new Jogador[1] { j };
             // fim da sessão de testes, cuidado com o que apaga abaixo

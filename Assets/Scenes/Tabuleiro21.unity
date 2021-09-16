@@ -2393,6 +2393,14 @@ PrefabInstance:
       propertyPath: avancar
       value: 
       objectReference: {fileID: 199766541}
+    - target: {fileID: 6687355917500991903, guid: b571e1ec3ed3f214bac4b55936069e6c, type: 3}
+      propertyPath: Dadodef
+      value: 
+      objectReference: {fileID: 919132149155446097, guid: 41920b82313bc8c4dafeae0e535dd001, type: 3}
+    - target: {fileID: 6687355917500991903, guid: b571e1ec3ed3f214bac4b55936069e6c, type: 3}
+      propertyPath: Dadoataq
+      value: 
+      objectReference: {fileID: 919132149155446097, guid: d8cfd0ad53e2b4a4c84263851ca3b887, type: 3}
     - target: {fileID: 7094915063181658259, guid: b571e1ec3ed3f214bac4b55936069e6c, type: 3}
       propertyPath: m_FontData.m_BestFit
       value: 1

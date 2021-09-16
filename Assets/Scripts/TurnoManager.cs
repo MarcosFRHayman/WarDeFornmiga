@@ -68,7 +68,7 @@ public static class TurnoManager
             tabuleiro.DeselecionarTodosTerritorios();
             tabuleiro.NormalizarTerritoriosDoJogador(GetJogadorDaVez());
             GetJogadorDaVez().CalcularReservas();
-            Debug.Log("Avancando Fase");
+            //Debug.Log("Avancando Fase");
             return;
         }
         else

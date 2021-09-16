@@ -12,12 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d484a6bdcff6a145aaa10596ff8d8db, type: 3}
   m_Name: SO4
   m_EditorClassIdentifier: 
-  nome: 
+  nome: SO
   cartaTerritorio:
     simbolo: {fileID: 0}
   continente:
-    nome: 
+    nome: SO
     territorios: []
+    TropaBonus: 0
   fronteiras:
   - territorioA: {fileID: 11400000, guid: 14abc25c1f8bdc34389f473d485b90ac, type: 2}
     territorioB: {fileID: 11400000}
