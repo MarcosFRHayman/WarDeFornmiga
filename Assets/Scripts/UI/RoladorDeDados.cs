@@ -58,7 +58,6 @@ namespace FormigaWar
                     }
                     dadosatacantes.Reverse();
                     dadosdefensores.Reverse();
-                    /*
                     int j = 0;
                     while (j < 3)
                     {
@@ -70,7 +69,6 @@ namespace FormigaWar
                         }
                     j++;
                     }
-                    */
                     if (dadosatacantes.Count <= dadosdefensores.Count)
                     {   
                         for(int i = 0; i<dadosatacantes.Count; i++)
