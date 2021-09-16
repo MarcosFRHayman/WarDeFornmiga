@@ -4,11 +4,13 @@ using UnityEngine;
 using UnityEngine.UI;
 using FormigaWar;
 using FormigaWar.Jogadores;
+using FormigaWar.Territorios;
 
 public static class TurnoManager
 {
     public static Tabuleiro tabuleiro;
     public static BotaoDeAvancar bda;
+    public static DialogoMsg dialogoMsg;
     public static bool ConquistouUmTerritorio; // se o jogador da vez conquistou um territorio este turno
     public enum Fase
     {
@@ -46,15 +48,17 @@ public static class TurnoManager
         {
             TurnoManager.ConquistouUmTerritorio = false; // reseta a flag para cartas
             
-            TurnoManager.jogadorDaVez += 1; 
             TurnoManager.faseAtual = 0;
             TurnoManager.continenteAtual = -1;
-
+            
+            TurnoManager.jogadorDaVez += 1;
             if (TurnoManager.jogadorDaVez >= TurnoManager.jogadoresNaMesa.Length) // se este eh o ultimo jogador na mesa, volte para o primeiro
             {
                 TurnoManager.jogadorDaVez = 0;
                 AvancarContinente();
             }
+
+            MsgReservas();
         }
         bda.AtualizaTexto();
     }
@@ -67,16 +71,13 @@ public static class TurnoManager
             TurnoManager.faseAtual += 1;
             tabuleiro.DeselecionarTodosTerritorios();
             tabuleiro.NormalizarTerritoriosDoJogador(GetJogadorDaVez());
-            GetJogadorDaVez().CalcularReservas();
-            //Debug.Log("Avancando Fase");
+            GetJogadorDaVez().CalcularReservas(0);
             return;
         }
         else
         {
-            //Debug.Log("ContinenteAtual: " + continenteAtual + ", e: " + tabuleiro.Continentes[continenteAtual]);
-            //Debug.Log("Jogador da vez: " + jogadorDaVez);
             tabuleiro.DesabilitarContinentesMenosUm(tabuleiro.Continentes[continenteAtual]);
-            GetJogadorDaVez().reservas = tabuleiro.Continentes[continenteAtual].TropaBonus; 
+            GetJogadorDaVez().CalcularReservas(tabuleiro.Continentes[continenteAtual].TropaBonus); 
         } 
         if(!GetJogadorDaVez().continentes.Contains(tabuleiro.Continentes[continenteAtual]))AvancarContinente(); // se o jogador n conquistou o continente, pula pro proximo
         bda.AtualizaTexto();
@@ -84,6 +85,15 @@ public static class TurnoManager
     public static Jogador GetJogadorDaVez() // Pega o jogador da vez como readonly
     {
         return jogadoresNaMesa[jogadorDaVez];
+    }
+
+    private static void MsgReservas()
+    {
+        int c = GetJogadorDaVez().Territorios.Count;
+        string msg = "Você ganhou " + (int)c/2 + " tropas por ter " + c + " territórios. \n ";
+        if(GetJogadorDaVez().continentes.Count > 0) msg += "Além de mais";
+        foreach(Continente cont in GetJogadorDaVez().continentes)msg += cont.TropaBonus + " por conquistar " + cont.nome + "\n";
+        dialogoMsg.MostraDiag(msg);
     }
 
 }
