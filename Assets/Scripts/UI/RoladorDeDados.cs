@@ -32,146 +32,145 @@ namespace FormigaWar
                 btnConfirma.onClick.AddListener(BtnConfirma);
             }
         void BtnConfirma()
-            {
-                List<int> dadosatacantes = new List<int>();
-                List<int> dadosdefensores = new List<int>();
-                int somatorio = 0;
-                if(btnConfirmaText.text == "Rolar")
-                {
-                    while(somatorio < 3)
+        {
+            List<int> dadosatacantes = new List<int>();
+            List<int> dadosdefensores = new List<int>();
+            int somatorio = 0;
+            if(btnConfirmaText.text == "Rolar")
+            {   //Debug.Log("ENTREI NO IF");
+                while(somatorio < 3)
+                { //Debug.Log("ENTREI NO WHILE");
+                    
+                    if ((tdAtacante.NumTropas - 1) >= ( somatorio+1))
                     {
-                        
-                        if ((tdAtacante.NumTropas - 1) >= ( somatorio+1))
-                        {
-                        dadosatacantes.Add(Random.Range(1,6));
-                        dadosatacantes.Sort();
-                        }
+                    dadosatacantes.Add(Random.Range(1,6));
+                    dadosatacantes.Sort();
+                    }
 
-                        if ((tdDefensor.NumTropas - 1) >= somatorio)
-                        {
-                        dadosdefensores.Add(Random.Range(1, 6));
-                        dadosdefensores.Sort();
-                        }
-                        somatorio += 1;
-                    }
-                    dadosatacantes.Reverse();
-                    dadosdefensores.Reverse();
-                    int j = 0;
-                    GameObject temporario = Instantiate(Dadoataq,new Vector3 (posataq.x, posataq.y+(2.13f*j), posataq.z), valor(dadosatacantes[j]));
-                    while (j < 3)
+                    if ((tdDefensor.NumTropas - 1) >= somatorio)
                     {
-                        if (dadosdefensores.Count>= j) 
-                        {
-                            DadoA.Add(temporario);
-                        }
-                        if(dadosatacantes.Count >= j)
-                        {
-                            DadoD.Add(temporario);
-                        }
-                    j++;
+                    dadosdefensores.Add(Random.Range(1, 6));
+                    dadosdefensores.Sort();
                     }
-                    if (dadosatacantes.Count <= dadosdefensores.Count)
-                    {   
-                        for(int i = 0; i<dadosatacantes.Count; i++)
-                        {
-                            if (dadosatacantes[i] > dadosdefensores[i])
-                            {
-                                //Debug.Log("Atacante Venceu");
-                                tdDefensor.NumTropas -= 1;
-                                tdDefensor.AtualizarNumTropas();
-                            }
-                            else
-                            {
-                                tdAtacante.NumTropas -= 1;
-                                tdAtacante.AtualizarNumTropas();
-                                //Debug.Log("Atacante Perdeu, agora tem " + tdAtacante.NumTropas.ToString() + "Tropas");
-                            }
-                        }
+                    somatorio += 1;
+                } //Debug.Log("SAI NO WHILE");
+                dadosatacantes.Reverse();
+                dadosdefensores.Reverse();
+                int j = 0;
+                while (j < 3)
+                {Debug.Log("ENTREI NO WHILEJ");
+                    if (dadosdefensores.Count > j) 
+                    {   Debug.Log("DadoD.Add: " +dadosdefensores[j]);
+                        DadoD.Add(Instantiate(Dadodef,new Vector3 (posdef.x, posdef.y+(2.13f*j), posdef.z), valor(dadosdefensores[j])));
                     }
-                    else
+                    if(dadosatacantes.Count > j)
+                    {   Debug.Log("DadoA.Add: " +dadosatacantes[j]);
+                        DadoA.Add(Instantiate(Dadoataq,new Vector3 (posataq.x, posataq.y+(2.13f*j), posataq.z), valor(dadosatacantes[j])));
+                    }
+                j++;
+                }Debug.Log("SAI NO WHILEJ");
+                if (dadosatacantes.Count <= dadosdefensores.Count)
+                {   
+                    for(int i = 0; i<dadosatacantes.Count; i++)
                     {
-                        for (int i = 0; i < dadosdefensores.Count; i++)
+                        if (dadosatacantes[i] > dadosdefensores[i])
                         {
-                            if (dadosatacantes[i] > dadosdefensores[i])
-                            {
-                                //Debug.Log("Atacante Venceu");
-                                tdDefensor.NumTropas -= 1;
-                                tdDefensor.AtualizarNumTropas();
-                            }
-                            else
-                            {
-                                tdAtacante.NumTropas -= 1;
-                                tdAtacante.AtualizarNumTropas();
-                                //Debug.Log("Atacante Perdeu, agora tem " + tdAtacante.NumTropas.ToString() + "Tropas");
-                            }
+                            //Debug.Log("Atacante Venceu");
+                            tdDefensor.NumTropas -= 1;
+                            tdDefensor.AtualizarNumTropas();
+                        }
+                        else
+                        {
+                            tdAtacante.NumTropas -= 1;
+                            tdAtacante.AtualizarNumTropas();
+                            //Debug.Log("Atacante Perdeu, agora tem " + tdAtacante.NumTropas.ToString() + "Tropas");
                         }
                     }
-                    if ((tdDefensor.NumTropas <= 0)||( tdAtacante.NumTropas == 1)){
-                        btnConfirmaText.text = "Fechar";
-                    }
-                    GameObject temp;
-                    j = 2;
-                    while (j >-1)
+                }//Debug.Log("SAI DO FOR");}
+                else
+                {
+                    for (int i = 0; i < dadosdefensores.Count; i++)
                     {
-                        if (DadoA.Count-1 <= (j))
+                        if (dadosatacantes[i] > dadosdefensores[i])
                         {
-                            temp = DadoA[j];
-                            DadoA.Remove(DadoA[j]);
-                            DestroyObject(temp, 500f);
+                            //Debug.Log("Atacante Venceu");
+                            tdDefensor.NumTropas -= 1;
+                            tdDefensor.AtualizarNumTropas();
                         }
-                        if (DadoD.Count-1 <= (j))
+                        else
                         {
-                        temp = DadoD[j];
-                        DadoD.Remove(DadoD[j]);
-                        DestroyObject(temp, 500f);
+                            tdAtacante.NumTropas -= 1;
+                            tdAtacante.AtualizarNumTropas();
+                            //Debug.Log("Atacante Perdeu, agora tem " + tdAtacante.NumTropas.ToString() + "Tropas");
                         }
-                    j--;
                     }
-                    DadoA.Clear();
-                    DadoD.Clear();
-                    dadosatacantes.Clear();
-                    dadosdefensores.Clear();
+            }//Debug.Log("SAI DO FOR2");}
+                if ((tdDefensor.NumTropas <= 0)||( tdAtacante.NumTropas == 1)){
+                    btnConfirmaText.text = "Fechar";
+                }
+                GameObject temp;
+                j = 2;
+                while (j >-1)
+                {
+                    if (DadoA.Count-1 >= (j))
+                    {
+                        temp = DadoA[j];
+                        DadoA.Remove(DadoA[j]);
+                        DestroyObject(temp, 0.500f);
+                    }
+                    if (DadoD.Count-1 >= (j))
+                    {
+                    temp = DadoD[j];
+                    DadoD.Remove(DadoD[j]);
+                    DestroyObject(temp, 0.500f);
+                    }
+                j--;
+                }
+                DadoA.Clear();
+                DadoD.Clear();
+                dadosatacantes.Clear();
+                dadosdefensores.Clear();
+            } 
+            else
+            {
+                
+                if(tdDefensor.NumTropas <= 0) // este eh o if que diz se ganhou ou nao
+                {
+                    tdDefensor.ConquistaTerritorio(TurnoManager.GetJogadorDaVez());
+                    
+                    // Colocar carta no inventario do jogador caso possa
+                    /* Por enquanto, com um baralho de cartas vazio, isso da erro nos nossos testes.
+                    if(!TurnoManager.ConquistouUmTerritorio)
+                    {
+                        Carta c = BaralhoDeCartas.PuxarCarta();
+                        TurnoManager.GetJogadorDaVez().AddCarta(c);
+
+                        // esta flag abaixa quando BotaoDeAvancar passa o turno para o proximo jogador
+                        TurnoManager.ConquistouUmTerritorio = true;
+                    }
+                    */                  
+                    // Abrir o painel seletor de tropas
+
+                    st.tdSaida = tdAtacante;
+                    st.AbrirSeletor(tdDefensor);
+
+                    // mudar essa implementacao quando puder, ta feio
+                    tdAtacante.Tabuleiro.DeselecionarTodosTerritorios();
+                    tdAtacante.Tabuleiro.NormalizarTerritoriosDoJogador(TurnoManager.GetJogadorDaVez());
                 }
                 else
                 {
-                    
-                    if(tdDefensor.NumTropas <= 0) // este eh o if que diz se ganhou ou nao
-                    {
-                        tdDefensor.ConquistaTerritorio(TurnoManager.GetJogadorDaVez());
-                        
-                        // Colocar carta no inventario do jogador caso possa
-                        /* Por enquanto, com um baralho de cartas vazio, isso da erro nos nossos testes.
-                        if(!TurnoManager.ConquistouUmTerritorio)
-                        {
-                            Carta c = BaralhoDeCartas.PuxarCarta();
-                            TurnoManager.GetJogadorDaVez().AddCarta(c);
 
-                            // esta flag abaixa quando BotaoDeAvancar passa o turno para o proximo jogador
-                            TurnoManager.ConquistouUmTerritorio = true;
-                        }
-                        */                  
-                        // Abrir o painel seletor de tropas
-
-                        st.tdSaida = tdAtacante;
-                        st.AbrirSeletor(tdDefensor);
-
-                        // mudar essa implementacao quando puder, ta feio
-                        tdAtacante.Tabuleiro.DeselecionarTodosTerritorios();
-                        tdAtacante.Tabuleiro.NormalizarTerritoriosDoJogador(TurnoManager.GetJogadorDaVez());
-                    }
-                    else
-                    {
-
-                        tdAtacante.AtualizaEstado(TerritorioDisplay.Estado.Normal);
-                        tdDefensor.AtualizaEstado(TerritorioDisplay.Estado.Indisponivel);
-                    }
-
-                    tdAtacante = null;
-                    tdDefensor = null;
-                    panel.SetActive(false);
+                    tdAtacante.AtualizaEstado(TerritorioDisplay.Estado.Normal);
+                    tdDefensor.AtualizaEstado(TerritorioDisplay.Estado.Indisponivel);
                 }
-                
+
+                tdAtacante = null;
+                tdDefensor = null;
+                panel.SetActive(false);
             }
+            
+        }
 
          
             private Quaternion valor(int i)

@@ -68,12 +68,12 @@ namespace FormigaWar.Territorios
             foreach(TerritorioDisplay t in j.Territorios)
             {
                 if(ccheck.GetTerritorios().Contains(t.Territorio))count -= 1;    
-                Debug.Log("Checando se jogador tem todos os territorios do continente "+ cnome + " ele tem " + count + " de " + ccheck.GetTerritorios().Count);
+                //Debug.Log("Checando se jogador tem todos os territorios do continente "+ cnome + " ele tem " + count + " de " + ccheck.GetTerritorios().Count);
             }
-            Debug.Log("Contagem final:" + count + " se igual a 0, territorio devia estar colocado");
+            //Debug.Log("Contagem final:" + count + " se igual a 0, territorio devia estar colocado");
             if(count == 0)j.continentes.Add(ccheck);
 
-            foreach(Continente c in j.continentes)Debug.Log("Continentes do Jogador: "+ c.nome);
+            //foreach(Continente c in j.continentes)Debug.Log("Continentes do Jogador: "+ c.nome);
                         
         }
 
