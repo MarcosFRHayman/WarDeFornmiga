@@ -17,8 +17,8 @@ namespace FormigaWar
             private SeletorTropas st;
             public GameObject Dadodef;
             public GameObject Dadoataq;
-            private List<GameObject> DadoA;
-            private List<GameObject> DadoD;
+            private List<GameObject> DadoA = new List<GameObject>();
+            private List<GameObject> DadoD = new List<GameObject>();
             private Vector3 posdef = new Vector3(-10.3299999f, -3.6500001f, 0);
             private Vector3 posataq = new  Vector3(-10.3299999f, -1.22000003f, 0);
 
@@ -31,8 +31,6 @@ namespace FormigaWar
                 st = GetComponent<SeletorTropas>();
                 btnConfirma.onClick.AddListener(BtnConfirma);
             }
-
-        [System.Obsolete]
         void BtnConfirma()
             {
                 List<int> dadosatacantes = new List<int>();
@@ -59,13 +57,16 @@ namespace FormigaWar
                     dadosatacantes.Reverse();
                     dadosdefensores.Reverse();
                     int j = 0;
+                    GameObject temporario = Instantiate(Dadoataq,new Vector3 (posataq.x, posataq.y+(2.13f*j), posataq.z), valor(dadosatacantes[j]));
                     while (j < 3)
                     {
-                        if (dadosatacantes.Count>= j) {
-                        DadoA.Add(Instantiate(Dadoataq,new Vector3 (posataq.x, posataq.y+(2.13f*j), posataq.z),valor(dadosatacantes[j])));
+                        if (dadosdefensores.Count>= j) 
+                        {
+                            DadoA.Add(temporario);
                         }
-                        if(dadosatacantes.Count >= j) {
-                        DadoD.Add(Instantiate(Dadodef, new Vector3(posdef.x, posdef.y + (2.13f * j), posdef.z), valor(dadosdefensores[j])));
+                        if(dadosatacantes.Count >= j)
+                        {
+                            DadoD.Add(temporario);
                         }
                     j++;
                     }
