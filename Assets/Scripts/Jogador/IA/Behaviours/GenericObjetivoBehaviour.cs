@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using FormigaWar.Territorios;
 using UnityEngine;
 
-namespace FormigaWar
+namespace FormigaWar.Jogadores.IA
 {
     public abstract class GenericObjetivoBehaviour<T> : ObjetivoBehaviour where T : Objetivo
     {

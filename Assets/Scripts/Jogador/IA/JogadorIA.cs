@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace FormigaWar.Jogadores
+namespace FormigaWar.Jogadores.IA
 {
     public class JogadorIA : Jogador
     {

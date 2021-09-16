@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace FormigaWar
+namespace FormigaWar.Jogadores.IA
 {
     public class TerritoriosBehaviourFactory : BehaviourFactory
     {

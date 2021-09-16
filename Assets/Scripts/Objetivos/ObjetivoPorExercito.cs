@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using FormigaWar.Territorios;
 using FormigaWar.Jogadores;
+using FormigaWar.Jogadores.IA;
 
 
 namespace FormigaWar
