@@ -46,10 +46,35 @@ namespace FormigaWar.Territorios
         public void ConquistaTerritorio(Jogador j) // metodo usado quando na fase de ataque, alguem conquistar um territorio
         {
 
-            if (jogador != null) jogador.Territorios.Remove(this);     // remove o territorio do antigo dono
+            if (jogador != null)
+            {
+                jogador.Territorios.Remove(this);                               // remove o territorio do antigo dono
+                if(jogador.continentes.Contains(this.Territorio.Continente))    // se o continente era conquistado,
+                    jogador.continentes.Remove(this.Territorio.Continente);     // agora nao eh mais
+            } 
             jogador = j;                                             // bota o jogador que o conquistou
             j.Territorios.Add(this);                                 // bota o territorio no jogador
             spriteJogador.color = j.Cor;                             // e bota a cor do territorio pra cor do exercito
+
+            // checar se o continente foi conquistado ao todo
+            
+            string cnome = this.Territorio.Continente.nome;
+            Continente ccheck = null;
+            
+            foreach(Continente c in Tabuleiro.Continentes)if(cnome == c.nome){ccheck = c; break;}
+            if(ccheck == null)return;
+
+            int count = ccheck.GetTerritorios().Count;
+            foreach(TerritorioDisplay t in j.Territorios)
+            {
+                if(ccheck.GetTerritorios().Contains(t.Territorio))count -= 1;    
+                //Debug.Log("Checando se jogador tem todos os territorios do continente "+ cnome + " ele tem " + count + " de " + ccheck.GetTerritorios().Count);
+            }
+            //Debug.Log("Contagem final:" + count + " se igual a 0, territorio devia estar colocado");
+            if(count == 0)j.continentes.Add(ccheck);
+
+            //foreach(Continente c in j.continentes)Debug.Log("Continentes do Jogador: "+ c.nome);
+                        
         }
 
         public void AtualizaEstado(Estado novo_estado)
@@ -83,8 +108,45 @@ namespace FormigaWar.Territorios
             switch ((int)TurnoManager.faseAtual)
             {
                 case 0: // fortificacao continental
+                    
+                    switch(estado)
+                    {
+                        case Estado.Normal:
+                            Tabuleiro.DeselecionarTodosTerritorios();
+                            Tabuleiro.NormalizarTerritoriosDoJogador(TurnoManager.GetJogadorDaVez());
+                            AtualizaEstado(Estado.Selecionado);
+                            seletorTropas.AbrirSeletor(this);
+                        break;
+                        case Estado.Selecionado:
+                            Tabuleiro.DeselecionarTodosTerritorios();
+                            Tabuleiro.NormalizarTerritoriosDoJogador(TurnoManager.GetJogadorDaVez());
+                            seletorTropas.FecharSeletor();
+                        break;
+                        default:
+                        
+                        break;
+                    }
+                    
                     break;
                 case 1: // fortificacao
+
+                    switch(estado)
+                    {
+                        case Estado.Normal:
+                            Tabuleiro.DeselecionarTodosTerritorios();
+                            Tabuleiro.NormalizarTerritoriosDoJogador(TurnoManager.GetJogadorDaVez());
+                            AtualizaEstado(Estado.Selecionado);
+                            seletorTropas.AbrirSeletor(this);
+                        break;
+                        case Estado.Selecionado:
+                            Tabuleiro.DeselecionarTodosTerritorios();
+                            Tabuleiro.NormalizarTerritoriosDoJogador(TurnoManager.GetJogadorDaVez());
+                            seletorTropas.FecharSeletor();
+                        break;
+                        default:
+                        
+                        break;
+                    }
                     break;
                 case 2: // ataque
                     switch (estado)
@@ -146,11 +208,6 @@ namespace FormigaWar.Territorios
                 default:
                     break;
             }
-
-        }
-
-        void InteragirTerritorio()
-        {
 
         }
     }

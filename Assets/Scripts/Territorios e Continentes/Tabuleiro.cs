@@ -127,9 +127,22 @@ public class Tabuleiro // TODO : Separar os dados desta classe para uma outra cl
         }
     }
 
-    public void DesabilitarContinentesMenosUm(Continente c) // para fase de fortificacao, quando o jogador tiver conquistado um continente
+    public void DesabilitarContinentesMenosUm(Continente c) // para fase de fortificacao, compara os nomes.
     {
+        foreach(TerritorioDisplay t in territoriosInstanciados)
+        {
+            //Debug.Log(t.Territorio.Continente.nome +" vs "+ c.nome);
+            if(t.Territorio.Continente.nome == c.nome)t.AtualizaEstado(TerritorioDisplay.Estado.Normal);
+            else t.AtualizaEstado(TerritorioDisplay.Estado.Indisponivel);
+        }
+    }
 
+    public void DeselecionarSelecionaveis() // usado para finalizar um ataque
+    {
+        foreach(TerritorioDisplay t in territoriosInstanciados)
+        {
+            if(t.estado == TerritorioDisplay.Estado.Selecionavel)t.AtualizaEstado(TerritorioDisplay.Estado.Indisponivel);
+        }
     }
 
     public void AplicarMovimento() // feito para aplicar a movimentação da fase de movimentos

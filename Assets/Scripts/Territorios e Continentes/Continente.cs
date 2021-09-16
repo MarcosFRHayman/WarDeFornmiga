@@ -7,8 +7,8 @@ namespace FormigaWar.Territorios
     [System.Serializable]
     public class Continente // essa vai ser a classe que o Tabuleiro vai usar para instanciar e criar o tabuleiro (Prefabs de territorio e TerritorioDisplay)
     {
-        [SerializeField] private string nome;
-        [SerializeField] private List<Territorio> territorios;
+        [SerializeField] public string nome;        [SerializeField] private List<Territorio> territorios;
+        [SerializeField] public int TropaBonus; //qtd de tropas que o jogador recebe por ter o territorio conquistado
 
         public Continente(string nome, List<Territorio> territorios)
         {
