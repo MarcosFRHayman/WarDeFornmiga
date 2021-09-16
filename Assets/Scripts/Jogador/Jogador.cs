@@ -10,7 +10,7 @@ namespace FormigaWar.Jogadores
         private Color cor;
         public Color Cor { get; internal set; }
         public List<TerritorioDisplay> Territorios { get; protected set; } = new List<TerritorioDisplay>();
-        public List<Continente> continentes { get; protected set; }
+        public List<Continente> continentes { get; protected set; } = new List<Continente>();
         public Objetivo objetivo;
         protected List<Carta> mao;
         public int reservas; // qtd de tropas para a fase de fortificacao

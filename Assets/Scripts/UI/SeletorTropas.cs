@@ -38,14 +38,21 @@ namespace FormigaWar
         }
         void AtualizaNumTxt()
         {
-            if(TurnoManager.faseAtual < 2)
+            switch(TurnoManager.faseAtual)
             {
-                tnum.text = number.ToString() + " / " + TurnoManager.GetJogadorDaVez().reservas.ToString();
-                return;
-            }
-            else if (tdSaida == null) return;
-            tnum.text = number.ToString() + " / " + (tdSaida.NumTropas - 1).ToString();
-            
+                case 2:
+                    if (tdSaida == null) return;
+                    else if (tdSaida.NumTropas - 1 > 3) tnum.text = number.ToString() + " / 3";
+                    else tnum.text = number.ToString() + " / " + (tdSaida.NumTropas - 1).ToString();
+                break;
+                case 3:
+                    if (tdSaida == null) return;
+                    tnum.text = number.ToString() + " / " + (tdSaida.NumTropas - 1).ToString();
+                break;
+                default:
+                    tnum.text = number.ToString() + " / " + TurnoManager.GetJogadorDaVez().reservas.ToString();
+                break;
+            }            
         }
         void BtnMenosOnClick()
         {
@@ -81,12 +88,14 @@ namespace FormigaWar
                     TurnoManager.GetJogadorDaVez().reservas -= number;
                     tdChegada.AtualizarNumTropas();
                     FecharSeletor();
+                    if(TurnoManager.GetJogadorDaVez().reservas == 0)TurnoManager.AvancarTurno(); // avanca automaticamente caso nao haja mais reservas
                     break;
                 case 1:  // fase de fortificacao
                     tdChegada.NumTropas += number;
                     TurnoManager.GetJogadorDaVez().reservas -= number;
                     tdChegada.AtualizarNumTropas();
                     FecharSeletor();
+                    if(TurnoManager.GetJogadorDaVez().reservas == 0)TurnoManager.AvancarTurno(); // avanca automaticamente caso nao haja mais reservas
                     break;
                 case 2:  // fase de ataque
                     tdSaida.NumTropas -= number;

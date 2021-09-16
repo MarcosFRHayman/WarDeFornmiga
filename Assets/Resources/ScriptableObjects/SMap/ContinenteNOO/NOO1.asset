@@ -16,8 +16,9 @@ MonoBehaviour:
   cartaTerritorio:
     simbolo: {fileID: 0}
   continente:
-    nome: 
+    nome: NO e NOO
     territorios: []
+    TropaBonus: 0
   fronteiras:
   - territorioA: {fileID: 11400000}
     territorioB: {fileID: 11400000, guid: 1cf8555ea0323174797cc6d559115154, type: 2}

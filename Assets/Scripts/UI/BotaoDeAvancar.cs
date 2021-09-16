@@ -10,15 +10,23 @@ namespace FormigaWar
     {
         // Start is called before the first frame update
         public Button avancar;
+        public Text btntxt;
 
         private void Start()
         {
             avancar.onClick.AddListener(Taskavanca);
+            TurnoManager.bda = this;
         }
 
         private void Taskavanca()
         {
             TurnoManager.AvancarTurno();
+            AtualizaTexto(); 
+        }
+
+        public void AtualizaTexto()
+        {
+            btntxt.text = "FaseAtual: " + TurnoManager.faseAtual.ToString();
         }
     }
 }
