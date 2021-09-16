@@ -10,51 +10,51 @@ namespace FormigaWar
 
     public class RoladorDeDados : MonoBehaviour
     {
-            // Atributos que apontam para outras classes
-            public GameObject panel;
-            public Button btnConfirma;
-            public Text btnConfirmaText;     
-            public BaralhoDeCartas baralhoDeCartas = null;
-            private SeletorTropas st;
-            private DialogoMsg dialogoMsg;
-            public GameObject Dadodef;
-            public GameObject Dadoataq;
-            private List<GameObject> DadoA = new List<GameObject>();
-            private List<GameObject> DadoD = new List<GameObject>();
-            private Vector3 posdef = new Vector3(-10.3299999f, -3.6500001f, 0);
-            private Vector3 posataq = new  Vector3(-10.3299999f, -1.22000003f, 0);
+        // Atributos que apontam para outras classes
+        public GameObject panel;
+        public Button btnConfirma;
+        public Text btnConfirmaText;
+        public BaralhoDeCartas baralhoDeCartas = null;
+        private SeletorTropas st;
+        private DialogoMsg dialogoMsg;
+        public GameObject Dadodef;
+        public GameObject Dadoataq;
+        private List<GameObject> DadoA = new List<GameObject>();
+        private List<GameObject> DadoD = new List<GameObject>();
+        private Vector3 posdef = new Vector3(9.25f, 3.6f, 0);
+        private Vector3 posataq = new Vector3(-9f, 3.6f, 0);
 
-            // Atributos dos territorioDisplay manipulados
-            public TerritorioDisplay tdAtacante;
-            public TerritorioDisplay tdDefensor;
+        // Atributos dos territorioDisplay manipulados
+        public TerritorioDisplay tdAtacante;
+        public TerritorioDisplay tdDefensor;
 
-            void Start()
-            {
-                st = GetComponent<SeletorTropas>();
-                dialogoMsg = GetComponent<DialogoMsg>();
-                TurnoManager.dialogoMsg = dialogoMsg;
-                btnConfirma.onClick.AddListener(BtnConfirma);
-            }
+        void Start()
+        {
+            st = GetComponent<SeletorTropas>();
+            dialogoMsg = GetComponent<DialogoMsg>();
+            TurnoManager.dialogoMsg = dialogoMsg;
+            btnConfirma.onClick.AddListener(BtnConfirma);
+        }
         void BtnConfirma()
         {
             List<int> dadosatacantes = new List<int>();
             List<int> dadosdefensores = new List<int>();
             int somatorio = 0;
-            if(btnConfirmaText.text == "Rolar")
+            if (btnConfirmaText.text == "Rolar")
             {
-                while(somatorio < 3)
+                while (somatorio < 3)
                 {
-                    
-                    if ((tdAtacante.NumTropas - 1) >= ( somatorio+1))
+
+                    if ((tdAtacante.NumTropas - 1) >= (somatorio + 1))
                     {
-                    dadosatacantes.Add(Random.Range(1,6));
-                    dadosatacantes.Sort();
+                        dadosatacantes.Add(Random.Range(1, 6));
+                        dadosatacantes.Sort();
                     }
 
                     if ((tdDefensor.NumTropas - 1) >= somatorio)
                     {
-                    dadosdefensores.Add(Random.Range(1, 6));
-                    dadosdefensores.Sort();
+                        dadosdefensores.Add(Random.Range(1, 6));
+                        dadosdefensores.Sort();
                     }
                     somatorio += 1;
                 }
@@ -63,19 +63,19 @@ namespace FormigaWar
                 int j = 0;
                 while (j < 3)
                 {
-                    if (dadosdefensores.Count > j) 
+                    if (dadosdefensores.Count > j)
                     {   //Debug.Log("DadoD.Add: " +dadosdefensores[j]);
-                        DadoD.Add(Instantiate(Dadodef,new Vector3 (posdef.x, posdef.y+(2.13f*j), posdef.z), valor(dadosdefensores[j])));
+                        DadoD.Add(Instantiate(Dadodef, new Vector3(posdef.x, posdef.y - (3.6f * j), posdef.z), valor(dadosdefensores[j])));
                     }
-                    if(dadosatacantes.Count > j)
+                    if (dadosatacantes.Count > j)
                     {   //Debug.Log("DadoA.Add: " +dadosatacantes[j]);
-                        DadoA.Add(Instantiate(Dadoataq,new Vector3 (posataq.x, posataq.y+(2.13f*j), posataq.z), valor(dadosatacantes[j])));
+                        DadoA.Add(Instantiate(Dadoataq, new Vector3(posataq.x, posataq.y - (3.6f * j), posataq.z), valor(dadosatacantes[j])));
                     }
-                j++;
+                    j++;
                 }
                 if (dadosatacantes.Count <= dadosdefensores.Count)
-                {   
-                    for(int i = 0; i<dadosatacantes.Count; i++)
+                {
+                    for (int i = 0; i < dadosatacantes.Count; i++)
                     {
                         if (dadosatacantes[i] > dadosdefensores[i])
                         {
@@ -109,20 +109,21 @@ namespace FormigaWar
                         }
                     }
                 }
-                if ((tdDefensor.NumTropas <= 0)||( tdAtacante.NumTropas == 1)){
+                if ((tdDefensor.NumTropas <= 0) || (tdAtacante.NumTropas == 1))
+                {
                     btnConfirmaText.text = "Fechar";
                 }
                 GameObject temp;
                 j = 2;
-                while (j >-1)
+                while (j > -1)
                 {
-                    if (DadoA.Count-1 >= (j))
+                    if (DadoA.Count - 1 >= (j))
                     {
                         temp = DadoA[j];
                         DadoA.Remove(DadoA[j]);
                         DestroyObject(temp, 0.7500f);
                     }
-                    if (DadoD.Count-1 >= (j))
+                    if (DadoD.Count - 1 >= (j))
                     {
                         temp = DadoD[j];
                         DadoD.Remove(DadoD[j]);
@@ -134,26 +135,26 @@ namespace FormigaWar
                 DadoD.Clear();
                 dadosatacantes.Clear();
                 dadosdefensores.Clear();
-            } 
+            }
             else
             {
-                
-                if(tdDefensor.NumTropas <= 0) // este eh o if que diz se ganhou ou nao
+
+                if (tdDefensor.NumTropas <= 0) // este eh o if que diz se ganhou ou nao
                 {
                     tdDefensor.ConquistaTerritorio(TurnoManager.GetJogadorDaVez());
-                    
+
                     // Colocar carta no inventario do jogador caso possa
                     // Por enquanto, com um baralho de cartas vazio, isso da erro nos nossos testes.
-                    if(!TurnoManager.ConquistouUmTerritorio)
+                    if (!TurnoManager.ConquistouUmTerritorio)
                     {
-                        if(baralhoDeCartas != null)
+                        if (baralhoDeCartas != null)
                         {
                             Carta c = baralhoDeCartas.PuxarCarta();
                             TurnoManager.GetJogadorDaVez().AddCarta(c);
                         }
                         // esta flag abaixa quando BotaoDeAvancar passa o turno para o proximo jogador
                         TurnoManager.ConquistouUmTerritorio = true;
-                    }                 
+                    }
                     // Abrir o painel seletor de tropas
 
                     st.tdSaida = tdAtacante;
@@ -173,11 +174,11 @@ namespace FormigaWar
                 tdDefensor = null;
                 panel.SetActive(false);
             }
-            
+
         }
 
-         
-            private Quaternion valor(int i)
+
+        private Quaternion valor(int i)
         {
             switch (i)
             {
@@ -193,23 +194,23 @@ namespace FormigaWar
                     return new Quaternion(-0.707106829f, 0, 0, 0.707106829f);
                 default:
                     return new Quaternion(0, 0, 0, 1);
-                
+
             }
 
         }
-            public void AbrirRolador(TerritorioDisplay t)
+        public void AbrirRolador(TerritorioDisplay t)
+        {
+            if (tdAtacante.NumTropas == 1)
             {
-                if(tdAtacante.NumTropas == 1)
-                {
-                    dialogoMsg.MostraDiag("Não se pode atacar com um exercito no territorio");
-                }
-                else
-                {
-                    tdDefensor = t;
-                    panel.SetActive(true);
-                    btnConfirmaText.text = "Rolar";                
-                }
+                dialogoMsg.MostraDiag("Não se pode atacar com um exercito no territorio");
             }
+            else
+            {
+                tdDefensor = t;
+                panel.SetActive(true);
+                btnConfirmaText.text = "Rolar";
+            }
+        }
 
     }
 }
