@@ -15,6 +15,12 @@ namespace FormigaWar
             public Button btnConfirma;
             public Text btnConfirmaText;     
             private SeletorTropas st;
+            public GameObject Dadodef;
+            public GameObject Dadoataq;
+            private List<GameObject> DadoA;
+            private List<GameObject> DadoD;
+            private Vector3 posdef = new Vector3(-10.3299999f, -3.6500001f, 0);
+            private Vector3 posataq = new  Vector3(-10.3299999f, -1.22000003f, 0);
 
             // Atributos dos territorioDisplay manipulados
             public TerritorioDisplay tdAtacante;
@@ -51,7 +57,17 @@ namespace FormigaWar
                     }
                     dadosatacantes.Reverse();
                     dadosdefensores.Reverse();
-
+                    int j = 0;
+                    while (j < 3)
+                    {
+                        if (dadosatacantes.Count>= j) {
+                        DadoA.Add(Instantiate(Dadoataq,new Vector3 (posataq.x, posataq.y+(2.13f*j), posataq.z),valor(dadosatacantes[j])));
+                        }
+                        if(dadosatacantes.Count >= j) {
+                        DadoD.Add(Instantiate(Dadodef, new Vector3(posdef.x, posdef.y + (2.13f * j), posdef.z), valor(dadosdefensores[j])));
+                    }
+                    j++;
+                    }
                     if (dadosatacantes.Count <= dadosdefensores.Count)
                     {   
                         for(int i = 0; i<dadosatacantes.Count; i++)
@@ -136,7 +152,26 @@ namespace FormigaWar
             }
 
          
-            
+            private Quaternion valor(int i)
+        {
+            switch (i)
+            {
+                case 1:
+                    return new Quaternion(1, 0, 0, 0);
+                case 2:
+                    return new Quaternion(0.707106829f, 0, 0, 0.707106829f);
+                case 3:
+                    return new Quaternion(0, 0.707106829f, 0, 0.707106829f);
+                case 4:
+                    return new Quaternion(0, -0.707106829f, 0, 0.707106829f);
+                case 5:
+                    return new Quaternion(-0.707106829f, 0, 0, 0.707106829f);
+                default:
+                    return new Quaternion(0, 0, 0, 1);
+                
+            }
+
+        }
             public void AbrirRolador(TerritorioDisplay t)
             {
                 if(tdAtacante.NumTropas == 1)
