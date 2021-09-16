@@ -29,8 +29,7 @@ public class Tabuleiro // TODO : Separar os dados desta classe para uma outra cl
         ContinentesDisplay =
             territoriosInstanciados.GroupBy(k => k.Territorio.Continente, v => v)
                 .ToDictionary(k => k.Key, v => v.ToList());
-        territoriosInstanciados.GroupBy(k => k.Territorio.Continente, v => v)
-                .ToLookup(k => k.Key, v => v.ToList());
+
     }
 
 

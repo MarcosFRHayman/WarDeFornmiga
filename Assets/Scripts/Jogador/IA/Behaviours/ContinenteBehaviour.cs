@@ -7,7 +7,6 @@ namespace FormigaWar
 {
     public class ContinenteBehaviour : GenericObjetivoBehaviour<ObjetivoPorContinente>
     {
-        private ObjetivoPorContinente objetivoContinent { get => (ObjetivoPorContinente)objetivo; }
         public ContinenteBehaviour(ObjetivoPorContinente objetivo, int dificuldade)
         : base(objetivo, dificuldade)
         {
@@ -15,11 +14,10 @@ namespace FormigaWar
         protected override void PintarTerritorios()
         {
             List<TerritorioDisplay> territoriosNosContinentes = new List<TerritorioDisplay>();
-            foreach (var continente in objetivoContinent.Continentes)
+            foreach (var continente in objetivo.Continentes)
             {
-
+                territoriosNosContinentes.AddRange(objetivo.tabuleiro.ContinentesDisplay[continente]);
             }
-
         }
     }
 }
