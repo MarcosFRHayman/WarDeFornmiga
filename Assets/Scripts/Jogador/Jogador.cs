@@ -48,6 +48,7 @@ namespace FormigaWar.Jogadores
         }
         public virtual void recebeObjetivo(Objetivo objetivo)
         {
+            objetivo.jogador = this;
             this.objetivo = objetivo;
         }
 

@@ -45,7 +45,10 @@ namespace FormigaWar.Jogadores
                 tabuleiro.Continentes[3]  // C
             );
 
-            foreach(Jogador jouer in jogadores)jouer.recebeObjetivo(BaralhoDeObjetivo.PuxarCarta());
+            foreach(Jogador jouer in jogadores)
+            {
+                jouer.recebeObjetivo(BaralhoDeObjetivo.PuxarCarta());
+            }
 
             tabuleiro.TerritoriosInstanciados[0].ConquistaTerritorio(j);
             tabuleiro.TerritoriosInstanciados[1].ConquistaTerritorio(j);
