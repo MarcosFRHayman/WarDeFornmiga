@@ -1,3 +1,4 @@
+using System.Reflection;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -26,6 +27,18 @@ namespace FormigaWar.Territorios
 
         public List<Territorio> GetTerritorios() { return territorios; } // usado pelo tabuleiro para poder ler os territorios
 
+        // public override bool Equals(object obj)
+        // {
+        //     if (obj.GetType().IsSubclassOf(typeof(Continente)))
+        //     {
+        //         return ((Continente)obj).nome.Equals(nome);
+        //     }
+        //     return false;
+        // }
+        // public override int GetHashCode()
+        // {
+        //     return nome.GetHashCode();
+        // }
 
     }
 }

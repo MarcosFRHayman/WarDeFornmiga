@@ -5,15 +5,16 @@ using System.Collections.Generic;
 using UnityEngine;
 using FormigaWar.Territorios;
 using FormigaWar.Jogadores.IA;
+using FormigaWar.Jogadores;
 
 namespace FormigaWar
 {
     public class ContinenteComMaisTropaStrategy
     {
-        private readonly JogadorIA ia;
+        private readonly Jogador ia;
         private readonly List<Continente> continentes;
         private int vezes = 0;
-        public ContinenteComMaisTropaStrategy(JogadorIA ia)
+        public ContinenteComMaisTropaStrategy(Jogador ia)
         {
             this.ia = ia;
             var tabuleiro = ia.objetivo.tabuleiro;
@@ -33,6 +34,7 @@ namespace FormigaWar
         /// <exception cref="IndexOutOfBoundsException">caso chame uma quantidade maior de vezes que há continentes controlados</exception>
         public Continente EncontraProximo()
         {
+            Debug.Log(vezes);
             var continente = continentes[vezes];
             vezes++;
             return continente;

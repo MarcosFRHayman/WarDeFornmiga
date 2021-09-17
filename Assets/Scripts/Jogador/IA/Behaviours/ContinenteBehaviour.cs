@@ -1,3 +1,4 @@
+using System;
 using System.Linq;
 using System.Collections;
 using System.Collections.Generic;
@@ -18,7 +19,7 @@ namespace FormigaWar.Jogadores.IA
             {
                 PreencheContinente(continente);
             }
-            var continenteStrategy = new ContinenteComMaisTropaStrategy((JogadorIA)objetivo.jogador);
+            var continenteStrategy = new ContinenteComMaisTropaStrategy(objetivo.jogador);
             for (int i = 0; i < objetivo.ContinenteAEscolha; i++)
             {
                 PreencheContinente(continenteStrategy.EncontraProximo());

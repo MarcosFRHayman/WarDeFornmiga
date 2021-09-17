@@ -13,7 +13,7 @@ namespace FormigaWar.Jogadores.IA
 
         public override ObjetivoBehaviour criaBehaviour(int dificuldade)
         {
-            return new ContinenteBehaviour((ObjetivoPorContinente)objetivo, 5);
+            return new ContinenteBehaviour((ObjetivoPorContinente)objetivo, dificuldade);
         }
     }
 }

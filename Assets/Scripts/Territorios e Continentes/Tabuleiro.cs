@@ -15,12 +15,18 @@ public class Tabuleiro // TODO : Separar os dados desta classe para uma outra cl
     [SerializeField] private List<Continente> continentes = new List<Continente>(); // talvez tabuleiro guarde apenas os continentes?
     public Dictionary<Continente, List<TerritorioDisplay>> ContinentesDisplay { get; private set; }
          = new Dictionary<Continente, List<TerritorioDisplay>>();
-    [SerializeField]private List<TerritorioDisplay> territoriosInstanciados = new List<TerritorioDisplay>();
+    [SerializeField] private List<TerritorioDisplay> territoriosInstanciados = new List<TerritorioDisplay>();
     public TerritorioDisplay[] TerritoriosInstanciados => territoriosInstanciados.ToArray();
     public Continente[] Continentes => continentes.ToArray();
     public void Inicializa()
     {
         SpawnaTerritorios();
+        Continentes.ToList()
+            .ForEach(continente => continente.GetTerritorios()
+            .ForEach(t => t.Continente = continente));
+        ContinentesDisplay =
+           territoriosInstanciados.GroupBy(k => k.Territorio.Continente, v => v)
+               .ToDictionary(k => k.Key, v => v.ToList());
     }
     public void InicializaTabuleiro(List<Continente> continentes)
     {
@@ -125,19 +131,19 @@ public class Tabuleiro // TODO : Separar os dados desta classe para uma outra cl
 
     public void DesabilitarContinentesMenosUm(Continente c) // para fase de fortificacao, compara os nomes.
     {
-        foreach(TerritorioDisplay t in territoriosInstanciados)
+        foreach (TerritorioDisplay t in territoriosInstanciados)
         {
             //Debug.Log(t.Territorio.Continente.nome +" vs "+ c.nome);
-            if(t.Territorio.Continente.nome == c.nome)t.AtualizaEstado(TerritorioDisplay.Estado.Normal);
+            if (t.Territorio.Continente.nome == c.nome) t.AtualizaEstado(TerritorioDisplay.Estado.Normal);
             else t.AtualizaEstado(TerritorioDisplay.Estado.Indisponivel);
         }
     }
 
     public void DeselecionarSelecionaveis() // usado para finalizar um ataque
     {
-        foreach(TerritorioDisplay t in territoriosInstanciados)
+        foreach (TerritorioDisplay t in territoriosInstanciados)
         {
-            if(t.estado == TerritorioDisplay.Estado.Selecionavel)t.AtualizaEstado(TerritorioDisplay.Estado.Indisponivel);
+            if (t.estado == TerritorioDisplay.Estado.Selecionavel) t.AtualizaEstado(TerritorioDisplay.Estado.Indisponivel);
         }
     }
 

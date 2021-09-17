@@ -35,7 +35,7 @@ namespace FormigaWar.Jogadores
 
             jogadores = new Jogador[4] { j, k, l, m };
 
-            BaralhoDeObjetivo.InicializaBaralho( 
+            BaralhoDeObjetivo.InicializaBaralho(
                 tabuleiro, jogadores,     // tabuleiro e jogadores
                 tabuleiro.Continentes[1], // N
                 tabuleiro.Continentes[0], // NO e NOO
@@ -45,7 +45,6 @@ namespace FormigaWar.Jogadores
                 tabuleiro.Continentes[3]  // C
             );
 
-            foreach(Jogador jouer in jogadores)jouer.recebeObjetivo(BaralhoDeObjetivo.PuxarCarta());
 
             tabuleiro.TerritoriosInstanciados[0].ConquistaTerritorio(j);
             tabuleiro.TerritoriosInstanciados[1].ConquistaTerritorio(j);
@@ -55,19 +54,20 @@ namespace FormigaWar.Jogadores
             tabuleiro.TerritoriosInstanciados[5].ConquistaTerritorio(j);
             tabuleiro.TerritoriosInstanciados[6].ConquistaTerritorio(j);
             tabuleiro.TerritoriosInstanciados[7].ConquistaTerritorio(j);
-            tabuleiro.TerritoriosInstanciados[8].ConquistaTerritorio(j);  
+            tabuleiro.TerritoriosInstanciados[8].ConquistaTerritorio(j);
 
             tabuleiro.TerritoriosInstanciados[9].ConquistaTerritorio(k);
-            tabuleiro.TerritoriosInstanciados[10].ConquistaTerritorio(k);   
+            tabuleiro.TerritoriosInstanciados[10].ConquistaTerritorio(k);
 
             tabuleiro.TerritoriosInstanciados[9].ConquistaTerritorio(l);
-            tabuleiro.TerritoriosInstanciados[10].ConquistaTerritorio(l);         
+            tabuleiro.TerritoriosInstanciados[10].ConquistaTerritorio(l);
 
             tabuleiro.TerritoriosInstanciados[20].ConquistaTerritorio(m);
             tabuleiro.TerritoriosInstanciados[21].ConquistaTerritorio(m);
 
-            
-            
+
+            foreach (Jogador jouer in jogadores) jouer.recebeObjetivo(BaralhoDeObjetivo.PuxarCarta());
+
             InicializaBaralhoComTabuleiro();
             GetComponent<RoladorDeDados>().baralhoDeCartas = baralhoTerritorios;
 

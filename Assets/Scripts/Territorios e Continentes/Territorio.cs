@@ -11,7 +11,7 @@ namespace FormigaWar.Territorios
         //atributos de classe
         [SerializeField] private string nome;
         [SerializeField] private CartaTerritorio cartaTerritorio;
-        [SerializeField] private Continente continente;
+        private Continente continente;
         [SerializeField] private List<Fronteira> fronteiras;
 
 
