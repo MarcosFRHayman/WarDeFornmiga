@@ -15,7 +15,7 @@ namespace FormigaWar.Jogadores
         public Objetivo objetivo;
         protected List<Carta> mao = new List<Carta>();
         public Carta[] GetMao() => mao.ToArray();
-        public int reservas; // qtd de tropas para a fase de fortificacao
+        public int reservas = 0; // qtd de tropas para a fase de fortificacao
 
         public void AddCarta(Carta c)
         {

@@ -39,14 +39,7 @@ namespace FormigaWar
             btncancela.onClick.AddListener(BtnCancela);
             btnAbreCarta.onClick.AddListener(Abrir);
             dialogoMsg = GetComponent<DialogoMsg>();
-            /*
-            Jogador j = new JogadorHumano(); // ✦ ✹ ❉
-            j.AddCarta(new CartaTerritorio() {simbolo =  "✦"});
-            j.AddCarta(new CartaTerritorio() {simbolo =  "✹"});
-            j.AddCarta(new CartaTerritorio() {simbolo =  "❉"});
-
-            AbrirMao(j);
-            */
+            
         }
         public void AddSelected(CartaButton cb)
         {
@@ -57,9 +50,11 @@ namespace FormigaWar
         }
         void BtnConfirma()
         {
+            //Debug.Log("Jota é:" + j.reservas);
             j.reservas += valorDeTroca;
             valorDeTroca += 2;
             LimparMao();
+            painel.SetActive(false);
         }
         void BtnCancela()
         {
@@ -90,8 +85,9 @@ namespace FormigaWar
             AbrirMao(TurnoManager.GetJogadorDaVez());
             btnAvancarTurno.interactable = false;
         }
-        public void AbrirMao(Jogador j)
+        public void AbrirMao(Jogador jog)
         {
+            this.j = jog;
             if(j.GetMao().Length >= 5)btncancela.interactable = false;
             btnconfirma.interactable = false;
             foreach(Carta c in j.GetMao())

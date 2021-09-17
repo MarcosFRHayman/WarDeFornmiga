@@ -15,7 +15,7 @@ public class Tabuleiro // TODO : Separar os dados desta classe para uma outra cl
     [SerializeField] private List<Continente> continentes = new List<Continente>(); // talvez tabuleiro guarde apenas os continentes?
     public Dictionary<Continente, List<TerritorioDisplay>> ContinentesDisplay { get; private set; }
          = new Dictionary<Continente, List<TerritorioDisplay>>();
-    private List<TerritorioDisplay> territoriosInstanciados = new List<TerritorioDisplay>();
+    [SerializeField]private List<TerritorioDisplay> territoriosInstanciados = new List<TerritorioDisplay>();
     public TerritorioDisplay[] TerritoriosInstanciados => territoriosInstanciados.ToArray();
     public Continente[] Continentes => continentes.ToArray();
     public void Inicializa()
