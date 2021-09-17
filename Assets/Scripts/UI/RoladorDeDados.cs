@@ -121,13 +121,13 @@ namespace FormigaWar
                     {
                         temp = DadoA[j];
                         DadoA.Remove(DadoA[j]);
-                        DestroyObject(temp, 0.7500f);
+                        Destroy(temp, 0.7500f);
                     }
                     if (DadoD.Count - 1 >= (j))
                     {
                         temp = DadoD[j];
                         DadoD.Remove(DadoD[j]);
-                        DestroyObject(temp, 0.7500f);
+                        Destroy(temp, 0.7500f);
                     }
                     j--;
                 }
@@ -141,6 +141,7 @@ namespace FormigaWar
 
                 if (tdDefensor.NumTropas <= 0) // este eh o if que diz se ganhou ou nao
                 {
+                    onCaptura?.Invoke(TurnoManager.GetJogadorDaVez(), tdDefensor.Territorio); // Action chamada
                     tdDefensor.ConquistaTerritorio(TurnoManager.GetJogadorDaVez());
 
                     // Colocar carta no inventario do jogador caso possa
@@ -162,7 +163,7 @@ namespace FormigaWar
 
                     // mudar essa implementacao quando puder, ta feio
                     tdAtacante.Tabuleiro.DeselecionarTodosTerritorios();
-                    tdAtacante.Tabuleiro.NormalizarTerritoriosDoJogador(TurnoManager.GetJogadorDaVez());
+                    tdAtacante.AtualizaEstado(TerritorioDisplay.Estado.Indisponivel);
                 }
                 else
                 {

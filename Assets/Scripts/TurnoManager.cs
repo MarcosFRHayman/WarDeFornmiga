@@ -29,7 +29,6 @@ public static class TurnoManager
     {
         TurnoManager.jogadoresNaMesa = j;
     }
-
     public static void AvancarTurno() // avanca o faseAtual, se fase atual tiver em 4, pega o proximo jogador e faz fasAtual = 0
     {
         tabuleiro.DeselecionarTodosTerritorios();
@@ -40,14 +39,17 @@ public static class TurnoManager
             AvancarContinente();
             return;
         }
-        
-        if (TurnoManager.faseAtual == 3) tabuleiro.AplicarMovimento();
+        else if(TurnoManager.faseAtual == 1)
+        {
+            if(GetJogadorDaVez().GetMao().Length >= 5)
+                bda.GetComponent<MaoUI>().AbrirMao(GetJogadorDaVez());
+        }
         
         TurnoManager.faseAtual += 1;
         if (TurnoManager.faseAtual >= 4) // se esta eh a ultima fase do turno, vai para o proximo jogador
         {
             TurnoManager.ConquistouUmTerritorio = false; // reseta a flag para cartas
-            
+            tabuleiro.AplicarMovimento();
             TurnoManager.faseAtual = 0;
             TurnoManager.continenteAtual = -1;
             
@@ -58,11 +60,19 @@ public static class TurnoManager
                 AvancarContinente();
             }
 
+            /* 
+            //############################################################### Checa se o jogador da vez eh IA.
+            if(GetJogadorDaVez() is JogadorIA)
+            {
+                // executa o turno da IA, com os metodos do jogador;
+            }
+            // ############################################################### Executa o turno, e avança. 
+            */
+
             MsgReservas();
         }
         bda.AtualizaTexto();
     }
-
     private static void AvancarContinente()
     {   
         continenteAtual += 1;
@@ -86,7 +96,6 @@ public static class TurnoManager
     {
         return jogadoresNaMesa[jogadorDaVez];
     }
-
     private static void MsgReservas()
     {
         int c = GetJogadorDaVez().Territorios.Count;
@@ -95,5 +104,7 @@ public static class TurnoManager
         foreach(Continente cont in GetJogadorDaVez().continentes)msg += cont.TropaBonus + " por conquistar " + cont.nome + "\n";
         dialogoMsg.MostraDiag(msg);
     }
+
+
 
 }

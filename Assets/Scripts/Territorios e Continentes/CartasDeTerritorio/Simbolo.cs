@@ -8,7 +8,7 @@ namespace FormigaWar.Territorios
     public class Simbolo : ScriptableObject
     {
         [SerializeField] private Sprite image;
-
+        // ✦✹❉
         public Simbolo() { }
     }
 }
