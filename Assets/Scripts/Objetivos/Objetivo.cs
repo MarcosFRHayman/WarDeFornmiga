@@ -10,7 +10,7 @@ namespace FormigaWar
     {
         protected string descricao;
         public Jogador jogador { get; protected set; }
-        public Tabuleiro tabuleiro { get; private set; }
+        public Tabuleiro tabuleiro { get; protected set; }
         public BehaviourFactory behaviourFactory { get; protected set; }
         public abstract bool Checar(); // metodo checa se o objetivo foi completado.
     }

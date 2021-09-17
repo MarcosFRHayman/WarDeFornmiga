@@ -15,7 +15,7 @@ namespace FormigaWar
             behaviourFactory = new TerritoriosBehaviourFactory(this);
         }
 
-        public ObjetivoPorTerritorio(int territoriosNecessários, int exercitosPorTerritorio)
+        public ObjetivoPorTerritorio(Tabuleiro tabuleiro, int territoriosNecessários, int exercitosPorTerritorio)
         {
             this.territoriosNecessarios = territoriosNecessários;
             this.exercitosPorTerritorio = exercitosPorTerritorio;

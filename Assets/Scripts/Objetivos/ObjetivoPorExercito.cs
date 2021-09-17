@@ -19,30 +19,31 @@ namespace FormigaWar
             behaviourFactory = new EliminacaoBehaviourFactory(this);
         }
 
-        public ObjetivoPorExercito(Jogador jouer)
+        public ObjetivoPorExercito(Tabuleiro tabuleiro, Jogador nemesis)
         {
-            nemesis = jouer;
+            this.tabuleiro = tabuleiro;
+            this.nemesis = nemesis;
             behaviourFactory = new EliminacaoBehaviourFactory(this);
         }
         public override bool Checar()
         {
             bool jexiste = false;
 
-            for(int i = 0; i < TurnoManager.jogadoresNaMesa.Length; i++)
-                if(TurnoManager.jogadoresNaMesa[i] == nemesis)jexiste = true;
+            for (int i = 0; i < TurnoManager.jogadoresNaMesa.Length; i++)
+                if (TurnoManager.jogadoresNaMesa[i] == nemesis) jexiste = true;
 
-            if(!jexiste)
+            if (!jexiste)
             {
                 onObjMudou?.Invoke(); // Action chamada
-                MudarObjetivo(); 
+                MudarObjetivo();
             }
-            if(nemesis.Territorios.Count == 1)
+            if (nemesis.Territorios.Count == 1)
                 return true;
             return false;
         }
         public void MudarObjetivo() // TODO: Usar o RecebeObjetivo() do Jogador
         {
-            TurnoManager.GetJogadorDaVez().objetivo = new ObjetivoPorTerritorio(24, 1);
+            TurnoManager.GetJogadorDaVez().objetivo = new ObjetivoPorTerritorio(tabuleiro, 24, 1);
             TurnoManager.GetJogadorDaVez().objetivo.Checar();
         }
     }

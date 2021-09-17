@@ -17,10 +17,11 @@ namespace FormigaWar
             behaviourFactory = new ContinenteBehvaiourFactory(this);
         }
 
-        public ObjetivoPorContinente(List<Continente> continentes, int i)
+        public ObjetivoPorContinente(Tabuleiro tabuleiro, List<Continente> continentes, int continenteAEscolha)
         {
+            this.tabuleiro = tabuleiro;
             this.continentes = continentes;
-            this.continenteAEscolha = i;
+            this.continenteAEscolha = continenteAEscolha;
             behaviourFactory = new ContinenteBehvaiourFactory(this);
         }
 

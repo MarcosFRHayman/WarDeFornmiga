@@ -30,6 +30,7 @@ namespace FormigaWar
         public static void BotarDeVolta(Objetivo obj) => cartas.Add(obj); // util para deixar de volta a carta nao esolhida
 
         public static void InicializaBaralho(
+            Tabuleiro tabuleiro,
             Jogador[] jogadores,
             Continente N,
             Continente NO,
@@ -39,29 +40,28 @@ namespace FormigaWar
             Continente C)
         {
             //por territorios
-            cartas.Add(new ObjetivoPorTerritorio(24, 1));
-            cartas.Add(new ObjetivoPorTerritorio(18, 2));
+            cartas.Add(new ObjetivoPorTerritorio(tabuleiro, 24, 1));
+            cartas.Add(new ObjetivoPorTerritorio(tabuleiro, 18, 2));
 
             //por Continente
-            cartas.Add(new ObjetivoPorContinente(
+            cartas.Add(new ObjetivoPorContinente(tabuleiro,
                 new List<Continente>(new Continente[] { N, NL }), 0));
-            cartas.Add(new ObjetivoPorContinente(
+            cartas.Add(new ObjetivoPorContinente(tabuleiro,
                 new List<Continente>(new Continente[] { C, SO }), 1));
-            cartas.Add(new ObjetivoPorContinente(
+            cartas.Add(new ObjetivoPorContinente(tabuleiro,
                 new List<Continente>(new Continente[] { NO, SL }), 0));
-            cartas.Add(new ObjetivoPorContinente(
+            cartas.Add(new ObjetivoPorContinente(tabuleiro,
                 new List<Continente>(new Continente[] { NL, SO }), 0));
-            cartas.Add(new ObjetivoPorContinente(
+            cartas.Add(new ObjetivoPorContinente(tabuleiro,
                 new List<Continente>(new Continente[] { NO, N }), 0));
-            cartas.Add(new ObjetivoPorContinente(
+            cartas.Add(new ObjetivoPorContinente(tabuleiro,
                 new List<Continente>(new Continente[] { C, NL }), 1));
 
             //por jogadores
             foreach (var jogador in jogadores)
             {
-                cartas.Add(new ObjetivoPorExercito(jogador));
+                cartas.Add(new ObjetivoPorExercito(tabuleiro, jogador));
             }
-
         }
     }
 }
