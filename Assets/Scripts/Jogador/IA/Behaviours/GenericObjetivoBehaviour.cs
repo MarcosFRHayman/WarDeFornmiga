@@ -10,7 +10,7 @@ namespace FormigaWar.Jogadores.IA
     {
 
         public readonly T objetivo;
-        public Dictionary<TerritorioDisplay, int> PrioridadesMap;
+        protected Dictionary<TerritorioDisplay, int> PrioridadesMap;
         protected readonly int dificuldade;
 
         public GenericObjetivoBehaviour(T objetivo, int dificuldade)
@@ -22,6 +22,7 @@ namespace FormigaWar.Jogadores.IA
         /// <summary>Determina as prioridades</summary>
         protected abstract void PintarTerritorios();
 
+        public int GetPrioridade(TerritorioDisplay territorio) => PrioridadesMap[territorio];
         /// <summary>Decide o ponto de partida e destino de um ataque</summary>
         /// <returns>(null, null) se não houver alvos disponíveis</returns>
         public virtual (TerritorioDisplay partida, TerritorioDisplay destino) DecideAlvo(List<TerritorioDisplay> candidatos)

@@ -10,7 +10,6 @@ namespace FormigaWar
 
     public class RoladorDeDados : MonoBehaviour
     {
-
         // Atributos que apontam para outras classes
         public GameObject panel;
         public Button btnConfirma;
@@ -30,7 +29,7 @@ namespace FormigaWar
         public TerritorioDisplay tdDefensor;
 
         // Action
-        public System.Action<Jogador, TerritorioDisplay> onCaptura;
+        public static System.Action<Jogador, TerritorioDisplay> onCaptura;
 
         void Start()
         {
@@ -41,7 +40,6 @@ namespace FormigaWar
             TurnoManager.dialogoMsg = dialogoMsg;
             btnConfirma.onClick.AddListener(BtnConfirma);
         }
-
         void BtnConfirma()
         {
             List<int> dadosatacantes = new List<int>();

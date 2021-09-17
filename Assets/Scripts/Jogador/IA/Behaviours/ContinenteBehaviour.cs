@@ -24,36 +24,5 @@ namespace FormigaWar.Jogadores.IA
                 PreencheContinente(continenteStrategy.EncontraProximo());
             }
         }
-        private void PreencheContinente(Continente continente)
-        {
-            objetivo.tabuleiro
-            .ContinentesDisplay[continente]
-            .ForEach(territorio =>
-            {
-                if (territorio.fronteirasDisplay.Exists(
-                    fronteira =>
-                    !fronteira.Territorio.Continente.Equals(continente)
-                )) UpdatePrioridade(territorio, dificuldade);
-                else PrioridadesMap[territorio] = dificuldade;
-            });
-        }
     }
-    // public class Pair<T>
-    // {
-    //     public T primeiro;
-    //     public T segundo;
-    //     public Pair(T primeiro, T segundo)
-    //     {
-    //         this.primeiro = primeiro;
-    //         this.segundo = segundo;
-    //     }
-    // }
-    // public static class IEnumerableExtension
-    // {
-    //     public static Pair<IEnumerable<T>> DivideOn<T>(this IEnumerable<T> enumerable, Func<T, bool> condicao)
-    //     {
-    //         return new Pair<IEnumerable<T>>(enumerable.Where(condicao),
-    //          enumerable.Where(item => condicao.Invoke(item)));
-    //     }
-    // }
 }

@@ -8,6 +8,7 @@ namespace FormigaWar.Jogadores.IA
 {
     public interface ObjetivoBehaviour
     {
+        int GetPrioridade(TerritorioDisplay territorio);
         (TerritorioDisplay partida, TerritorioDisplay destino) DecideAlvo(List<TerritorioDisplay> candidatos);
         /// <summary>Decide o ponto de partida e destino de um ataque</summary>
         /// <param name="candidatos">lista de territorios que são candidatos para a partida</param>

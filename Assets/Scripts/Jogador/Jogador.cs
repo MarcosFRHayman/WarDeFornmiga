@@ -29,17 +29,22 @@ namespace FormigaWar.Jogadores
             else reservas = (int)Territorios.Count / 2;
         }
 
-        public void Fortificar()
+        protected void Fortificar(int tropas, TerritorioDisplay destino)
         {
             // TurnoManager.AvancarTurno()
         }
-        public void Atacar()
+        protected bool Atacar(TerritorioDisplay partida, TerritorioDisplay destino)
+        {
+            return true;
+            // TurnoManager.AvancarTurno()
+        }
+        protected void Mover(int tropas, TerritorioDisplay partida, TerritorioDisplay destino)
         {
             // TurnoManager.AvancarTurno()
         }
-        public void Mover()
+        public virtual void recebeObjetivo(Objetivo objetivo)
         {
-            // TurnoManager.AvancarTurno()
+            this.objetivo = objetivo;
         }
 
 
