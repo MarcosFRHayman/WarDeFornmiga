@@ -21,13 +21,13 @@ namespace FormigaWar
                 tabuleiro.Continentes
                     .Where(continente => ia.continentes.Contains(continente))
                     .OrderBy(continente =>
-                        continente
+                        (float)continente
                             .GetTerritorios()
                             .Count(territorio => tabuleiro
                                 .TerritoriosInstanciados
                                 .FirstOrDefault(display => display.Territorio.Equals(territorio))
                                 .Jogador.Equals(ia)
-                                )
+                                ) / (float)continente.GetTerritorios().Count
                     ).ToList();
         }
         /// <exception cref="IndexOutOfBoundsException">caso chame uma quantidade maior de vezes que há continentes controlados</exception>

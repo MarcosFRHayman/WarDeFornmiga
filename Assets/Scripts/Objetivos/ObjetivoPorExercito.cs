@@ -10,7 +10,7 @@ namespace FormigaWar
 {
     public class ObjetivoPorExercito : Objetivo
     {
-        private Jogador nemesis;
+        public Jogador nemesis { get; private set; }
         private bool nemesisDerrotado = false;
 
         public ObjetivoPorExercito()

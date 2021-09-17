@@ -10,8 +10,10 @@ namespace FormigaWar.Jogadores.IA
         private readonly int dificuldade;
         private ObjetivoBehaviour behaviour;
 
-        public JogadorIA(Objetivo objetivo)
+        public JogadorIA() { }
+        public void recebeObjetivo(Objetivo objetivo)
         {
+            this.objetivo = objetivo;
             behaviour = objetivo.behaviourFactory.criaBehaviour(dificuldade);
         }
         public void JogaTurno() { }

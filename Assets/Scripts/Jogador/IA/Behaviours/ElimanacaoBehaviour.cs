@@ -13,7 +13,13 @@ namespace FormigaWar.Jogadores.IA
         }
         protected override void PintarTerritorios()
         {
-            throw new System.NotImplementedException();
+            var continenteStrategy = new ContinenteComMaisTropaStrategy((JogadorIA)objetivo.jogador);
+            PreencheContinente(continenteStrategy.EncontraProximo(), dificuldade / 2);
+            PreencheContinente(continenteStrategy.EncontraProximo(), dificuldade / 2);
+            objetivo.nemesis.Territorios.ForEach(
+                territorio =>
+                    UpdatePrioridade(territorio, dificuldade)
+            );
         }
     }
 }

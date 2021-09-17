@@ -58,7 +58,22 @@ namespace FormigaWar.Jogadores.IA
                 .OrderBy(dicitionary => PrioridadesMap[dicitionary.Value[0]]);
         }
 
+        protected void PreencheContinente(Continente continente)
+            => PreencheContinente(continente, dificuldade);
 
+        protected void PreencheContinente(Continente continente, int dificuldade)
+        {
+            objetivo.tabuleiro
+            .ContinentesDisplay[continente]
+            .ForEach(territorio =>
+            {
+                if (territorio.fronteirasDisplay.Exists(
+                    fronteira =>
+                    !fronteira.Territorio.Continente.Equals(continente)
+                )) UpdatePrioridade(territorio, dificuldade);
+                else PrioridadesMap[territorio] = dificuldade;
+            });
+        }
         protected void UpdatePrioridade(TerritorioDisplay territorio, int novoValor)
         {
             int valorAntigo = PrioridadesMap[territorio];
