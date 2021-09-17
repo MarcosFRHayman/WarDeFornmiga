@@ -25,8 +25,12 @@ namespace FormigaWar.Jogadores
 
         public void CalcularReservas(int TropaContinente)
         {
-            if (TurnoManager.faseAtual == 0) reservas = TropaContinente;
-            else reservas = (int)Territorios.Count / 2;
+            if (TurnoManager.faseAtual == 0)reservas = TropaContinente;
+            else 
+            {
+                reservas = (int)Territorios.Count / 2;
+                if(reservas < 3)reservas = 3;
+            }
         }
 
         protected void Fortificar(int tropas, TerritorioDisplay destino)
