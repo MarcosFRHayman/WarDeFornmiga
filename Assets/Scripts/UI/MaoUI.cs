@@ -17,6 +17,7 @@ namespace FormigaWar
         public Transform grid;
         public Button btncancela;
         public Button btnconfirma;
+        public Button btnAbreCarta;
         public Jogador j = null;
         public DialogoMsg dialogoMsg;
 
@@ -35,14 +36,16 @@ namespace FormigaWar
         {
             btnconfirma.onClick.AddListener(BtnConfirma);
             btncancela.onClick.AddListener(BtnCancela);
+            btnAbreCarta.onClick.AddListener(Abrir);
             dialogoMsg = GetComponent<DialogoMsg>();
-
-            Jogador j = new JogadorHumano();
+            /*
+            Jogador j = new JogadorHumano(); // ✦ ✹ ❉
             j.AddCarta(new CartaTerritorio() {simbolo =  "✦"});
-            j.AddCarta(new CartaTerritorio() {simbolo =  "❉"});
+            j.AddCarta(new CartaTerritorio() {simbolo =  "✹"});
             j.AddCarta(new CartaTerritorio() {simbolo =  "❉"});
 
             AbrirMao(j);
+            */
         }
         public void AddSelected(CartaButton cb)
         {
@@ -61,7 +64,7 @@ namespace FormigaWar
         void BtnCancela()
         {
             LimparMao();
-            
+            btnAbreCarta.interactable = true;
             painel.SetActive(false);
         }
 
@@ -77,12 +80,16 @@ namespace FormigaWar
             igual = simbolos.Max(simbolo => simbolos.Count(cadaSimbolo => cadaSimbolo.Equals(simbolo) || cadaSimbolo.Equals("✦✹❉")));
             diferente = simbolos.Min(simbolo => simbolos.Count(cadaSimbolo => !cadaSimbolo.Equals(simbolo) || cadaSimbolo.Equals("✦✹❉")));
 
-            Debug.Log(igual +" "+ diferente);
+            //Debug.Log(igual +" "+ diferente);
 
             if(igual == 3 || diferente == 2)return true;
             else return false;
         }
-
+        public void Abrir()
+        {
+            if(TurnoManager.faseAtual != 1) return;
+            AbrirMao(TurnoManager.GetJogadorDaVez());
+        }
         public void AbrirMao(Jogador j)
         {
             if(j.GetMao().Length >= 5)btncancela.interactable = false;
@@ -93,9 +100,10 @@ namespace FormigaWar
                 CartaButton cb =  spawnado.GetComponent<CartaButton>();
                 cb.carta = c; // passar a carta para o CartaButton
                 cb.maoUI = this; // passar o maoUI para o CartaButton 
+                cb.texto.text = c.simbolo;
                 cartas.Add(cb);               
             }
-
+            btnAbreCarta.interactable = false;
             painel.SetActive(true);
         }
 
@@ -105,7 +113,7 @@ namespace FormigaWar
             {
                 Destroy(cb.gameObject);
             }
-            cartasSelecionadas.Clear();
+            cartas.Clear();
         }
     }
 }

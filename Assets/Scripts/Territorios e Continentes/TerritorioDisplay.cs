@@ -112,39 +112,32 @@ namespace FormigaWar.Territorios
                     switch(estado)
                     {
                         case Estado.Normal:
-                            Tabuleiro.DeselecionarTodosTerritorios();
-                            Tabuleiro.NormalizarTerritoriosDoJogador(TurnoManager.GetJogadorDaVez());
                             AtualizaEstado(Estado.Selecionado);
                             seletorTropas.AbrirSeletor(this);
                         break;
                         case Estado.Selecionado:
-                            Tabuleiro.DeselecionarTodosTerritorios();
-                            Tabuleiro.NormalizarTerritoriosDoJogador(TurnoManager.GetJogadorDaVez());
+                            AtualizaEstado(Estado.Normal);
                             seletorTropas.FecharSeletor();
                         break;
                         default:
                         
                         break;
                     }
-                    
                     break;
                 case 1: // fortificacao
 
                     switch(estado)
                     {
                         case Estado.Normal:
-                            Tabuleiro.DeselecionarTodosTerritorios();
-                            Tabuleiro.NormalizarTerritoriosDoJogador(TurnoManager.GetJogadorDaVez());
                             AtualizaEstado(Estado.Selecionado);
                             seletorTropas.AbrirSeletor(this);
                         break;
                         case Estado.Selecionado:
-                            Tabuleiro.DeselecionarTodosTerritorios();
-                            Tabuleiro.NormalizarTerritoriosDoJogador(TurnoManager.GetJogadorDaVez());
+                            AtualizaEstado(Estado.Normal);
                             seletorTropas.FecharSeletor();
                         break;
                         default:
-                        
+                            
                         break;
                     }
                     break;

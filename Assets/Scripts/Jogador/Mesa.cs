@@ -33,7 +33,9 @@ namespace FormigaWar.Jogadores
             tabuleiro.TerritoriosInstanciados[8].ConquistaTerritorio(j);
 
             jogadores = new Jogador[1] { j };
-            baralhoTerritorios = new BaralhoDeCartas();
+            
+            InicializaBaralhoComTabuleiro();
+            GetComponent<RoladorDeDados>().baralhoDeCartas = baralhoTerritorios;
 
             TurnoManager.InicializarManager(jogadores);
         }

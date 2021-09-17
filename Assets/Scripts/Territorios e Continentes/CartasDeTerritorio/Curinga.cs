@@ -4,9 +4,9 @@ using UnityEngine;
 
 namespace FormigaWar.Territorios
 {
+    [System.Serializable]
     public class Curinga : Carta
     {
-        public string simbolo {get; set;}
         public bool TemSimbolo(string simbolo) => true;
         public Curinga()
         {

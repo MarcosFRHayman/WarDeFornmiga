@@ -124,13 +124,13 @@ namespace FormigaWar
                     {
                         temp = DadoA[j];
                         DadoA.Remove(DadoA[j]);
-                        DestroyObject(temp, 0.7500f);
+                        Destroy(temp, 0.7500f);
                     }
                     if (DadoD.Count-1 >= (j))
                     {
                         temp = DadoD[j];
                         DadoD.Remove(DadoD[j]);
-                        DestroyObject(temp, 0.7500f);
+                        Destroy(temp, 0.7500f);
                     }
                     j--;
                 }

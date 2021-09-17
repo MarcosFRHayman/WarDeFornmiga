@@ -56,7 +56,8 @@ namespace FormigaWar
         }
         void BtnMenosOnClick()
         {
-            if(number <= 0)return;
+            if(TurnoManager.faseAtual == 2 && number <= 1)return;
+            else if(number <= 0)return;
             number--;
             AtualizaNumTxt();
         }

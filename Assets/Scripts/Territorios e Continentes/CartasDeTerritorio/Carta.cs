@@ -4,9 +4,9 @@ using UnityEngine;
 
 namespace FormigaWar.Territorios
 {
-    public interface Carta
+    public class Carta
     {
-        string simbolo {get; set;}
-        bool TemSimbolo(string simbolo);
+        [SerializeField]public string simbolo;
+        bool TemSimbolo(string simbolo){return false;}
     }
 }
