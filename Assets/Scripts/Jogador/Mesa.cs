@@ -34,6 +34,7 @@ namespace FormigaWar.Jogadores
             m.Cor = Color.green;
 
             jogadores = new Jogador[4] { j, k, l, m };
+            TurnoManager.InicializarManager(jogadores);
 
             BaralhoDeObjetivo.InicializaBaralho(
                 tabuleiro, jogadores,     // tabuleiro e jogadores
@@ -59,20 +60,16 @@ namespace FormigaWar.Jogadores
             tabuleiro.TerritoriosInstanciados[9].ConquistaTerritorio(k);
             tabuleiro.TerritoriosInstanciados[10].ConquistaTerritorio(k);
 
-            tabuleiro.TerritoriosInstanciados[9].ConquistaTerritorio(l);
-            tabuleiro.TerritoriosInstanciados[10].ConquistaTerritorio(l);
+            tabuleiro.TerritoriosInstanciados[11].ConquistaTerritorio(l);
+            tabuleiro.TerritoriosInstanciados[12].ConquistaTerritorio(l);
 
             tabuleiro.TerritoriosInstanciados[20].ConquistaTerritorio(m);
             tabuleiro.TerritoriosInstanciados[21].ConquistaTerritorio(m);
-
 
             foreach (Jogador jouer in jogadores) jouer.recebeObjetivo(BaralhoDeObjetivo.PuxarCarta());
 
             InicializaBaralhoComTabuleiro();
             GetComponent<RoladorDeDados>().baralhoDeCartas = baralhoTerritorios;
-
-            TurnoManager.InicializarManager(jogadores);
-
             // fim dos testes
         }
 
