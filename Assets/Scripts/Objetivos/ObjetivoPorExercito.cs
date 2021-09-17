@@ -33,6 +33,7 @@ namespace FormigaWar
 
             if(!jexiste)
             {
+                onObjMudou?.Invoke(); // Action chamada
                 MudarObjetivo(); 
             }
             if(nemesis.Territorios.Count == 1)
