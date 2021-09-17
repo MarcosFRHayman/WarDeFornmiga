@@ -9,16 +9,16 @@ namespace FormigaWar
     public class ObjetivoPorTerritorio : Objetivo
     {
         public int territoriosNecessarios { get; private set; } // quantos territorios eu preciso
-        private int exercitosPorTerritorio ; // quantos exercitos por exercitos no territorio
+        private int exercitosPorTerritorio; // quantos exercitos por exercitos no territorio
         public ObjetivoPorTerritorio()
         {
             behaviourFactory = new TerritoriosBehaviourFactory(this);
         }
 
-        public ObjetivoPorTerritorio(int i, int j)
+        public ObjetivoPorTerritorio(int territoriosNecessários, int exercitosPorTerritorio)
         {
-            this.territoriosNecessarios = i;
-            this.exercitosPorTerritorio = j;
+            this.territoriosNecessarios = territoriosNecessários;
+            this.exercitosPorTerritorio = exercitosPorTerritorio;
 
             behaviourFactory = new TerritoriosBehaviourFactory(this);
         }
