@@ -31,8 +31,7 @@ public static class TurnoManager
     }
     public static void AvancarTurno() // avanca o faseAtual, se fase atual tiver em 4, pega o proximo jogador e faz fasAtual = 0
     {
-        tabuleiro.DeselecionarTodosTerritorios();
-        tabuleiro.NormalizarTerritoriosDoJogador(GetJogadorDaVez());
+        
 
         if(TurnoManager.faseAtual == 0) // se a fase for de fortificação continental, passe por todos os continentes antes de avançar
         {
@@ -57,9 +56,9 @@ public static class TurnoManager
             if (TurnoManager.jogadorDaVez >= TurnoManager.jogadoresNaMesa.Length) // se este eh o ultimo jogador na mesa, volte para o primeiro
             {
                 TurnoManager.jogadorDaVez = 0;
-                AvancarContinente();
+                
             }
-
+            AvancarContinente();
             /* 
             //############################################################### Checa se o jogador da vez eh IA.
             if(GetJogadorDaVez() is JogadorIA)
@@ -68,6 +67,9 @@ public static class TurnoManager
             }
             // ############################################################### Executa o turno, e avança. 
             */
+
+            tabuleiro.DeselecionarTodosTerritorios();
+            tabuleiro.NormalizarTerritoriosDoJogador(GetJogadorDaVez());
 
             MsgReservas();
         }
@@ -105,6 +107,10 @@ public static class TurnoManager
         dialogoMsg.MostraDiag(msg);
     }
 
+    public static void ChecarVitoria(Jogador jogador, TerritorioDisplay td)
+    {
+        if(jogador.objetivo.Checar())dialogoMsg.MostraDiag("O jogador " +jogador+ " venceu!");
+    }
 
 
 }

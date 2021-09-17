@@ -32,7 +32,17 @@ namespace FormigaWar.Jogadores
             tabuleiro.TerritoriosInstanciados[7].ConquistaTerritorio(j);
             tabuleiro.TerritoriosInstanciados[8].ConquistaTerritorio(j);
 
-            jogadores = new Jogador[1] { j };
+            j.objetivo = new ObjetivoPorTerritorio(9, 1);
+
+            Jogador k = new JogadorHumano();
+            k.Cor = Color.yellow;
+
+            tabuleiro.TerritoriosInstanciados[9].ConquistaTerritorio(k);
+            tabuleiro.TerritoriosInstanciados[10].ConquistaTerritorio(k);
+
+            k.objetivo = new ObjetivoPorContinente();
+
+            jogadores = new Jogador[2] { j, k };
             
             InicializaBaralhoComTabuleiro();
             GetComponent<RoladorDeDados>().baralhoDeCartas = baralhoTerritorios;

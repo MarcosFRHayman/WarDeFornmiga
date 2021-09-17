@@ -34,6 +34,8 @@ namespace FormigaWar
 
         void Start()
         {
+            onCaptura += TurnoManager.ChecarVitoria;
+
             st = GetComponent<SeletorTropas>();
             dialogoMsg = GetComponent<DialogoMsg>();
             TurnoManager.dialogoMsg = dialogoMsg;
@@ -177,6 +179,8 @@ namespace FormigaWar
                     tdAtacante.Tabuleiro.DeselecionarTodosTerritorios();
                     tdAtacante.Tabuleiro.NormalizarTerritoriosDoJogador(TurnoManager.GetJogadorDaVez());
                 }
+
+                TurnoManager.GetJogadorDaVez().objetivo.Checar();
 
                 tdAtacante = null;
                 tdDefensor = null;
