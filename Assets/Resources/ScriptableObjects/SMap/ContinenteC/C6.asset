@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nome: 
   cartaTerritorio:
-    simbolo: {fileID: 0}
+    simbolo: "\u2749"
   continente:
     nome: C
     territorios: []
