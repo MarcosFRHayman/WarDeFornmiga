@@ -32,8 +32,6 @@ public static class TurnoManager
     }
     public static void AvancarTurno() // avanca o faseAtual, se fase atual tiver em 4, pega o proximo jogador e faz fasAtual = 0
     {
-        
-
         if(TurnoManager.faseAtual == 0) // se a fase for de fortificação continental, passe por todos os continentes antes de avançar
         {
             AvancarContinente();
@@ -57,7 +55,6 @@ public static class TurnoManager
             if (TurnoManager.jogadorDaVez >= TurnoManager.jogadoresNaMesa.Length) // se este eh o ultimo jogador na mesa, volte para o primeiro
             {
                 TurnoManager.jogadorDaVez = 0;
-                
             }
             AvancarContinente();
             /* 
@@ -77,6 +74,8 @@ public static class TurnoManager
             tabuleiro.NormalizarTerritoriosDoJogador(GetJogadorDaVez());
         }
         bda.AtualizaTexto();
+        tabuleiro.DeselecionarTodosTerritorios();
+        tabuleiro.NormalizarTerritoriosDoJogador(GetJogadorDaVez());
     }
     private static void AvancarContinente()
     {   
@@ -94,6 +93,7 @@ public static class TurnoManager
             tabuleiro.DesabilitarContinentesMenosUm(tabuleiro.Continentes[continenteAtual]);
             GetJogadorDaVez().CalcularReservas(tabuleiro.Continentes[continenteAtual].TropaBonus); 
         } 
+        Debug.Log(GetJogadorDaVez().continentes.Contains(tabuleiro.Continentes[continenteAtual]));
         if(!GetJogadorDaVez().continentes.Contains(tabuleiro.Continentes[continenteAtual]))AvancarContinente(); // se o jogador n conquistou o continente, pula pro proximo
         bda.AtualizaTexto();
     }
@@ -114,6 +114,7 @@ public static class TurnoManager
         if(jogador.objetivo.Checar())dialogoMsg.MostraDiag("O jogador " +jogador+ " venceu!");
     }
 
+
     public static void EliminaJogador(Jogador j)
     {
         int index = -1;
@@ -127,6 +128,7 @@ public static class TurnoManager
         }
         if(index != -1)
             jogadoresNaMesa = jogadoresNaMesa.Where(val => val != j).ToArray();
+
     }
 
 }
