@@ -34,7 +34,7 @@ namespace FormigaWar
         /// <exception cref="IndexOutOfBoundsException">caso chame uma quantidade maior de vezes que há continentes controlados</exception>
         public Continente EncontraProximo()
         {
-            Debug.Log(vezes);
+            Debug.Log("continentes.Count: "+continentes.Count +" | vezes: " + vezes);
             var continente = continentes[vezes];
             vezes++;
             return continente;
