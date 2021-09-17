@@ -49,13 +49,15 @@ namespace FormigaWar.Territorios
 
             if (jogador != null)
             {
-                jogador.Territorios.Remove(this);                               // remove o territorio do antigo dono
-                if (jogador.continentes.Contains(this.Territorio.Continente))    // se o continente era conquistado,
-                    jogador.continentes.Remove(this.Territorio.Continente);     // agora nao eh mais
+                jogador.Territorios.Remove(this);                                       // remove o territorio do antigo dono
+                if (jogador.continentes.Contains(this.Territorio.Continente))           // se o continente era conquistado,
+                    jogador.continentes.Remove(this.Territorio.Continente);             // agora nao eh mais
+
+                if(jogador.Territorios.Count == 0)TurnoManager.EliminaJogador(jogador); // se este era o ultimo territorio do jogador, remova-o de jogo
             }
-            jogador = j;                                             // bota o jogador que o conquistou
-            j.Territorios.Add(this);                                 // bota o territorio no jogador
-            spriteJogador.color = j.Cor;                             // e bota a cor do territorio pra cor do exercito
+            jogador = j;                                                                // bota o jogador que o conquistou
+            j.Territorios.Add(this);                                                    // bota o territorio no jogador
+            spriteJogador.color = j.Cor;                                                // e bota a cor do territorio pra cor do exercito
 
             // checar se o continente foi conquistado ao todo
 
@@ -67,14 +69,9 @@ namespace FormigaWar.Territorios
 
             int count = ccheck.GetTerritorios().Count;
             foreach (TerritorioDisplay t in j.Territorios)
-            {
                 if (ccheck.GetTerritorios().Contains(t.Territorio)) count -= 1;
-                //Debug.Log("Checando se jogador tem todos os territorios do continente "+ cnome + " ele tem " + count + " de " + ccheck.GetTerritorios().Count);
-            }
-            //Debug.Log("Contagem final:" + count + " se igual a 0, territorio devia estar colocado");
-            if (count == 0) j.continentes.Add(ccheck);
 
-            //foreach(Continente c in j.continentes)Debug.Log("Continentes do Jogador: "+ c.nome);
+            if (count == 0) j.continentes.Add(ccheck);
 
         }
 

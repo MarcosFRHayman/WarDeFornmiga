@@ -12,30 +12,38 @@ namespace FormigaWar
     {
         public Jogador nemesis { get; private set; }
         private bool nemesisDerrotado = false;
+        public System.Action onObjMudou;
 
         public ObjetivoPorExercito()
         {
             behaviourFactory = new EliminacaoBehaviourFactory(this);
         }
+
+        public ObjetivoPorExercito(Jogador jouer)
+        {
+            nemesis = jouer;
+            behaviourFactory = new EliminacaoBehaviourFactory(this);
+        }
         public override bool Checar()
         {
-            if (nemesisDerrotado)
-            {
-                if (jogador.Territorios.Count >= 24) return true;
-            }
-            else
-            {
-                //checar se o nemesis tem 0 territorios // como esta funcao eh chamada logo apos um territorio eh conquistado
-                //se o nemesis tem 0 territorios
-                //return true;
-            }
+            bool jexiste = false;
 
+            for(int i = 0; i < TurnoManager.jogadoresNaMesa.Length; i++)
+                if(TurnoManager.jogadoresNaMesa[i] == nemesis)jexiste = true;
+
+            if(!jexiste)
+            {
+                onObjMudou?.Invoke(); // Action chamada
+                MudarObjetivo(); 
+            }
+            if(nemesis.Territorios.Count == 1)
+                return true;
             return false;
         }
-
-        public void MudarObjetivo()
+        public void MudarObjetivo() // TODO: Usar o RecebeObjetivo() do Jogador
         {
-            nemesisDerrotado = true;
+            TurnoManager.GetJogadorDaVez().objetivo = new ObjetivoPorTerritorio(24, 1);
+            TurnoManager.GetJogadorDaVez().objetivo.Checar();
         }
     }
 }

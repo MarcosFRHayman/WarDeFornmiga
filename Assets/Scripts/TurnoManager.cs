@@ -5,6 +5,7 @@ using UnityEngine.UI;
 using FormigaWar;
 using FormigaWar.Jogadores;
 using FormigaWar.Territorios;
+using System.Linq;
 
 public static class TurnoManager
 {
@@ -67,6 +68,11 @@ public static class TurnoManager
 
             MsgReservas();
         }
+        else 
+        {
+            tabuleiro.DeselecionarTodosTerritorios();
+            tabuleiro.NormalizarTerritoriosDoJogador(GetJogadorDaVez());
+        }
         bda.AtualizaTexto();
         tabuleiro.DeselecionarTodosTerritorios();
         tabuleiro.NormalizarTerritoriosDoJogador(GetJogadorDaVez());
@@ -103,10 +109,26 @@ public static class TurnoManager
         foreach(Continente cont in GetJogadorDaVez().continentes)msg += cont.TropaBonus + " por conquistar " + cont.nome + "\n";
         dialogoMsg.MostraDiag(msg);
     }
-
     public static void ChecarVitoria(Jogador jogador, TerritorioDisplay td)
     {
-        if(jogador.objetivo.Checar())dialogoMsg.MostraDiag("O Jogador "+ jogador.Cor.ToString() +" venceu!");
+        if(jogador.objetivo.Checar())dialogoMsg.MostraDiag("O jogador " +jogador+ " venceu!");
+    }
+
+
+    public static void EliminaJogador(Jogador j)
+    {
+        int index = -1;
+        for(int i = 0; i < jogadoresNaMesa.Length; i++)
+        {
+            if(j == jogadoresNaMesa[i])
+            {
+                index = i;
+                break;                
+            }
+        }
+        if(index != -1)
+            jogadoresNaMesa = jogadoresNaMesa.Where(val => val != j).ToArray();
+
     }
 
 }

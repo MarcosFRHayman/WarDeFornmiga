@@ -9,14 +9,23 @@ namespace FormigaWar
     public class ObjetivoPorTerritorio : Objetivo
     {
         public int territoriosNecessarios { get; private set; } // quantos territorios eu preciso
-        private int exercitosPorTerritorio; // quantos exercitos por exercitos no territorio
+        private int exercitosPorTerritorio ; // quantos exercitos por exercitos no territorio
         public ObjetivoPorTerritorio()
         {
             behaviourFactory = new TerritoriosBehaviourFactory(this);
         }
+
+        public ObjetivoPorTerritorio(int i, int j)
+        {
+            this.territoriosNecessarios = i;
+            this.exercitosPorTerritorio = j;
+
+            behaviourFactory = new TerritoriosBehaviourFactory(this);
+        }
         public override bool Checar()
         {
-            if (jogador.Territorios.Count >= territoriosNecessarios && exercitosPorTerritorio == 1) return true;
+            jogador = TurnoManager.GetJogadorDaVez();
+            if (TurnoManager.GetJogadorDaVez().Territorios.Count >= territoriosNecessarios && exercitosPorTerritorio == 1) return true;
             else
             {
                 int counter = 0;
