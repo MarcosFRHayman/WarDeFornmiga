@@ -16,7 +16,7 @@ namespace FormigaWar.Territorios
 
 
         public string Nome { get => nome; }
-        public List<Fronteira> Fronteiras { get => fronteiras; private set => this.fronteiras = value; }
+        public List<Fronteira> Fronteiras { get => fronteiras; protected set => this.fronteiras = value; }
         public CartaTerritorio Carta { get => cartaTerritorio; private set => this.cartaTerritorio = value; }
         public Continente Continente { get => continente; internal set { this.continente = value; } }
 
@@ -31,6 +31,13 @@ namespace FormigaWar.Territorios
                 adicionarFronteira = null;
             }
             cartaTerritorio.territorio = this;
+        }
+        public static Territorio criaTerritorio(string nome, Continente continente)
+        {
+            var territorio = ScriptableObject.CreateInstance<Territorio>();
+            territorio.nome = nome;
+            territorio.Continente = continente;
+            return territorio;
         }
     }
 }

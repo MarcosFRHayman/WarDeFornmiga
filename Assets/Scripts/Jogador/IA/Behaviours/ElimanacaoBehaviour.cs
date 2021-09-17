@@ -10,6 +10,14 @@ namespace FormigaWar.Jogadores.IA
         public ElimanacaoBehaviour(ObjetivoPorExercito objetivo, int dificuldade)
         : base(objetivo, dificuldade)
         {
+            RoladorDeDados.onCaptura += AlteraPrioridade;
+        }
+        private void AlteraPrioridade(Jogador jogador, TerritorioDisplay display)
+        {
+            if (jogador.Equals(objetivo.nemesis))
+                UpdatePrioridade(display, dificuldade);
+            else if (PrioridadesMap[display] == dificuldade)
+                UpdatePrioridade(display, 1);
         }
         protected override void PintarTerritorios()
         {

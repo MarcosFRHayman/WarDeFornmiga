@@ -22,18 +22,5 @@ namespace FormigaWar.Jogadores.IA
                 territoriosEscolhidos += continente.GetTerritorios().Count;
             }
         }
-        private void PreencheContinente(Continente continente)
-        {
-            objetivo.tabuleiro
-            .ContinentesDisplay[continente]
-            .ForEach(territorio =>
-            {
-                if (territorio.fronteirasDisplay.Exists(
-                    fronteira =>
-                    !fronteira.Territorio.Continente.Equals(continente)
-                )) UpdatePrioridade(territorio, dificuldade);
-                else PrioridadesMap[territorio] = dificuldade;
-            });
-        }
     }
 }
