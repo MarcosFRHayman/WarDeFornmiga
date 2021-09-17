@@ -5,6 +5,7 @@ using UnityEngine.UI;
 using FormigaWar.Territorios;
 using FormigaWar.Jogadores;
 using FormigaWar;
+using System.Linq;
 
 namespace FormigaWar
 {
@@ -37,35 +38,25 @@ namespace FormigaWar
             dialogoMsg = GetComponent<DialogoMsg>();
 
             Jogador j = new JogadorHumano();
-
+            j.AddCarta(new CartaTerritorio() {simbolo =  "✦"});
+            j.AddCarta(new CartaTerritorio() {simbolo =  "❉"});
+            j.AddCarta(new CartaTerritorio() {simbolo =  "❉"});
 
             AbrirMao(j);
         }
         public void AddSelected(CartaButton cb)
         {
             cartasSelecionadas.Add(cb);
-            if(cartasSelecionadas.Count == 3) btnconfirma.interactable = true;
+            List<Carta> c = new List<Carta>();
+            foreach(CartaButton bc in cartasSelecionadas)c.Add(bc.carta);
+            if(ChecaTrocavel(c)) btnconfirma.interactable = true;
         }
 
         void BtnConfirma()
         {
-            List<Carta> cartas = new List<Carta>();
-            foreach(CartaButton cb in cartasSelecionadas)
-            {
-                cartas.Add(cb.carta);
-            }
-            if(ChecaTrocavel(cartas))
-            {
-                j.reservas += valorDeTroca;
-                valorDeTroca += 2;
-                LimparMao();
-            }
-            else
-            {
-                dialogoMsg.MostraDiag("Selecione Cartas de 3 simbolos iguais ou 3 símbolos diferentes");
-                foreach(CartaButton c in cartasSelecionadas)c.button.interactable = true;
-                cartasSelecionadas.Clear();
-            }
+            j.reservas += valorDeTroca;
+            valorDeTroca += 2;
+            LimparMao();
         }
         void BtnCancela()
         {
@@ -76,12 +67,25 @@ namespace FormigaWar
 
         public bool ChecaTrocavel(List<Carta> c)
         {
-            return false;
+            if(c.Count != 3)return false;
+
+            List<string> simbolos = new List<string>();
+            foreach(Carta carta in c)simbolos.Add(carta.simbolo); // Debug.Log(carta.simbolo);
+
+            int igual = 0;
+            int diferente = 0;
+            igual = simbolos.Max(simbolo => simbolos.Count(cadaSimbolo => cadaSimbolo.Equals(simbolo) || cadaSimbolo.Equals("✦✹❉")));
+            diferente = simbolos.Min(simbolo => simbolos.Count(cadaSimbolo => !cadaSimbolo.Equals(simbolo) || cadaSimbolo.Equals("✦✹❉")));
+
+            Debug.Log(igual +" "+ diferente);
+
+            if(igual == 3 || diferente == 2)return true;
+            else return false;
         }
 
         public void AbrirMao(Jogador j)
         {
-            if(j.GetMao().Length >= 5)
+            if(j.GetMao().Length >= 5)btncancela.interactable = false;
             btnconfirma.interactable = false;
             foreach(Carta c in j.GetMao())
             {
