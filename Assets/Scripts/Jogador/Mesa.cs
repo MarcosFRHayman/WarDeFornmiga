@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using FormigaWar.Territorios;
+using FormigaWar.Jogadores.IA;
 
 namespace FormigaWar.Jogadores
 {
@@ -19,8 +20,32 @@ namespace FormigaWar.Jogadores
             TurnoManager.tabuleiro = tabuleiro; // o turnomanager precisa do tabuleiro para aplicar o movimento nas tropas
 
             // essa parte toda aqui é de testes, pode comentar ou deletar caso nao esteja na branch 2.3
+
             Jogador j = new JogadorHumano();
             j.Cor = Color.cyan;
+
+            Jogador k = new JogadorHumano();
+            k.Cor = Color.yellow;
+
+            Jogador l = new JogadorHumano();
+            l.Cor = Color.red;
+
+            Jogador m = new JogadorIA(1);
+            m.Cor = Color.green;
+
+            jogadores = new Jogador[4] { j, k, l, m };
+
+            BaralhoDeObjetivo.InicializaBaralho( 
+                tabuleiro, jogadores,     // tabuleiro e jogadores
+                tabuleiro.Continentes[1], // N
+                tabuleiro.Continentes[0], // NO e NOO
+                tabuleiro.Continentes[2], // NL
+                tabuleiro.Continentes[4], // SO
+                tabuleiro.Continentes[5], // SL
+                tabuleiro.Continentes[3]  // C
+            );
+
+            foreach(Jogador jouer in jogadores)jouer.recebeObjetivo(BaralhoDeObjetivo.PuxarCarta());
 
             tabuleiro.TerritoriosInstanciados[0].ConquistaTerritorio(j);
             tabuleiro.TerritoriosInstanciados[1].ConquistaTerritorio(j);
@@ -30,34 +55,25 @@ namespace FormigaWar.Jogadores
             tabuleiro.TerritoriosInstanciados[5].ConquistaTerritorio(j);
             tabuleiro.TerritoriosInstanciados[6].ConquistaTerritorio(j);
             tabuleiro.TerritoriosInstanciados[7].ConquistaTerritorio(j);
-            tabuleiro.TerritoriosInstanciados[8].ConquistaTerritorio(j);
-
-            //j.objetivo = new ObjetivoPorExercito(k);
-
-            Jogador k = new JogadorHumano(); j.objetivo = new ObjetivoPorExercito(k);
-            k.Cor = Color.yellow;
+            tabuleiro.TerritoriosInstanciados[8].ConquistaTerritorio(j);  
 
             tabuleiro.TerritoriosInstanciados[9].ConquistaTerritorio(k);
-            tabuleiro.TerritoriosInstanciados[10].ConquistaTerritorio(k);
+            tabuleiro.TerritoriosInstanciados[10].ConquistaTerritorio(k);   
 
-            List<Continente>conts = new List<Continente>(); conts.Add(tabuleiro.Continentes[4]);
-            k.objetivo = new ObjetivoPorContinente(conts, 0);
+            tabuleiro.TerritoriosInstanciados[9].ConquistaTerritorio(l);
+            tabuleiro.TerritoriosInstanciados[10].ConquistaTerritorio(l);         
 
-            Jogador l = new JogadorHumano(); l.objetivo = new ObjetivoPorTerritorio(24, 1);
-            l.Cor = Color.red;
+            tabuleiro.TerritoriosInstanciados[20].ConquistaTerritorio(m);
+            tabuleiro.TerritoriosInstanciados[21].ConquistaTerritorio(m);
 
-            //tabuleiro.TerritoriosInstanciados[9].ConquistaTerritorio(l);
-            //tabuleiro.TerritoriosInstanciados[10].ConquistaTerritorio(l);
-
-            jogadores = new Jogador[3] { j, k, l };
+            
             
             InicializaBaralhoComTabuleiro();
             GetComponent<RoladorDeDados>().baralhoDeCartas = baralhoTerritorios;
 
             TurnoManager.InicializarManager(jogadores);
 
-            tabuleiro.TerritoriosInstanciados[9].ConquistaTerritorio(l);
-            tabuleiro.TerritoriosInstanciados[10].ConquistaTerritorio(l);
+            // fim dos testes
         }
 
         // #endif
