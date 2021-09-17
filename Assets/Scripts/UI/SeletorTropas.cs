@@ -30,7 +30,7 @@ namespace FormigaWar
             btncancela = transform.GetChild(0).GetChild(0).GetChild(3).gameObject.GetComponent<Button>();
             btnconfirma = transform.GetChild(0).GetChild(0).GetChild(4).gameObject.GetComponent<Button>();
 
-            AtualizaNumTxt();
+            //AtualizaNumTxt();
             btnmais.onClick.AddListener(BtnMaisOnClick);
             btnmenos.onClick.AddListener(BtnMenosOnClick);
             btnconfirma.onClick.AddListener(BtnConfirmaOnClick);
