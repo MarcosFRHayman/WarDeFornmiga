@@ -10,13 +10,15 @@ namespace FormigaWar.Jogadores.IA
     {
 
         public readonly T objetivo;
-        protected Dictionary<TerritorioDisplay, int> PrioridadesMap;
+        protected readonly Dictionary<TerritorioDisplay, int> PrioridadesMap = new Dictionary<TerritorioDisplay, int>();
         protected readonly int dificuldade;
 
         public GenericObjetivoBehaviour(T objetivo, int dificuldade)
         {
             this.objetivo = objetivo;
             this.dificuldade = dificuldade;
+            PrioridadesMap = objetivo.tabuleiro.TerritoriosInstanciados.ToDictionary(k => k, v => 1);
+
             PintarTerritorios();
         }
         /// <summary>Determina as prioridades</summary>
