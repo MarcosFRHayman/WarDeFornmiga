@@ -6,6 +6,8 @@ using FormigaWar;
 using FormigaWar.Jogadores;
 using FormigaWar.Territorios;
 using System.Linq;
+using FormigaWar.Jogadores.IA;
+using System;
 
 public static class TurnoManager
 {
@@ -52,19 +54,18 @@ public static class TurnoManager
             TurnoManager.continenteAtual = -1;
             
             TurnoManager.jogadorDaVez += 1;
-            if (TurnoManager.jogadorDaVez >= TurnoManager.jogadoresNaMesa.Length) // se este eh o ultimo jogador na mesa, volte para o primeiro
-            {
+            if (TurnoManager.jogadorDaVez >= TurnoManager.jogadoresNaMesa.Length)
                 TurnoManager.jogadorDaVez = 0;
-            }
+
             AvancarContinente();
-            /* 
-            //############################################################### Checa se o jogador da vez eh IA.
+
             if(GetJogadorDaVez() is JogadorIA)
             {
-                // executa o turno da IA, com os metodos do jogador;
+                JogadorIA IAJogador = GetJogadorDaVez() as JogadorIA;
+                Debug.Log("IA esta no controle agora");
+                IATurno(IAJogador);
             }
-            // ############################################################### Executa o turno, e avança. 
-            */
+
 
             MsgReservas();
         }
@@ -105,7 +106,7 @@ public static class TurnoManager
     {
         int c = GetJogadorDaVez().Territorios.Count;
         string msg = "Você ganhou ";
-        
+
         if(c > 6) msg += (int)c/2 + " tropas por ter " + c + " territórios. \n ";
         else msg += 3 + " tropas por ter " + c + " territórios. \n ";
 
@@ -117,8 +118,6 @@ public static class TurnoManager
     {
         if(jogador.objetivo.Checar())dialogoMsg.MostraDiag("O jogador " +jogador+ " venceu!");
     }
-
-
     public static void EliminaJogador(Jogador j)
     {
         int index = -1;
@@ -135,4 +134,30 @@ public static class TurnoManager
 
     }
 
+    // JogadorIA
+
+    private static void IATurno(JogadorIA cpu)
+    {
+        switch(faseAtual)
+        {
+            case 0: // fortificacao continental
+                cpu.RealizaFortificacao(tabuleiro.Continentes[continenteAtual]);
+            break;
+            case 1: // fortificacao
+                cpu.RealizaFortificacao();
+            break;
+            case 2: // ataque
+                List<Func<int>> acoes = cpu.AcoesDeAtaque();
+                List<int> ints = new List<int>();
+                foreach(Func<int> acao in acoes)
+                {
+                    ints.Add(acao());
+                }
+            break;
+            case 3: // movimentacao
+                cpu.RealizaMovimentos();
+            break;
+        }
+        AvancarTurno();
+    }
 }
