@@ -118,12 +118,13 @@ public static class TurnoManager
     {
         int index = -1;
         for(int i = 0; i < jogadoresNaMesa.Length; i++)
+        {
             if(j == jogadoresNaMesa[i])
             {
                 index = i;
                 break;                
             }
-
+        }
         if(index != -1)
             jogadoresNaMesa = jogadoresNaMesa.Where(val => val != j).ToArray();
     }

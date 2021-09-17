@@ -39,17 +39,25 @@ namespace FormigaWar.Jogadores
 
             tabuleiro.TerritoriosInstanciados[9].ConquistaTerritorio(k);
             tabuleiro.TerritoriosInstanciados[10].ConquistaTerritorio(k);
-            tabuleiro.TerritoriosInstanciados[11].ConquistaTerritorio(k);
 
             List<Continente>conts = new List<Continente>(); conts.Add(tabuleiro.Continentes[4]);
             k.objetivo = new ObjetivoPorContinente(conts, 0);
 
-            jogadores = new Jogador[2] { j, k };
+            Jogador l = new JogadorHumano(); l.objetivo = new ObjetivoPorTerritorio(24, 1);
+            l.Cor = Color.red;
+
+            //tabuleiro.TerritoriosInstanciados[9].ConquistaTerritorio(l);
+            //tabuleiro.TerritoriosInstanciados[10].ConquistaTerritorio(l);
+
+            jogadores = new Jogador[3] { j, k, l };
             
             InicializaBaralhoComTabuleiro();
             GetComponent<RoladorDeDados>().baralhoDeCartas = baralhoTerritorios;
 
             TurnoManager.InicializarManager(jogadores);
+
+            tabuleiro.TerritoriosInstanciados[9].ConquistaTerritorio(l);
+            tabuleiro.TerritoriosInstanciados[10].ConquistaTerritorio(l);
         }
 
         // #endif
