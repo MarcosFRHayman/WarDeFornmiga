@@ -13,6 +13,7 @@ namespace FormigaWar.Jogadores
         public List<Continente> continentes { get; protected set; } = new List<Continente>();
         public Objetivo objetivo;
         protected List<Carta> mao = new List<Carta>();
+        public Carta[] GetMao() => mao.ToArray();
         public int reservas; // qtd de tropas para a fase de fortificacao
 
         public void AddCarta(Carta c)
