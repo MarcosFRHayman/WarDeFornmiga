@@ -104,6 +104,7 @@ namespace FormigaWar
                     tdChegada.NumTropas += number;
                     tdChegada.AtualizarNumTropas();
                     tdChegada = null;
+                    tdSaida.Tabuleiro.NormalizarTerritoriosDoJogador(TurnoManager.GetJogadorDaVez());
                     break;
                 case 3:  // fase de movimentacao
                     tdSaida.NumTropas -= number;

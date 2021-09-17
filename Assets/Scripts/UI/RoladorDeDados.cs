@@ -166,7 +166,7 @@ namespace FormigaWar
 
                     // mudar essa implementacao quando puder, ta feio
                     tdAtacante.Tabuleiro.DeselecionarTodosTerritorios();
-                    tdAtacante.Tabuleiro.NormalizarTerritoriosDoJogador(TurnoManager.GetJogadorDaVez());
+                    tdAtacante.AtualizaEstado(TerritorioDisplay.Estado.Indisponivel);
                 }
                 else
                 {

@@ -18,6 +18,7 @@ namespace FormigaWar
         public Button btncancela;
         public Button btnconfirma;
         public Button btnAbreCarta;
+        public Button btnAvancarTurno;
         public Jogador j = null;
         public DialogoMsg dialogoMsg;
 
@@ -54,7 +55,6 @@ namespace FormigaWar
             foreach(CartaButton bc in cartasSelecionadas)c.Add(bc.carta);
             if(ChecaTrocavel(c)) btnconfirma.interactable = true;
         }
-
         void BtnConfirma()
         {
             j.reservas += valorDeTroca;
@@ -65,9 +65,9 @@ namespace FormigaWar
         {
             LimparMao();
             btnAbreCarta.interactable = true;
+            btnAvancarTurno.interactable = true;
             painel.SetActive(false);
         }
-
         public bool ChecaTrocavel(List<Carta> c)
         {
             if(c.Count != 3)return false;
@@ -87,8 +87,8 @@ namespace FormigaWar
         }
         public void Abrir()
         {
-            if(TurnoManager.faseAtual != 1) return;
             AbrirMao(TurnoManager.GetJogadorDaVez());
+            btnAvancarTurno.interactable = false;
         }
         public void AbrirMao(Jogador j)
         {
@@ -101,12 +101,12 @@ namespace FormigaWar
                 cb.carta = c; // passar a carta para o CartaButton
                 cb.maoUI = this; // passar o maoUI para o CartaButton 
                 cb.texto.text = c.simbolo;
+                if(TurnoManager.faseAtual != 1)cb.button.interactable = false;
                 cartas.Add(cb);               
             }
             btnAbreCarta.interactable = false;
             painel.SetActive(true);
         }
-
         void LimparMao()
         {
             foreach(CartaButton cb in cartas)

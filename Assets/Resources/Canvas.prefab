@@ -1811,6 +1811,7 @@ MonoBehaviour:
   btncancela: {fileID: 6713204179452136616}
   btnconfirma: {fileID: 3999476896482398871}
   btnAbreCarta: {fileID: 5699720312831953075}
+  btnAvancarTurno: {fileID: 8065170476149562334}
   dialogoMsg: {fileID: 0}
   prefabBtnCarta: {fileID: 2834877459100900563, guid: 0402ce6caf7d1484cbbc6a7d61e6b26e, type: 3}
   cartas: []
