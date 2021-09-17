@@ -32,15 +32,15 @@ namespace FormigaWar.Jogadores
             tabuleiro.TerritoriosInstanciados[7].ConquistaTerritorio(j);
             tabuleiro.TerritoriosInstanciados[8].ConquistaTerritorio(j);
 
-            j.objetivo = new ObjetivoPorTerritorio(9, 1);
+            //j.objetivo = new ObjetivoPorExercito(k);
 
-            Jogador k = new JogadorHumano();
+            Jogador k = new JogadorHumano(); j.objetivo = new ObjetivoPorExercito(k);
             k.Cor = Color.yellow;
 
             tabuleiro.TerritoriosInstanciados[9].ConquistaTerritorio(k);
             tabuleiro.TerritoriosInstanciados[10].ConquistaTerritorio(k);
 
-            k.objetivo = new ObjetivoPorContinente();
+            k.objetivo = new ObjetivoPorTerritorio(9, 1);
 
             jogadores = new Jogador[2] { j, k };
             

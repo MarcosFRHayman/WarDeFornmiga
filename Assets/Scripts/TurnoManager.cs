@@ -111,6 +111,7 @@ public static class TurnoManager
 
     public static void ChecarVitoria(Jogador jogador, TerritorioDisplay td)
     {
+        Debug.Log("Resultado: " +jogador.objetivo.Checar());
         if(jogador.objetivo.Checar())dialogoMsg.MostraDiag("O jogador " +jogador+ " venceu!");
     }
 

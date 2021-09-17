@@ -17,6 +17,11 @@ namespace FormigaWar
         {
             behaviourFactory = new EliminacaoBehaviourFactory(this);
         }
+
+        public ObjetivoPorExercito(Jogador jouer)
+        {
+            nemesis = jouer;
+        }
         public override bool Checar()
         {
             if (nemesisDerrotado)
@@ -25,9 +30,15 @@ namespace FormigaWar
             }
             else
             {
-                //checar se o nemesis tem 0 territorios // como esta funcao eh chamada logo apos um territorio eh conquistado
-                //se o nemesis tem 0 territorios
-                //return true;
+                Debug.Log(nemesis.Territorios.Count +" == 0 ?");
+                Debug.Log("Be the nemesis null?" +(nemesis == null));
+                if(nemesis == null)
+                {
+                    MudarObjetivo(); 
+                    return false;
+                }
+                if(nemesis.Territorios.Count == 0)return true;
+                else return false;
             }
 
             return false;
