@@ -68,10 +68,12 @@ public static class TurnoManager
             // ############################################################### Executa o turno, e avança. 
             */
 
+            MsgReservas();
+        }
+        else 
+        {
             tabuleiro.DeselecionarTodosTerritorios();
             tabuleiro.NormalizarTerritoriosDoJogador(GetJogadorDaVez());
-
-            MsgReservas();
         }
         bda.AtualizaTexto();
     }
