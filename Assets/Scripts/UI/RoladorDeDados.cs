@@ -28,6 +28,9 @@ namespace FormigaWar
         public TerritorioDisplay tdAtacante;
         public TerritorioDisplay tdDefensor;
 
+        // Action
+        public System.Action<Jogador, TerritorioDisplay> onCaptura;
+
         void Start()
         {
             st = GetComponent<SeletorTropas>();
@@ -141,7 +144,7 @@ namespace FormigaWar
 
                 if (tdDefensor.NumTropas <= 0) // este eh o if que diz se ganhou ou nao
                 {
-                    onCaptura?.Invoke(TurnoManager.GetJogadorDaVez(), tdDefensor.Territorio); // Action chamada
+                    onCaptura?.Invoke(TurnoManager.GetJogadorDaVez(), tdDefensor); // Action chamada
                     tdDefensor.ConquistaTerritorio(TurnoManager.GetJogadorDaVez());
 
                     // Colocar carta no inventario do jogador caso possa
