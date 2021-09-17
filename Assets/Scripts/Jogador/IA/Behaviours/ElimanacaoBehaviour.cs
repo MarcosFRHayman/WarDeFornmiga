@@ -1,3 +1,5 @@
+using System;
+using System.Reflection;
 using System.Collections;
 using System.Collections.Generic;
 using FormigaWar.Territorios;
@@ -17,7 +19,10 @@ namespace FormigaWar.Jogadores.IA
             if (jogador.Equals(objetivo.nemesis))
                 UpdatePrioridade(display, dificuldade);
             else if (PrioridadesMap[display] == dificuldade)
+            {
                 UpdatePrioridade(display, 1);
+                objetivo.Checar();
+            }
         }
         protected override void PintarTerritorios()
         {
