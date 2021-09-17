@@ -17,12 +17,19 @@ namespace FormigaWar
             behaviourFactory = new ContinenteBehvaiourFactory(this);
         }
 
+        public ObjetivoPorContinente(List<Continente> continentes, int i)
+        {
+            this.continentes = continentes;
+            this.continenteAEscolha = i;
+            behaviourFactory = new ContinenteBehvaiourFactory(this);
+        }
+
         public int ContinenteAEscolha { get => continenteAEscolha; }
 
 
         public override bool Checar()
         {
-
+            jogador = TurnoManager.GetJogadorDaVez();
             int counter = continentes.Count;
             foreach (Continente c in continentes)
             {

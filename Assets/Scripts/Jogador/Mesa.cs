@@ -39,8 +39,10 @@ namespace FormigaWar.Jogadores
 
             tabuleiro.TerritoriosInstanciados[9].ConquistaTerritorio(k);
             tabuleiro.TerritoriosInstanciados[10].ConquistaTerritorio(k);
+            tabuleiro.TerritoriosInstanciados[11].ConquistaTerritorio(k);
 
-            k.objetivo = new ObjetivoPorTerritorio(9, 1);
+            List<Continente>conts = new List<Continente>(); conts.Add(tabuleiro.Continentes[4]);
+            k.objetivo = new ObjetivoPorContinente(conts, 0);
 
             jogadores = new Jogador[2] { j, k };
             

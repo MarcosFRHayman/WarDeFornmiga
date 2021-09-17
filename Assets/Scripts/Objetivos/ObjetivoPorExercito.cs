@@ -12,6 +12,7 @@ namespace FormigaWar
     {
         public Jogador nemesis { get; private set; }
         private bool nemesisDerrotado = false;
+        public System.Action onObjMudou;
 
         public ObjetivoPorExercito()
         {
@@ -21,32 +22,27 @@ namespace FormigaWar
         public ObjetivoPorExercito(Jogador jouer)
         {
             nemesis = jouer;
+            behaviourFactory = new EliminacaoBehaviourFactory(this);
         }
         public override bool Checar()
         {
-            if (nemesisDerrotado)
-            {
-                if (jogador.Territorios.Count >= 24) return true;
-            }
-            else
-            {
-                Debug.Log(nemesis.Territorios.Count +" == 0 ?");
-                Debug.Log("Be the nemesis null?" +(nemesis == null));
-                if(nemesis == null)
-                {
-                    MudarObjetivo(); 
-                    return false;
-                }
-                if(nemesis.Territorios.Count == 0)return true;
-                else return false;
-            }
+            bool jexiste = false;
 
+            for(int i = 0; i < TurnoManager.jogadoresNaMesa.Length; i++)
+                if(TurnoManager.jogadoresNaMesa[i] == nemesis)jexiste = true;
+
+            if(!jexiste)
+            {
+                MudarObjetivo(); 
+            }
+            if(nemesis.Territorios.Count == 1)
+                return true;
             return false;
         }
-
-        public void MudarObjetivo()
+        public void MudarObjetivo() // TODO: Usar o RecebeObjetivo() do Jogador
         {
-            nemesisDerrotado = true;
+            TurnoManager.GetJogadorDaVez().objetivo = new ObjetivoPorTerritorio(24, 1);
+            TurnoManager.GetJogadorDaVez().objetivo.Checar();
         }
     }
 }

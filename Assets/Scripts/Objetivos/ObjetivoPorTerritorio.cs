@@ -19,9 +19,12 @@ namespace FormigaWar
         {
             this.territoriosNecessarios = i;
             this.exercitosPorTerritorio = j;
+
+            behaviourFactory = new TerritoriosBehaviourFactory(this);
         }
         public override bool Checar()
         {
+            jogador = TurnoManager.GetJogadorDaVez();
             if (TurnoManager.GetJogadorDaVez().Territorios.Count >= territoriosNecessarios && exercitosPorTerritorio == 1) return true;
             else
             {
