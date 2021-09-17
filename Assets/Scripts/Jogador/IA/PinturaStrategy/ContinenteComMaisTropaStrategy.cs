@@ -20,7 +20,9 @@ namespace FormigaWar
             var tabuleiro = ia.objetivo.tabuleiro;
             continentes =
                 tabuleiro.Continentes
-                    .Where(continente => ia.continentes.Contains(continente))
+                    .Where(continente => continente.GetTerritorios()
+                    .Exists(territorio => ia.Territorios
+                    .Exists(t => t.Territorio.Equals(territorio))))
                     .OrderBy(continente =>
                         (float)continente
                             .GetTerritorios()
