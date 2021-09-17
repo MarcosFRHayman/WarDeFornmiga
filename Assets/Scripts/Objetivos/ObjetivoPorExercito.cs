@@ -3,19 +3,25 @@ using System.Collections.Generic;
 using UnityEngine;
 using FormigaWar.Territorios;
 using FormigaWar.Jogadores;
+using FormigaWar.Jogadores.IA;
 
 
 namespace FormigaWar
 {
     public class ObjetivoPorExercito : Objetivo
     {
-        private Jogador nemesis;
-        private bool nemesisDerrotado;
+        public Jogador nemesis { get; private set; }
+        private bool nemesisDerrotado = false;
+
+        public ObjetivoPorExercito()
+        {
+            behaviourFactory = new EliminacaoBehaviourFactory(this);
+        }
         public override bool Checar()
         {
-            if(nemesisDerrotado)
+            if (nemesisDerrotado)
             {
-                if(jogador.Territorios.Count >= 24)return true;
+                if (jogador.Territorios.Count >= 24) return true;
             }
             else
             {
@@ -23,7 +29,7 @@ namespace FormigaWar
                 //se o nemesis tem 0 territorios
                 //return true;
             }
-            
+
             return false;
         }
 

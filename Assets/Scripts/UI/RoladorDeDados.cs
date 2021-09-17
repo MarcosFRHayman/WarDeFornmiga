@@ -10,6 +10,7 @@ namespace FormigaWar
 
     public class RoladorDeDados : MonoBehaviour
     {
+
         // Atributos que apontam para outras classes
         public GameObject panel;
         public Button btnConfirma;
@@ -38,6 +39,7 @@ namespace FormigaWar
             TurnoManager.dialogoMsg = dialogoMsg;
             btnConfirma.onClick.AddListener(BtnConfirma);
         }
+
         void BtnConfirma()
         {
             List<int> dadosatacantes = new List<int>();
@@ -144,7 +146,9 @@ namespace FormigaWar
 
                 if (tdDefensor.NumTropas <= 0) // este eh o if que diz se ganhou ou nao
                 {
+
                     onCaptura?.Invoke(TurnoManager.GetJogadorDaVez(), tdDefensor); // Action chamada
+
                     tdDefensor.ConquistaTerritorio(TurnoManager.GetJogadorDaVez());
 
                     // Colocar carta no inventario do jogador caso possa
