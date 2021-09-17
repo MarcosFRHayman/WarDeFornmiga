@@ -37,7 +37,8 @@ namespace FormigaWar
             dialogoMsg = GetComponent<DialogoMsg>();
 
             Jogador j = new JogadorHumano();
-            j.AddCarta(new Curinga());j.AddCarta(new Curinga());j.AddCarta(new Curinga());
+
+
             AbrirMao(j);
         }
         public void AddSelected(CartaButton cb)
@@ -73,13 +74,14 @@ namespace FormigaWar
             painel.SetActive(false);
         }
 
-        private bool ChecaTrocavel(List<Carta> c)
+        public bool ChecaTrocavel(List<Carta> c)
         {
             return false;
         }
 
         public void AbrirMao(Jogador j)
         {
+            if(j.GetMao().Length >= 5)
             btnconfirma.interactable = false;
             foreach(Carta c in j.GetMao())
             {

@@ -6,6 +6,6 @@ namespace FormigaWar.Territorios
 {
     public interface Carta
     {
-        bool TemSimbolo(Simbolo simbolo);
+        bool TemSimbolo(string simbolo);
     }
 }

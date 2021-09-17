@@ -8,7 +8,7 @@ namespace FormigaWar.Territorios
     public class CartaTerritorio : Carta
     {
         public Territorio territorio { get; internal set; }
-        [SerializeField] private Simbolo simbolo;
-        public bool TemSimbolo(Simbolo simbolo) => simbolo.Equals(this.simbolo);
+        [SerializeField] public string simbolo;
+        public bool TemSimbolo(string simbolo) => simbolo.Equals(this.simbolo);
     }
 }

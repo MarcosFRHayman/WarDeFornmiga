@@ -40,14 +40,17 @@ public static class TurnoManager
             AvancarContinente();
             return;
         }
-        
-        if (TurnoManager.faseAtual == 3) tabuleiro.AplicarMovimento();
+        else if(TurnoManager.faseAtual == 1)
+        {
+            if(GetJogadorDaVez().GetMao().Length >= 5)
+                bda.GetComponent<MaoUI>().AbrirMao(GetJogadorDaVez());
+        }
         
         TurnoManager.faseAtual += 1;
         if (TurnoManager.faseAtual >= 4) // se esta eh a ultima fase do turno, vai para o proximo jogador
         {
             TurnoManager.ConquistouUmTerritorio = false; // reseta a flag para cartas
-            
+            tabuleiro.AplicarMovimento();
             TurnoManager.faseAtual = 0;
             TurnoManager.continenteAtual = -1;
             

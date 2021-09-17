@@ -6,6 +6,11 @@ namespace FormigaWar.Territorios
 {
     public class Curinga : Carta
     {
-        public bool TemSimbolo(Simbolo simbolo) => true;
+        public string simbolo;
+        public bool TemSimbolo(string simbolo) => true;
+        public Curinga()
+        {
+            simbolo = "✦✹❉";
+        }
     }
 }
