@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using FormigaWar.Territorios;
 
 namespace FormigaWar.Jogadores.IA
 {
@@ -12,7 +13,27 @@ namespace FormigaWar.Jogadores.IA
 
         protected override void PintarTerritorios()
         {
-            throw new System.NotImplementedException();
+            var continenteStrategy = new ContinenteComMaisTropaStrategy((JogadorIA)objetivo.jogador);
+            int territoriosEscolhidos = 0;
+            while (territoriosEscolhidos < objetivo.territoriosNecessarios)
+            {
+                var continente = continenteStrategy.EncontraProximo();
+                PreencheContinente(continente);
+                territoriosEscolhidos += continente.GetTerritorios().Count;
+            }
+        }
+        private void PreencheContinente(Continente continente)
+        {
+            objetivo.tabuleiro
+            .ContinentesDisplay[continente]
+            .ForEach(territorio =>
+            {
+                if (territorio.fronteirasDisplay.Exists(
+                    fronteira =>
+                    !fronteira.Territorio.Continente.Equals(continente)
+                )) UpdatePrioridade(territorio, dificuldade);
+                else PrioridadesMap[territorio] = dificuldade;
+            });
         }
     }
 }

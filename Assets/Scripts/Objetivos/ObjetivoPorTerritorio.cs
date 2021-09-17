@@ -8,7 +8,7 @@ namespace FormigaWar
 {
     public class ObjetivoPorTerritorio : Objetivo
     {
-        private int territoriosNecessarios; // quantos territorios eu preciso
+        public int territoriosNecessarios { get; private set; } // quantos territorios eu preciso
         private int exercitosPorTerritorio; // quantos exercitos por exercitos no territorio
         public ObjetivoPorTerritorio()
         {
