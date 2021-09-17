@@ -56,7 +56,8 @@ namespace FormigaWar
         }
         void BtnMenosOnClick()
         {
-            if(number <= 0)return;
+            if(TurnoManager.faseAtual == 2 && number <= 1)return;
+            else if(number <= 0)return;
             number--;
             AtualizaNumTxt();
         }
@@ -103,6 +104,7 @@ namespace FormigaWar
                     tdChegada.NumTropas += number;
                     tdChegada.AtualizarNumTropas();
                     tdChegada = null;
+                    tdSaida.Tabuleiro.NormalizarTerritoriosDoJogador(TurnoManager.GetJogadorDaVez());
                     break;
                 case 3:  // fase de movimentacao
                     tdSaida.NumTropas -= number;

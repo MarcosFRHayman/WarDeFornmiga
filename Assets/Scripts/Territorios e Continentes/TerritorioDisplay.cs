@@ -113,14 +113,11 @@ namespace FormigaWar.Territorios
                     switch (estado)
                     {
                         case Estado.Normal:
-                            Tabuleiro.DeselecionarTodosTerritorios();
-                            Tabuleiro.NormalizarTerritoriosDoJogador(TurnoManager.GetJogadorDaVez());
                             AtualizaEstado(Estado.Selecionado);
                             seletorTropas.AbrirSeletor(this);
                             break;
                         case Estado.Selecionado:
-                            Tabuleiro.DeselecionarTodosTerritorios();
-                            Tabuleiro.NormalizarTerritoriosDoJogador(TurnoManager.GetJogadorDaVez());
+                            AtualizaEstado(Estado.Normal);
                             seletorTropas.FecharSeletor();
                             break;
                         default:
@@ -134,19 +131,16 @@ namespace FormigaWar.Territorios
                     switch (estado)
                     {
                         case Estado.Normal:
-                            Tabuleiro.DeselecionarTodosTerritorios();
-                            Tabuleiro.NormalizarTerritoriosDoJogador(TurnoManager.GetJogadorDaVez());
                             AtualizaEstado(Estado.Selecionado);
                             seletorTropas.AbrirSeletor(this);
                             break;
                         case Estado.Selecionado:
-                            Tabuleiro.DeselecionarTodosTerritorios();
-                            Tabuleiro.NormalizarTerritoriosDoJogador(TurnoManager.GetJogadorDaVez());
+                            AtualizaEstado(Estado.Normal);
                             seletorTropas.FecharSeletor();
                             break;
                         default:
-
                             break;
+
                     }
                     break;
                 case 2: // ataque

@@ -14,6 +14,7 @@ namespace FormigaWar.Jogadores
         public List<Continente> continentes { get; protected set; } = new List<Continente>();
         public Objetivo objetivo;
         protected List<Carta> mao = new List<Carta>();
+        public Carta[] GetMao() => mao.ToArray();
         public int reservas; // qtd de tropas para a fase de fortificacao
 
         public void AddCarta(Carta c)
@@ -26,6 +27,19 @@ namespace FormigaWar.Jogadores
         {
             if (TurnoManager.faseAtual == 0) reservas = TropaContinente;
             else reservas = (int)Territorios.Count / 2;
+        }
+
+        public void Fortificar()
+        {
+            // TurnoManager.AvancarTurno()
+        }
+        public void Atacar()
+        {
+            // TurnoManager.AvancarTurno()
+        }
+        public void Mover()
+        {
+            // TurnoManager.AvancarTurno()
         }
 
 
