@@ -10,13 +10,18 @@ namespace FormigaWar
 
     public class RoladorDeDados : MonoBehaviour
     {
-        // Atributos que apontam para outras classes
-        public GameObject panel;
+        // Botoes
         public Button btnConfirma;
         public Text btnConfirmaText;
+        public Button btnFechar;
+        
+        // Atributos que apontam para outras classes
+        public GameObject panel;
         public BaralhoDeCartas baralhoDeCartas = null;
         private SeletorTropas st;
         private DialogoMsg dialogoMsg;
+        
+        // Dados
         public GameObject Dadodef;
         public GameObject Dadoataq;
         private List<GameObject> DadoA = new List<GameObject>();
@@ -38,7 +43,9 @@ namespace FormigaWar
             st = GetComponent<SeletorTropas>();
             dialogoMsg = GetComponent<DialogoMsg>();
             TurnoManager.dialogoMsg = dialogoMsg;
+
             btnConfirma.onClick.AddListener(BtnConfirma);
+            btnFechar.onClick.AddListener(BtnFechar);
         }
         void BtnConfirma()
         {
@@ -65,17 +72,13 @@ namespace FormigaWar
                 }
                 dadosatacantes.Reverse();
                 dadosdefensores.Reverse();
-                int j = 0;
-                while (j < 3)
+                for(int j = 0; j < 3; j++)
                 {
                     if (dadosdefensores.Count > j)
-                    {   //Debug.Log("DadoD.Add: " +dadosdefensores[j]);
                         DadoD.Add(Instantiate(Dadodef, new Vector3(posdef.x, posdef.y - (3.6f * j), posdef.z), valor(dadosdefensores[j])));
-                    }
+
                     if (dadosatacantes.Count > j)
-                    {   //Debug.Log("DadoA.Add: " +dadosatacantes[j]);
                         DadoA.Add(Instantiate(Dadoataq, new Vector3(posataq.x, posataq.y - (3.6f * j), posataq.z), valor(dadosatacantes[j])));
-                    }
                     j++;
                 }
                 if (dadosatacantes.Count <= dadosdefensores.Count)
@@ -119,8 +122,7 @@ namespace FormigaWar
                     btnConfirmaText.text = "Fechar";
                 }
                 GameObject temp;
-                j = 2;
-                while (j > -1)
+                for(int j = 2; j > -1; j--)
                 {
                     if (DadoA.Count - 1 >= (j))
                     {
@@ -134,7 +136,6 @@ namespace FormigaWar
                         DadoD.Remove(DadoD[j]);
                         Destroy(temp, 0.7500f);
                     }
-                    j--;
                 }
                 DadoA.Clear();
                 DadoD.Clear();
@@ -168,15 +169,13 @@ namespace FormigaWar
                     // mudar essa implementacao quando puder, ta feio
                     tdAtacante.Tabuleiro.DeselecionarTodosTerritorios();
                     tdAtacante.AtualizaEstado(TerritorioDisplay.Estado.Indisponivel);
+                    onCaptura?.Invoke(TurnoManager.GetJogadorDaVez(), tdDefensor); // Action chamada
                 }
                 else
                 {
                     tdAtacante.Tabuleiro.DeselecionarTodosTerritorios();
                     tdAtacante.Tabuleiro.NormalizarTerritoriosDoJogador(TurnoManager.GetJogadorDaVez());
                 }
-
-                onCaptura?.Invoke(TurnoManager.GetJogadorDaVez(), tdDefensor); // Action chamada
-                
                 tdAtacante = null;
                 tdDefensor = null;
                 panel.SetActive(false);
@@ -184,6 +183,10 @@ namespace FormigaWar
 
         }
 
+        void BtnFechar()
+        {
+            FecharRolador();
+        }
 
         private Quaternion valor(int i)
         {
@@ -217,6 +220,17 @@ namespace FormigaWar
                 panel.SetActive(true);
                 btnConfirmaText.text = "Rolar";
             }
+        }
+
+        public void FecharRolador()
+        {
+            tdAtacante.Tabuleiro.DeselecionarTodosTerritorios();
+            tdAtacante.Tabuleiro.NormalizarTerritoriosDoJogador(TurnoManager.GetJogadorDaVez());
+
+            tdAtacante = null;
+            tdDefensor = null;
+
+            panel.SetActive(false);
         }
 
     }

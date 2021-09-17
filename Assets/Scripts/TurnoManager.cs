@@ -93,7 +93,7 @@ public static class TurnoManager
             tabuleiro.DesabilitarContinentesMenosUm(tabuleiro.Continentes[continenteAtual]);
             GetJogadorDaVez().CalcularReservas(tabuleiro.Continentes[continenteAtual].TropaBonus); 
         } 
-        Debug.Log(GetJogadorDaVez().continentes.Contains(tabuleiro.Continentes[continenteAtual]));
+        //Debug.Log(GetJogadorDaVez().continentes.Contains(tabuleiro.Continentes[continenteAtual]));
         if(!GetJogadorDaVez().continentes.Contains(tabuleiro.Continentes[continenteAtual]))AvancarContinente(); // se o jogador n conquistou o continente, pula pro proximo
         bda.AtualizaTexto();
     }
@@ -104,7 +104,11 @@ public static class TurnoManager
     private static void MsgReservas()
     {
         int c = GetJogadorDaVez().Territorios.Count;
-        string msg = "Você ganhou " + (int)c/2 + " tropas por ter " + c + " territórios. \n ";
+        string msg = "Você ganhou ";
+        
+        if(c > 6) msg += (int)c/2 + " tropas por ter " + c + " territórios. \n ";
+        else msg += 3 + " tropas por ter " + c + " territórios. \n ";
+
         if(GetJogadorDaVez().continentes.Count > 0) msg += "Além de mais";
         foreach(Continente cont in GetJogadorDaVez().continentes)msg += cont.TropaBonus + " por conquistar " + cont.nome + "\n";
         dialogoMsg.MostraDiag(msg);
