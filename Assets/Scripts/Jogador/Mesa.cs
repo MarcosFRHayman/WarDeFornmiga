@@ -47,28 +47,29 @@ namespace FormigaWar.Jogadores
             );
 
 
-            tabuleiro.TerritoriosInstanciados[0].ConquistaTerritorio(j);
-            tabuleiro.TerritoriosInstanciados[1].ConquistaTerritorio(j);
-            tabuleiro.TerritoriosInstanciados[2].ConquistaTerritorio(j);
-            tabuleiro.TerritoriosInstanciados[3].ConquistaTerritorio(j);
-            tabuleiro.TerritoriosInstanciados[4].ConquistaTerritorio(j);
-            tabuleiro.TerritoriosInstanciados[5].ConquistaTerritorio(j);
-            tabuleiro.TerritoriosInstanciados[6].ConquistaTerritorio(j);
-            tabuleiro.TerritoriosInstanciados[7].ConquistaTerritorio(j);
-            tabuleiro.TerritoriosInstanciados[8].ConquistaTerritorio(j);
+            // tabuleiro.TerritoriosInstanciados[0].ConquistaTerritorio(j);
+            // tabuleiro.TerritoriosInstanciados[1].ConquistaTerritorio(j);
+            // tabuleiro.TerritoriosInstanciados[2].ConquistaTerritorio(j);
+            // tabuleiro.TerritoriosInstanciados[3].ConquistaTerritorio(j);
+            // tabuleiro.TerritoriosInstanciados[4].ConquistaTerritorio(j);
+            // tabuleiro.TerritoriosInstanciados[5].ConquistaTerritorio(j);
+            // tabuleiro.TerritoriosInstanciados[6].ConquistaTerritorio(j);
+            // tabuleiro.TerritoriosInstanciados[7].ConquistaTerritorio(j);
+            // tabuleiro.TerritoriosInstanciados[8].ConquistaTerritorio(j);
 
-            tabuleiro.TerritoriosInstanciados[9].ConquistaTerritorio(k);
-            tabuleiro.TerritoriosInstanciados[10].ConquistaTerritorio(k);
+            // tabuleiro.TerritoriosInstanciados[9].ConquistaTerritorio(k);
+            // tabuleiro.TerritoriosInstanciados[10].ConquistaTerritorio(k);
 
-            tabuleiro.TerritoriosInstanciados[11].ConquistaTerritorio(l);
-            tabuleiro.TerritoriosInstanciados[12].ConquistaTerritorio(l);
+            // tabuleiro.TerritoriosInstanciados[11].ConquistaTerritorio(l);
+            // tabuleiro.TerritoriosInstanciados[12].ConquistaTerritorio(l);
 
-            tabuleiro.TerritoriosInstanciados[20].ConquistaTerritorio(m);
-            tabuleiro.TerritoriosInstanciados[21].ConquistaTerritorio(m);
+            // tabuleiro.TerritoriosInstanciados[20].ConquistaTerritorio(m);
+            // tabuleiro.TerritoriosInstanciados[21].ConquistaTerritorio(m);
+            InicializaBaralhoComTabuleiro();
+            DistribuiTerritorios();
 
             foreach (Jogador jouer in jogadores) jouer.recebeObjetivo(BaralhoDeObjetivo.PuxarCarta());
 
-            InicializaBaralhoComTabuleiro();
             GetComponent<RoladorDeDados>().baralhoDeCartas = baralhoTerritorios;
             // fim dos testes
         }
@@ -110,6 +111,7 @@ namespace FormigaWar.Jogadores
         }
         private void DistribuiParaJogadores(List<TerritorioDisplay> territoriosEmbaralhados)
         {
+            Debug.Log(territoriosEmbaralhados.Count);
             int valorParaCada = territoriosEmbaralhados.Count / jogadores.Length;
             int sobra = territoriosEmbaralhados.Count % jogadores.Length;
             for (int i = 0; i < jogadores.Length; i++)
@@ -118,12 +120,17 @@ namespace FormigaWar.Jogadores
                 //Dá os Territorios que sobraram da divisao para os n primeiros jogadores
                 if (sobra > 0)
                 {
-                    jogadores[i].Territorios.Add(territoriosEmbaralhados[territoriosEmbaralhados.Count - sobra]);
+                    territoriosEmbaralhados[territoriosEmbaralhados.Count - sobra].ConquistaTerritorio(jogadores[i]);
+                    // jogadores[i].Territorios.Add(territoriosEmbaralhados[territoriosEmbaralhados.Count - sobra]);
                     sobra--;
                 }
                 int inicio = i * valorParaCada;
                 int fim = (i + 1) * valorParaCada - 1;
-                jogadores[i].Territorios.AddRange(territoriosEmbaralhados.GetRange(inicio, fim));
+                Debug.Log(inicio + " " + fim);
+                territoriosEmbaralhados
+                    .GetRange(inicio, valorParaCada - 1)
+                    .ForEach(t => t.ConquistaTerritorio(jogadores[i]));
+                // jogadores[i].Territorios.AddRange(territoriosEmbaralhados.GetRange(inicio, fim));
             }
         }
     }

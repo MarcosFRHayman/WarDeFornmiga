@@ -21,22 +21,30 @@ namespace FormigaWar
             continentes =
                 tabuleiro.Continentes
                     .Where(continente => continente.GetTerritorios()
-                    .Exists(territorio => ia.Territorios
-                    .Exists(t => t.Territorio.Equals(territorio))))
+                        .Exists(territorio => ia.Territorios
+                            .Exists(t => t.Territorio.Equals(territorio))))
                     .OrderBy(continente =>
-                        (float)continente
+                        {
+                            Debug.Log(continente.nome + " tem territorios:\n" + continente.GetTerritorios().Count);
+                            return (float)continente
                             .GetTerritorios()
-                            .Count(territorio => tabuleiro
-                                .TerritoriosInstanciados
-                                .FirstOrDefault(display => display.Territorio.Equals(territorio))
-                                .Jogador.Equals(ia)
-                                ) / (float)continente.GetTerritorios().Count
-                    ).ToList();
+                            .Count(territorio =>
+                            {
+                                var display = tabuleiro
+                                    .TerritoriosInstanciados
+                                    .FirstOrDefault(display => display.Territorio.Equals(territorio));
+                                Debug.Log(display != null);
+                                if (display != null)
+                                    return ia.Equals(display.Jogador);
+                                return false;
+                            }
+                                ) / (float)continente.GetTerritorios().Count;
+                        }).ToList();
         }
         /// <exception cref="IndexOutOfBoundsException">caso chame uma quantidade maior de vezes que há continentes controlados</exception>
         public Continente EncontraProximo()
         {
-            Debug.Log("continentes.Count: "+continentes.Count +" | vezes: " + vezes);
+            Debug.Log("continentes.Count: " + continentes.Count + " | vezes: " + vezes);
             var continente = continentes[vezes];
             vezes++;
             return continente;
