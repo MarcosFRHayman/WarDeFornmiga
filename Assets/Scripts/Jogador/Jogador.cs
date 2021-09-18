@@ -35,16 +35,20 @@ namespace FormigaWar.Jogadores
 
         protected void Fortificar(int tropas, TerritorioDisplay destino)
         {
-            destino.NumTropas += tropas;
-            destino.AtualizarNumTropas();
+            if (reservas > 0)
+            {
+                reservas -= tropas;
+                destino.NumTropas += tropas;
+                destino.AtualizarNumTropas();
+            }
             // TurnoManager.AvancarTurno()
         }
         protected bool Atacar(TerritorioDisplay tdAtacante, TerritorioDisplay tdDefensor)
-        {/*
+        {
             List<int> dadosatacantes = new List<int>();
             List<int> dadosdefensores = new List<int>();
-            
-            for(int i = 0; i < 3; i++) // Rolando os dados
+
+            for (int i = 0; i < 3; i++) // Rolando os dados
             {
                 if ((tdAtacante.NumTropas - 1) >= (i + 1))
                 {
@@ -68,21 +72,21 @@ namespace FormigaWar.Jogadores
                     if (dadosatacantes[i] > dadosdefensores[i])
                     {
                         tdDefensor.NumTropas -= 1;
-                        tdDefensor.AtualizarNumTropas();
                     }
                     else
                     {
                         tdAtacante.NumTropas -= 1;
-                        tdAtacante.AtualizarNumTropas();
                     }
                 }
+                tdDefensor.AtualizarNumTropas();
+                tdAtacante.AtualizarNumTropas();
             }
-            if(tdDefensor.NumTropas == 0) // Calculando o resultado
+            if (tdDefensor.NumTropas == 0) // Calculando o resultado
             {
                 tdDefensor.ConquistaTerritorio(this);
                 return true;
             }
-            else */return false;
+            else return false;
             // TurnoManager.AvancarTurno()
         }
         protected void Mover(int tropas, TerritorioDisplay partida, TerritorioDisplay destino)
@@ -97,7 +101,7 @@ namespace FormigaWar.Jogadores
         {
             objetivo.jogador = this;
             this.objetivo = objetivo;
-            objetivo.jogador = this;
+            Debug.Log(objetivo.ToString());
         }
 
 

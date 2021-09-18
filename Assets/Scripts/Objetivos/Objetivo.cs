@@ -13,5 +13,10 @@ namespace FormigaWar
         public Tabuleiro tabuleiro { get; protected set; }
         public BehaviourFactory behaviourFactory { get; protected set; }
         public abstract bool Checar(); // metodo checa se o objetivo foi completado.
+
+        public override string ToString()
+        {
+            return "Seu objetivo é: \n";
+        }
     }
 }

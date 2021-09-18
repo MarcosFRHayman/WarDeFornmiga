@@ -23,7 +23,7 @@ namespace FormigaWar
                     .Where(continente => continente.GetTerritorios()
                         .Exists(territorio => ia.Territorios
                             .Exists(t => t.Territorio.Equals(territorio))))
-                    .OrderBy(continente =>
+                    .OrderByDescending(continente =>
                         {
                             return (float)continente
                             .GetTerritorios()

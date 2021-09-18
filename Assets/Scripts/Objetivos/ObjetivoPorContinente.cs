@@ -42,5 +42,9 @@ namespace FormigaWar
 
             return false;
         }
+        public override string ToString()
+        {
+            return base.ToString() + continentes[0].nome + " " + continentes[1].nome;
+        }
     }
 }

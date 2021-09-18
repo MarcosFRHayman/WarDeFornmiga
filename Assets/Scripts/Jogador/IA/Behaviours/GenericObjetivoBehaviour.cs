@@ -38,7 +38,7 @@ namespace FormigaWar.Jogadores.IA
                     candidato
                    .fronteirasDisplay
                    .Intersect(PrioridadesMap.Keys.ToList())
-                   .OrderBy(comum =>
+                   .OrderByDescending(comum =>
                      PrioridadesMap[comum]
                     )
                     .FirstOrDefault();
@@ -50,15 +50,16 @@ namespace FormigaWar.Jogadores.IA
 
         public virtual IOrderedEnumerable<KeyValuePair<TerritorioDisplay, List<TerritorioDisplay>>> DecideAlvos(List<TerritorioDisplay> candidatos)
         {
-            return candidatos
+            var result = candidatos
                 .Distinct()
                 .ToDictionary(k => k, v => v.fronteirasDisplay
                     .Intersect(PrioridadesMap.Keys.ToList())
-                    .OrderBy(comum => PrioridadesMap[comum])
+                    .OrderByDescending(comum => PrioridadesMap[comum])
                     .ToList()
                 )
                 .Where(dictionary => dictionary.Value.Count > 0)
-                .OrderBy(dicitionary => PrioridadesMap[dicitionary.Value[0]]);
+                .OrderByDescending(dicitionary => PrioridadesMap[dicitionary.Value[0]]);
+            return result;
         }
 
         protected void PreencheContinente(Continente continente)
