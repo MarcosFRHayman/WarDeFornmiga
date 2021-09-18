@@ -125,10 +125,8 @@ namespace FormigaWar.Jogadores
                     sobra--;
                 }
                 int inicio = i * valorParaCada;
-                int fim = (i + 1) * valorParaCada - 1;
-                Debug.Log(inicio + " " + fim);
                 territoriosEmbaralhados
-                    .GetRange(inicio, valorParaCada - 1)
+                    .GetRange(inicio, valorParaCada)
                     .ForEach(t => t.ConquistaTerritorio(jogadores[i]));
                 // jogadores[i].Territorios.AddRange(territoriosEmbaralhados.GetRange(inicio, fim));
             }
