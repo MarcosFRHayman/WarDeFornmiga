@@ -13,13 +13,13 @@ namespace FormigaWar
     {
         public GameObject painel;
         public Button abreobjetivo;
-        public Button btncancela;
+  
         public Jogador j = null;
         public Text texto;
         public void Start()
         {
             abreobjetivo.onClick.AddListener(Abrir);
-            btncancela.onClick.AddListener(BtnCancela);
+            
         }
 
         // Update is called once per frame
@@ -28,11 +28,7 @@ namespace FormigaWar
         
         }
 
-        void BtnCancela()
-        {
-            texto.text = "";
-            painel.SetActive(false);
-        }
+       
         public void Abrir()
         {
             AbrirObjetivo(TurnoManager.GetJogadorDaVez());
@@ -40,10 +36,15 @@ namespace FormigaWar
         }
         public void AbrirObjetivo(Jogador jog)
         {
+            if (painel.activeSelf==false) { 
             this.j = jog;
             texto.text = j.objetivo.ToString();
             painel.SetActive(true);
-           
+            }
+            else
+            {
+                painel.SetActive(false);
+            }
         }
     }
 }
