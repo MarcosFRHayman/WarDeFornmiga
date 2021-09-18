@@ -25,7 +25,6 @@ namespace FormigaWar
                             .Exists(t => t.Territorio.Equals(territorio))))
                     .OrderBy(continente =>
                         {
-                            Debug.Log(continente.nome + " tem territorios:\n" + continente.GetTerritorios().Count);
                             return (float)continente
                             .GetTerritorios()
                             .Count(territorio =>
@@ -33,7 +32,6 @@ namespace FormigaWar
                                 var display = tabuleiro
                                     .TerritoriosInstanciados
                                     .FirstOrDefault(display => display.Territorio.Equals(territorio));
-                                Debug.Log(display != null);
                                 if (display != null)
                                     return ia.Equals(display.Jogador);
                                 return false;

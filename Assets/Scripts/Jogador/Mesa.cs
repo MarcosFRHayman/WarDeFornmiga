@@ -111,7 +111,6 @@ namespace FormigaWar.Jogadores
         }
         private void DistribuiParaJogadores(List<TerritorioDisplay> territoriosEmbaralhados)
         {
-            Debug.Log(territoriosEmbaralhados.Count);
             int valorParaCada = territoriosEmbaralhados.Count / jogadores.Length;
             int sobra = territoriosEmbaralhados.Count % jogadores.Length;
             for (int i = 0; i < jogadores.Length; i++)

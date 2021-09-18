@@ -18,7 +18,6 @@ namespace FormigaWar.Jogadores.IA
             this.objetivo = objetivo;
             this.dificuldade = dificuldade;
             PrioridadesMap = objetivo.tabuleiro.TerritoriosInstanciados.ToDictionary(k => k, v => 1);
-            PrioridadesMap.ToList().ForEach(dic => Debug.Log("Territorio: " + dic.Key.name + "\nPrioridade 1: " + dic.Value));
 
             PintarTerritorios();
         }
