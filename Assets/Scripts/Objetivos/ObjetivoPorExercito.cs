@@ -11,7 +11,6 @@ namespace FormigaWar
     public class ObjetivoPorExercito : Objetivo
     {
         public Jogador nemesis { get; private set; }
-        private bool nemesisDerrotado = false;
         public System.Action onObjMudou;
 
         public ObjetivoPorExercito()
@@ -43,7 +42,7 @@ namespace FormigaWar
         }
         public void MudarObjetivo() // TODO: Usar o RecebeObjetivo() do Jogador
         {
-            TurnoManager.GetJogadorDaVez().objetivo = new ObjetivoPorTerritorio(tabuleiro, 24, 1);
+            TurnoManager.GetJogadorDaVez().recebeObjetivo(new ObjetivoPorTerritorio(tabuleiro, 24, 1));
             TurnoManager.GetJogadorDaVez().objetivo.Checar();
         }
     }
