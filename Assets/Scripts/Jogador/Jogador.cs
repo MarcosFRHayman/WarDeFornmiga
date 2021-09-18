@@ -35,15 +35,62 @@ namespace FormigaWar.Jogadores
 
         protected void Fortificar(int tropas, TerritorioDisplay destino)
         {
+            destino.NumTropas += tropas;
+            destino.AtualizarNumTropas();
             // TurnoManager.AvancarTurno()
         }
-        protected bool Atacar(TerritorioDisplay partida, TerritorioDisplay destino)
-        {
-            return true;
+        protected bool Atacar(TerritorioDisplay tdAtacante, TerritorioDisplay tdDefensor)
+        {/*
+            List<int> dadosatacantes = new List<int>();
+            List<int> dadosdefensores = new List<int>();
+            
+            for(int i = 0; i < 3; i++) // Rolando os dados
+            {
+                if ((tdAtacante.NumTropas - 1) >= (i + 1))
+                {
+                    dadosatacantes.Add(Random.Range(1, 6));
+                    dadosatacantes.Sort();
+                }
+                if ((tdDefensor.NumTropas - 1) >= i)
+                {
+                    dadosdefensores.Add(Random.Range(1, 6));
+                    dadosdefensores.Sort();
+                }
+            }
+
+            dadosatacantes.Reverse();
+            dadosdefensores.Reverse();
+
+            if (dadosatacantes.Count <= dadosdefensores.Count) // Comparando os dados
+            {
+                for (int i = 0; i < dadosatacantes.Count; i++)
+                {
+                    if (dadosatacantes[i] > dadosdefensores[i])
+                    {
+                        tdDefensor.NumTropas -= 1;
+                        tdDefensor.AtualizarNumTropas();
+                    }
+                    else
+                    {
+                        tdAtacante.NumTropas -= 1;
+                        tdAtacante.AtualizarNumTropas();
+                    }
+                }
+            }
+            if(tdDefensor.NumTropas == 0) // Calculando o resultado
+            {
+                tdDefensor.ConquistaTerritorio(this);
+                return true;
+            }
+            else */return false;
             // TurnoManager.AvancarTurno()
         }
         protected void Mover(int tropas, TerritorioDisplay partida, TerritorioDisplay destino)
         {
+            partida.NumTropas -= tropas;
+            destino.numtropas_to_move += tropas;
+            partida.AtualizarNumTropas();
+            destino.AtualizarNumTropas();
             // TurnoManager.AvancarTurno()
         }
         public virtual void recebeObjetivo(Objetivo objetivo)

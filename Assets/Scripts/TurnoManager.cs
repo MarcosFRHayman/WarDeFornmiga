@@ -65,9 +65,7 @@ public static class TurnoManager
                 Debug.Log("IA esta no controle agora");
                 IATurno(IAJogador);
             }
-
-
-            MsgReservas();
+            else MsgReservas();
         }
         else 
         {
@@ -156,8 +154,17 @@ public static class TurnoManager
             break;
             case 3: // movimentacao
                 cpu.RealizaMovimentos();
+                faseAtual += 1;
+                Debug.Log("Terminando o turno da IA");
+                AvancarTurno();
+            return;
+            default:
+                
             break;
         }
-        AvancarTurno();
+        Debug.Log("IATurno, faseAtual:" +faseAtual.ToString());
+        faseAtual += 1;
+        IATurno(cpu);
+        return;
     }
 }

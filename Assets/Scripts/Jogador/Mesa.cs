@@ -30,7 +30,7 @@ namespace FormigaWar.Jogadores
             Jogador l = new JogadorHumano();
             l.Cor = Color.red;
 
-            Jogador m = new JogadorIA(1);
+            Jogador m = new JogadorIA(3);
             m.Cor = Color.green;
 
             jogadores = new Jogador[4] { j, k, l, m };
