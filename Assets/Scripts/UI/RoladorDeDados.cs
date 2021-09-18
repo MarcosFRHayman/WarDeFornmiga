@@ -74,7 +74,7 @@ namespace FormigaWar
                 dadosdefensores.Reverse();
                 for(int j = 0; j < 3; j++)
                 {
-                    Debug.Log(dadosatacantes.Count.ToString());
+                    //Debug.Log(dadosatacantes.Count.ToString());
                     if (dadosdefensores.Count > j)
                         DadoD.Add(Instantiate(Dadodef, new Vector3(posdef.x, posdef.y - (2.1f * j), posdef.z), valor(dadosdefensores[j])));
 

@@ -40,7 +40,7 @@ namespace FormigaWar.Jogadores
             // TurnoManager.AvancarTurno()
         }
         protected bool Atacar(TerritorioDisplay tdAtacante, TerritorioDisplay tdDefensor)
-        {/*
+        {
             List<int> dadosatacantes = new List<int>();
             List<int> dadosdefensores = new List<int>();
             
@@ -68,21 +68,21 @@ namespace FormigaWar.Jogadores
                     if (dadosatacantes[i] > dadosdefensores[i])
                     {
                         tdDefensor.NumTropas -= 1;
-                        tdDefensor.AtualizarNumTropas();
                     }
                     else
                     {
                         tdAtacante.NumTropas -= 1;
-                        tdAtacante.AtualizarNumTropas();
                     }
                 }
             }
+            tdDefensor.AtualizarNumTropas();
+            tdAtacante.AtualizarNumTropas();
             if(tdDefensor.NumTropas == 0) // Calculando o resultado
             {
                 tdDefensor.ConquistaTerritorio(this);
                 return true;
             }
-            else */return false;
+            else return false;
             // TurnoManager.AvancarTurno()
         }
         protected void Mover(int tropas, TerritorioDisplay partida, TerritorioDisplay destino)
