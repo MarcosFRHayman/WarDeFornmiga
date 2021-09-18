@@ -26,8 +26,8 @@ namespace FormigaWar
         public GameObject Dadoataq;
         private List<GameObject> DadoA = new List<GameObject>();
         private List<GameObject> DadoD = new List<GameObject>();
-        private Vector3 posdef = new Vector3(9.25f, 3.6f, 0);
-        private Vector3 posataq = new Vector3(-9f, 3.6f, 0);
+        private Vector3 posdef = new Vector3(7.75f, 3.6f, 0);
+        private Vector3 posataq = new Vector3(-7.75f, 3.6f, 0);
 
         // Atributos dos territorioDisplay manipulados
         public TerritorioDisplay tdAtacante;
@@ -74,12 +74,13 @@ namespace FormigaWar
                 dadosdefensores.Reverse();
                 for(int j = 0; j < 3; j++)
                 {
+                    //Debug.Log(dadosatacantes.Count.ToString());
                     if (dadosdefensores.Count > j)
-                        DadoD.Add(Instantiate(Dadodef, new Vector3(posdef.x, posdef.y - (3.6f * j), posdef.z), valor(dadosdefensores[j])));
+                        DadoD.Add(Instantiate(Dadodef, new Vector3(posdef.x, posdef.y - (2.1f * j), posdef.z), valor(dadosdefensores[j])));
 
                     if (dadosatacantes.Count > j)
-                        DadoA.Add(Instantiate(Dadoataq, new Vector3(posataq.x, posataq.y - (3.6f * j), posataq.z), valor(dadosatacantes[j])));
-                    j++;
+                        DadoA.Add(Instantiate(Dadoataq, new Vector3(posataq.x, posataq.y - (2.1f * j), posataq.z), valor(dadosatacantes[j])));
+                
                 }
                 if (dadosatacantes.Count <= dadosdefensores.Count)
                 {

@@ -78,9 +78,9 @@ namespace FormigaWar.Jogadores
                         tdAtacante.NumTropas -= 1;
                     }
                 }
-                tdDefensor.AtualizarNumTropas();
-                tdAtacante.AtualizarNumTropas();
             }
+            tdDefensor.AtualizarNumTropas();
+            tdAtacante.AtualizarNumTropas();
             if (tdDefensor.NumTropas == 0) // Calculando o resultado
             {
                 tdDefensor.ConquistaTerritorio(this);

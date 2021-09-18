@@ -1315,7 +1315,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aa9adb12351c28f40b7677792f0e5db0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nomeDaCena: SampleScene
+  nomeDaCena: Tabuleiro22
 --- !u!1 &1983098128
 GameObject:
   m_ObjectHideFlags: 0
